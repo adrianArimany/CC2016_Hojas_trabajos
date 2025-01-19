@@ -1,18 +1,14 @@
 package com.example.Estados;
 
+
+
 import com.example.Estados.Liquadora.EstadoLiquadora;
 
 public class ManejadorDeEstados {
     Estado currEstado;
     boolean systemOn = false;
     
-    /**
-     * Constructor for the ManejadorDeEstados class.
-     * It sets the current state of the system to the MenuPrincipal state.
-     * @param systemOn  Indicates whether the system is currently on or off.
-     * @param currEstado  The current state of the system.
-     */
-    public ManejadorDeEstados() {
+     public ManejadorDeEstados() {
         this.currEstado = new EstadoLiquadora();
     }
 
