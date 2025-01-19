@@ -27,7 +27,11 @@ public class LiquadoraData {
         return speedMap;
     }
 
-
+    public void setSpeedMap(Map<Integer, String> speedMap) {
+        this.speedMap.clear();
+        this.speedMap.putAll(speedMap);
+        saveToJson();
+    }
 
     private void loadFromJson() {
         Gson gson = new Gson();

@@ -15,9 +15,7 @@ public class App
     public static void main( String[] args )
     {
         ManejadorDeEstados mEstados = new ManejadorDeEstados();
-        Scanner sc = new Scanner(System.in);
-
-        try {
+        try (Scanner sc = new Scanner(System.in)) {
             while (RUNNING) {
                 if (mEstados.isSystemOn()) {
                     try {
@@ -34,8 +32,6 @@ public class App
                     mEstados.setSystemOn(true);
                 }
             }
-        } finally {
-            sc.close();
         }
     }
 }
