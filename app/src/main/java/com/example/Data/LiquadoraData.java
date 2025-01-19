@@ -19,7 +19,7 @@ public class LiquadoraData {
     private final String LIQUADORA_PATH = "app/src/main/java/com/example/JSON/liquadoraSpeed.json";
     private final String LIQUADORA_MATERIAL_PATH = "app/src/main/java/com/example/JSON/liquadoraMaterials.json";
     private final Map<Integer, String> speedMap = new HashMap<>();
-    private final Map<String, Double> materialMap = new HashMap<>();
+    private final Map<String, Float> materialMap = new HashMap<>();
 
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());  
 
@@ -32,11 +32,11 @@ public class LiquadoraData {
         return speedMap;
     }
 
-    public Map<String, Double> getMaterialMap() {
+    public Map<String, Float> getMaterialMap() {
         return materialMap;
     }
 
-    public void setMaterialMap(Map<String, Double> materialMap) throws IOException {
+    public void setMaterialMap(Map<String, Float> materialMap) throws IOException {
         this.materialMap.clear();
         this.materialMap.putAll(materialMap);
         saveToJson();
@@ -59,8 +59,8 @@ public class LiquadoraData {
             logger.log(Level.SEVERE, "Error loading data from JSON", e);
         }
         try {FileReader reader = new FileReader(LIQUADORA_MATERIAL_PATH);
-            java.lang.reflect.Type type = new TypeToken<Map<String, Double>>() {}.getType();
-            Map<String, Double> loadedMap = gson.fromJson(reader, type);
+            java.lang.reflect.Type type = new TypeToken<Map<String, Float>>() {}.getType();
+            Map<String, Float> loadedMap = gson.fromJson(reader, type);
             materialMap.clear();
             materialMap.putAll(loadedMap);
         } catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
