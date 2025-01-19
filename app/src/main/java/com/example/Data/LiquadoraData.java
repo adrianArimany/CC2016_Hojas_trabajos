@@ -1,19 +1,19 @@
 package com.example.Data;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import java.util.logging.Level;
-import java.io.FileReader;
-import java.io.FileWriter;
 
 public class LiquadoraData {
-    private final String LIQUADORA_PATH = "/src/main/java/com/example/JSON/liquadoraSpeed.json";
+    private final String LIQUADORA_PATH = "app/src/main/java/com/example/JSON/liquadoraSpeed.json";
     private final Map<Integer, String> speedMap = new HashMap<>();
 
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());  

@@ -1,6 +1,6 @@
 package com.example.Estados;
 
-import com.example.Estados.MenuPrincipal.MenuPrincipal;
+import com.example.Estados.Liquadora.EstadoLiquadora;
 
 public class ManejadorDeEstados {
     Estado currEstado;
@@ -13,7 +13,7 @@ public class ManejadorDeEstados {
      * @param currEstado  The current state of the system.
      */
     public ManejadorDeEstados() {
-        this.currEstado = new MenuPrincipal();
+        this.currEstado = new EstadoLiquadora();
     }
 
     /**
