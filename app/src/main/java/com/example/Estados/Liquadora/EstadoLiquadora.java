@@ -13,7 +13,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     private final Map<Integer, String> speedMap;
     private final Map<String, Float> materialMap;
     private final Scanner scanner;
-    private float maxQuantity = 100.0f;
+    private final float maxQuantity = 100.0f;
 
     public EstadoLiquadora() {
         this.data = new LiquadoraData();
