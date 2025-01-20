@@ -96,7 +96,6 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                 continue;
             }
 
-            // Update the map and save immediately
             materialMap.put(inputName, newQuantity);
             try {
                 data.setMaterialMap(materialMap);
