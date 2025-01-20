@@ -1,7 +1,6 @@
 package com.example.Estados.Liquadora;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -56,14 +55,14 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     }  
 
     @Override
-    public Map<String, Float> addToLiquiadora(String materialName, Float materialQuantity, Scanner scanner) {
+    public String addToLiquiadora(String materialName, Float materialQuantity, Scanner scanner) {
         if (materialName == null || materialQuantity == null) {
-            return new HashMap<>();
+            return "";
         }
 
         Map<String, Float> materialMap = data.getMaterialMap();
         if (materialMap == null) {
-            return new HashMap<>();
+            return "";
         }   
 
         boolean exit = false;
@@ -112,8 +111,8 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
         }
 
         float totalQuantity = materialMap.values().stream().reduce(0.0f, Float::sum);
-        System.out.println("Proceso de agregar materiales completado. Suma total de cantidades: " + totalQuantity);
-        return materialMap;
+        return "Proceso de agregar materiales completado. Suma total de cantidades: " + totalQuantity;
+        
     }
 
 
