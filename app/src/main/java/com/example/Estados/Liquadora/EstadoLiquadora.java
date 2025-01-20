@@ -1,6 +1,5 @@
 package com.example.Estados.Liquadora;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -38,8 +37,16 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
         public Estado transition(int action) {
             switch (action) {
                 case 1:
-                addToLiquiadora("", 0.0f, scanner);
-                return this;
+                    System.out.print("Ingrese la cantidad: ");
+                    try {
+                        Float inputQuantity = scanner.nextFloat();
+                        scanner.nextLine();
+                        addToLiquiadora(inputQuantity);
+                    } catch (Exception e) {
+                        System.out.println("Entrada inválida. Por favor intente de nuevo.");
+                        scanner.nextLine();
+                    }
+                    return this;
             case 2:
                 System.out.println(increaseVelocity());
                 return this;
@@ -55,63 +62,29 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     }  
 
     @Override
-    public String addToLiquiadora(String materialName, Float materialQuantity, Scanner scanner) {
-        if (materialName == null || materialQuantity == null) {
-            return "";
-        }
+    public Float addToLiquiadora(Float materialQuantity) {
+        // Map<String, Float> materialMap = data.getMaterialMap();
 
-        Map<String, Float> materialMap = data.getMaterialMap();
-        if (materialMap == null) {
-            return "";
-        }   
+        // float updatedQuantity = materialQuantity;
+        // if (materialMap.containsKey(materialName)) {
+        //     updatedQuantity += materialMap.get(materialName);
+        // }
 
-        boolean exit = false;
-        while (!exit) {
-            System.out.print("Ingrese el nombre del material (escriba EXIT para salir): ");
-            String inputName = scanner.nextLine();
+        // if (updatedQuantity > maxQuantity) {
+        //     return maxQuantity;
+        // }
 
-            if ("EXIT".equalsIgnoreCase(inputName)) {
-                exit = true;
-                break;
-            }
+        // materialMap.put(updatedQuantity);
+        // try {
+        //     data.setMaterialMap(materialMap);
+        //     System.out.println("Cantidad: " + updatedQuantity);
+        // } catch (IOException e) {
+        //     materialMap.put(updatedQuantity - materialQuantity);
+        // }
 
-            System.out.print("Ingrese la cantidad: ");
-            try {
-                materialQuantity = scanner.nextFloat();
-                scanner.nextLine(); 
-            } catch (Exception e) {
-                System.out.println("Entrada inválida. Por favor intente de nuevo.");
-                scanner.nextLine(); 
-                continue;
-            }
-
-            // Check and update material quantities
-            float newQuantity = materialQuantity;
-            if (materialMap.containsKey(inputName)) {
-                newQuantity += materialMap.get(inputName);
-            }
-
-            if (newQuantity > maxQuantity) {
-                System.out.println("No se puede agregar esa cantidad, la cantidad máxima es " + maxQuantity);
-                continue;
-            }
-
-            materialMap.put(inputName, newQuantity);
-            try {
-                data.setMaterialMap(materialMap);
-                System.out.println("Material agregado: " + inputName + " - Cantidad: " + newQuantity);
-            } catch (IOException e) {
-                System.out.println("Error al guardar los datos en el archivo JSON.");
-                // Optionally revert the change if save failed
-                if (materialMap.get(inputName) == newQuantity) {
-                    materialMap.put(inputName, newQuantity - materialQuantity);
-                }
-            }
-        }
-
-        float totalQuantity = materialMap.values().stream().reduce(0.0f, Float::sum);
-        return "Proceso de agregar materiales completado. Suma total de cantidades: " + totalQuantity;
-        
+        // float totalQuantity = materialMap.values().stream().reduce(0.0f, Float::sum);
+        // return totalQuantity;
+        return 0.0f;
     }
 
 
