@@ -36,15 +36,16 @@ public class LiquadoraData {
         return materialMap;
     }
 
-    public void setMaterialMap(Map<String, Float> materialMap) throws IOException {
+    public Map<String, Float> setMaterialMap(Map<String, Float> materialMap) throws IOException {
         this.materialMap.clear();
         this.materialMap.putAll(materialMap);
-        saveToJson();
+        saveToJsonMaterial();
+        return this.materialMap;
     }
 
     public void deleteMaterial(String material) throws IOException {
         materialMap.remove(material);
-        saveToJson();
+        saveToJsonMaterial();
     }
 
     private void loadFromJson() {
@@ -68,16 +69,16 @@ public class LiquadoraData {
         }
     }
 
-    private void saveToJson() throws IOException {
+    
+    private void saveToJsonMaterial() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try {
-            FileWriter writer = new FileWriter(LIQUADORA_PATH); 
-            gson.toJson(speedMap, writer);
-        } catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
-            logger.log(Level.SEVERE, "Error saving data to JSON", e);
+        try (FileWriter materialWriter = new FileWriter(LIQUADORA_MATERIAL_PATH)) {
+            gson.toJson(materialMap, materialWriter);
+            materialWriter.flush(); // Ensure data is written to disk
+        } catch (JsonIOException | JsonSyntaxException e) {
+            throw new IOException("Error saving materialMap to JSON", e);
         }
     }
-
 
     
 }
