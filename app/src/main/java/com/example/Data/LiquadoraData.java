@@ -16,8 +16,8 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 public class LiquadoraData {
-    private final String LIQUADORA_PATH = "CC2016_Hoja_trabajo_1/app/src/main/java/com/example/JSON/liquadoraSpeed.json";
-    private final String LIQUADORA_MATERIAL_PATH = "CC2016_Hoja_trabajo_1/app/src/main/java/com/example/JSON/liquadoraMaterials.json";
+    private final String LIQUADORA_PATH = getClass().getClassLoader().getResource("com/example/JSON/liquadoraSpeed.json").getPath();
+    private final String LIQUADORA_MATERIAL_PATH = getClass().getClassLoader().getResource("com/example/JSON/liquadoraMaterials.json").getPath();
     private final Map<Integer, String> speedMap = new HashMap<>();
     private final Map<String, Float> materialMap = new HashMap<>();
 
