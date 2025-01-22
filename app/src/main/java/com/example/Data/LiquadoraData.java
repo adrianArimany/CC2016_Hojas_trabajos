@@ -28,24 +28,55 @@ public class LiquadoraData {
         loadFromJson();
     }
 
+/**
+ * Returns the speed map for the liquadora.
+ *
+ * @return a map where the key is an integer representing the speed level
+ *         and the value is a string describing the speed.
+ */
+
     public Map<Integer, String> getSpeedMap() {
         return speedMap;
     }
 
+    /**
+     * Returns the list of volume levels for the liquadora.
+     *
+     * @return a list of doubles where each element represents the volume level.
+     */
     public List<Double> getVolumeList() {
         return volumeList;
     }
 
+    /**
+     * Sets the volume list for the liquadora.
+     *
+     * @param volumeList the new volume level.
+     * @return the updated volume list.
+     * @throws IOException if there is an error writing the data to the JSON file.
+     */
     public List<Double> setVolumeList(double volumeList) throws IOException {
         this.volumeList.clear();
         this.volumeList.add(Double.valueOf(volumeList));
         return this.volumeList;
     }
 
+    /**
+     * Removes a volume level from the liquadora.
+     * 
+     * @param material the material to be removed.
+     * @throws IOException if there is an error writing the data to the JSON file.
+     */
     public void deleteVolume(Double material) throws IOException {
         volumeList.remove(material);
     }
 
+    /**
+     * Loads the speed levels for the liquadora from the JSON file.
+     *
+     * If there is an error reading the JSON file, it logs a SEVERE message
+     * with the error.
+     */
     private void loadFromJson() {
         Gson gson = new Gson();
         try {
