@@ -1,11 +1,13 @@
 package com.example.Data;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,14 +19,15 @@ import com.google.gson.reflect.TypeToken;
 
 public class LiquadoraData {
     private final String LIQUADORA_PATH = getClass().getClassLoader().getResource("com/example/JSON/liquadoraSpeed.json").getPath();
+    private final String LIQUADORA_VOLUME_PATH = getClass().getClassLoader().getResource("com/example/CSV/LiquadoraVolume.csv").getPath();
     private final Map<Integer, String> speedMap = new HashMap<>();
-    private final List<Double> volumeList = new ArrayList<>();
-
+    private double volume;
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());  
 
 
     public LiquadoraData() {
-        loadFromJson();
+        loadSpeedFromJson();
+        loadVolumeFromCSV();
     }
 
 /**
@@ -43,8 +46,8 @@ public class LiquadoraData {
      *
      * @return a list of doubles where each element represents the volume level.
      */
-    public List<Double> getVolumeList() {
-        return volumeList;
+    public double getVolume() {
+        return volume;
     }
 
     /**
@@ -54,10 +57,9 @@ public class LiquadoraData {
      * @return the updated volume list.
      * @throws IOException if there is an error writing the data to the JSON file.
      */
-    public List<Double> setVolumeList(double volumeList) throws IOException {
-        this.volumeList.clear();
-        this.volumeList.add(Double.valueOf(volumeList));
-        return this.volumeList;
+    public void setVolume(double newVolume) throws IOException {
+        this.volume = newVolume;
+        saveVolumeToCSV();
     }
 
     /**
@@ -66,8 +68,9 @@ public class LiquadoraData {
      * @param material the material to be removed.
      * @throws IOException if there is an error writing the data to the JSON file.
      */
-    public void deleteVolume(Double material) throws IOException {
-        volumeList.remove(material);
+    public void deleteVolume() throws IOException {
+        volume = 0.0;
+        saveVolumeToCSV();
     }
 
     /**
@@ -76,7 +79,7 @@ public class LiquadoraData {
      * If there is an error reading the JSON file, it logs a SEVERE message
      * with the error.
      */
-    private void loadFromJson() {
+    private void loadSpeedFromJson() {
         Gson gson = new Gson();
         try {
             FileReader reader = new FileReader(LIQUADORA_PATH);
@@ -88,8 +91,29 @@ public class LiquadoraData {
             logger.log(Level.SEVERE, "Error loading data from JSON", e);
         }
     }
+    
+    private void loadVolumeFromCSV() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(LIQUADORA_VOLUME_PATH))) {
+            String line = reader.readLine();
+            if (line != null) {
+                volume = Double.parseDouble(line);
+            }
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error loading volume data from CSV", e);
+        }
+    }
 
+
+    private void saveVolumeToCSV() throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(LIQUADORA_VOLUME_PATH))) {
+            writer.write(String.valueOf(volume));
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error saving volume data to CSV", e);
+            throw e;
+        }
+    }
     
 
     
 }
+

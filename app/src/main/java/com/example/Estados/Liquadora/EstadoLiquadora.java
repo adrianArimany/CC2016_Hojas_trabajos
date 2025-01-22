@@ -2,8 +2,8 @@ package com.example.Estados.Liquadora;
 
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.List;
 import java.util.Map;
+
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -23,7 +23,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     private int velocidadActual;
     private final LiquadoraData data;
     private final Map<Integer, String> speedMap;
-    private List<Double> volumeList;
+    private double SingleVolume;
     private final Scanner scanner;
     private final double maxCapacity;
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());
@@ -36,7 +36,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             
             this.data = new LiquadoraData();
             this.speedMap = data.getSpeedMap();
-            this.volumeList = data.getVolumeList();
+            this.SingleVolume = data.getVolume();
             this.scanner = new Scanner(System.in);
         }
     
@@ -57,7 +57,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             menu.append("| -1. Apagar                                          |\n");
             menu.append("======================================================\n");
             menu.append("Velocidad Actual: " + speedMap.get(velocidadActual) + "\n");
-            menu.append("Volumen Actual: " + volumeList.stream().mapToDouble(Double::doubleValue).sum() + "/" + maxCapacity + " ml \n");
+            menu.append("Volumen Actual: " + SingleVolume + "/" + maxCapacity + " ml \n");
             return menu.toString();
         } 
     
@@ -82,7 +82,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                     }
                     return this;
             case 2:
-                if (volumeList.stream().mapToDouble(Double::doubleValue).sum() > 0) {
+                if (SingleVolume > 0) {
                     incrementarVelocidad();
                 } else {
                     System.out.println("No se puede aumentar la velocidad ya que no hay liquido en la liquiadora");
@@ -95,7 +95,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                 vaciar();
                 return this;
             case 5:
-                if (volumeList.stream().mapToDouble(Double::doubleValue).sum() == 0) {
+                if (SingleVolume == 0) {
                     System.out.println("No se puede servir ya que no hay liquido en la liquiadora");
                     return this;
                 }
@@ -146,31 +146,34 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
 
     
     /**
-     * Agrega un volumen de liquido a la liquiadora.
-     * 
-     * Si el volumen a agregar es mayor que el espacio disponible en la liquiadora, 
-     * se muestra un mensaje de error y se devuelve el volumen actual sin agregar nada.
-     * 
-     * @param volumeToFill el volumen de liquido a agregar.
-     * @return el volumen total actual de la liquiadora.
+     * Adds a volume of liquid to the blender.
      *
+     * If the volume to add exceeds the available space in the blender,
+     * an error message is displayed and the current volume is returned without adding anything.
+     *
+     * @param volumeToAdd the volume of liquid to add.
+     * @return the total current volume of the blender.
      */
     @Override
-    public double llenar(double volumeToFill) {
-        double currentVolume = volumeList.stream().mapToDouble(Double::doubleValue).sum();
-        
-        double availableCapacity = maxCapacity - currentVolume;
+    public double llenar(double volumeToAdd) {
+        double currentVolume = SingleVolume;
+        double availableSpace = maxCapacity - currentVolume;
 
-        if (volumeToFill > availableCapacity) {
-            System.out.println("No hay suficiente espacio disponible en la liquiadora.");
+        if (volumeToAdd > availableSpace) {
+            logger.log(Level.WARNING, "Not enough space available in the blender.");
             return currentVolume;
-        } else {
-            volumeList.add(volumeToFill);
-            double addedVolume = volumeToFill + currentVolume;
-            System.out.println("Se lleno a la liquadora un total de " + addedVolume + " ml.");
-            return addedVolume;
         }
-    }    
+
+        double newTotalVolume = currentVolume + volumeToAdd;
+        SingleVolume = newTotalVolume;
+        try {
+            data.setVolume(newTotalVolume);
+            logger.log(Level.INFO, "Added a total of " + newTotalVolume + " ml to the blender.");
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error adding liquid to the blender: " + e.getMessage());
+        }
+        return newTotalVolume;
+    }
     
 
 /**
@@ -247,10 +250,8 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
      */
     @Override
     public double vaciar() {
-        double totalVolume = volumeList.stream().mapToDouble(Double::doubleValue).sum();
         try {
-            data.deleteVolume(totalVolume);
-            volumeList.clear();
+            data.deleteVolume();
             apagar();
             return 0.0;
         } catch (IOException e) {
@@ -270,19 +271,18 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
      */
     @Override
     public double servir(double volumenRestado) {
-        double totalVolume = volumeList.stream().mapToDouble(Double::doubleValue).sum();
+        double totalVolume = SingleVolume;
         if (totalVolume >= volumenRestado) {
             double newTotalVolume = totalVolume - volumenRestado;
             if (newTotalVolume > 0) {
                 try {
-                    data.setVolumeList(newTotalVolume);
+                    data.setVolume(newTotalVolume);
                 } catch (IOException e) {
                     logger.log(Level.SEVERE, "Error sirviendo la liquiadora: " + e.getMessage());
                 }
             } else {
                 try {
-                    data.deleteVolume(totalVolume);
-                    volumeList.clear();
+                    data.deleteVolume();
                 } catch (IOException e) {
                     logger.log(Level.SEVERE, "Error sirviendo la liquiadora: " + e.getMessage());
                 }
