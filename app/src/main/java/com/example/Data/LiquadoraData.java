@@ -3,7 +3,10 @@ package com.example.Data;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +19,7 @@ import com.google.gson.reflect.TypeToken;
 public class LiquadoraData {
     private final String LIQUADORA_PATH = getClass().getClassLoader().getResource("com/example/JSON/liquadoraSpeed.json").getPath();
     private final Map<Integer, String> speedMap = new HashMap<>();
-    private final Map<Double, Object> volumeMap = new HashMap<>();
+    private final List<Double> volumeList = new ArrayList<>();
 
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());  
 
@@ -29,18 +32,18 @@ public class LiquadoraData {
         return speedMap;
     }
 
-    public Map<Double, Object> getVolumeMap() {
-        return volumeMap;
+    public List<Double> getVolumeList() {
+        return volumeList;
     }
 
-    public Map<Double, Object> setMaterialMap(Map<Double, Object> volumeMap) throws IOException {
-        this.volumeMap.clear();
-        this.volumeMap.putAll(volumeMap);
-        return this.volumeMap;
+    public List<Double> setVolumeList(double volumeList) throws IOException {
+        this.volumeList.clear();
+        this.volumeList.add(Double.valueOf(volumeList));
+        return this.volumeList;
     }
 
-    public void deleteMaterial(Double material) throws IOException {
-        volumeMap.remove(material);
+    public void deleteVolume(Double material) throws IOException {
+        volumeList.remove(material);
     }
 
     private void loadFromJson() {
