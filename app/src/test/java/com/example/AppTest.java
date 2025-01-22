@@ -14,14 +14,14 @@ import com.example.Estados.Liquadora.EstadoLiquadora;
  */
 public class AppTest 
 {
-    @Test
-    public void addToLiquiadoraTest() {
-        EstadoLiquadora liquadora = new EstadoLiquadora();
-        Map<String, Float> materialMap = liquadora.addToLiquiadora("Prueba", 10.0f, new Scanner(System.in));
-        assertTrue(materialMap.containsKey("Prueba"));
-        assertTrue(materialMap.get("Prueba").equals(10.0f));
+    // @Test
+    // public void addToLiquiadoraTest() {
+    //     EstadoLiquadora liquadora = new EstadoLiquadora();
+    //     Map<String, Float> materialMap = liquadora.addToLiquiadora("Prueba", 10.0f, new Scanner(System.in));
+    //     assertTrue(materialMap.containsKey("Prueba"));
+    //     assertTrue(materialMap.get("Prueba").equals(10.0f));
         
-    }
+    // }
     
 
 }

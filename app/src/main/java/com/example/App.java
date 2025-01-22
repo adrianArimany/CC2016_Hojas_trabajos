@@ -1,6 +1,5 @@
 package com.example;
 
-import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,23 +34,6 @@ public class App
                     mEstados.setSystemOn(true);
                 }
             }
-        }
-    }
-
-    /**
-     * I can't find the right place to clearConsole without bugging out the whole system, so for now the method will be chilling in this corner.
-     */
-    private static void clearConsole() {
-        try {
-            final String os = System.getProperty("os.name");
-            if (os.contains("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (IOException | InterruptedException e) {
-            logger.log(Level.SEVERE, "Error Clearing Console", e);
         }
     }
     
