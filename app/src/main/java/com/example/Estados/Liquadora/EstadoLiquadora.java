@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+import com.example.Data.AppConfig;
 import com.example.Data.LiquadoraData;
 import com.example.Estados.Estado;
 
@@ -19,15 +20,20 @@ import com.example.Estados.Estado;
  * 
  */
 public class EstadoLiquadora extends Estado implements Iliquadora {
-    private int velocidadActual = 0;
+    private int velocidadActual;
     private final LiquadoraData data;
     private final Map<Integer, String> speedMap;
     private List<Double> volumeList;
     private final Scanner scanner;
-    private final double maxCapacity = 100.0;
+    private final double maxCapacity;
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());
     
         public EstadoLiquadora() {
+            AppConfig prop = new AppConfig();;
+            this.velocidadActual = prop.getVelocidadActual(); 
+            this.maxCapacity = prop.getMaxCapacity();
+            
+            
             this.data = new LiquadoraData();
             this.speedMap = data.getSpeedMap();
             this.volumeList = data.getVolumeList();
