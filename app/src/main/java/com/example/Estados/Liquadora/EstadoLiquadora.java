@@ -34,6 +34,11 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             this.scanner = new Scanner(System.in);
         }
     
+        /**
+         * Muestra el menu de la liquiadora con las diferentes opciones.
+         * 
+         * @return Un string con el menu de la liquiadora.
+         */
         @Override
         public String showMenu() {
             StringBuilder menu = new StringBuilder();
@@ -50,6 +55,12 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             return menu.toString();
         } 
     
+        /**
+         * Cambia el estado de la liquiadora segun la accion que se le envia.
+         * 
+         * @param action La accion que se le envia a la liquiadora.
+         * @return El estado que se debe mostrar despues de la accion.
+         */
         @Override
         public Estado transition(int action) {
             switch (action) {
@@ -128,6 +139,16 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     }
 
     
+    /**
+     * Agrega un volumen de liquido a la liquiadora.
+     * 
+     * Si el volumen a agregar es mayor que el espacio disponible en la liquiadora, 
+     * se muestra un mensaje de error y se devuelve el volumen actual sin agregar nada.
+     * 
+     * @param volumeToFill el volumen de liquido a agregar.
+     * @return el volumen total actual de la liquiadora.
+     *
+     */
     @Override
     public double llenar(double volumeToFill) {
         double currentVolume = volumeList.stream().mapToDouble(Double::doubleValue).sum();
@@ -146,6 +167,18 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     }    
     
 
+/**
+ * Incrementa la velocidad actual de la liquiadora en una unidad.
+ * 
+ * Si la nueva velocidad está dentro del rango de velocidades definidas en el mapa de velocidades,
+ * actualiza la velocidad actual y devuelve la nueva velocidad. 
+ * Si no hay un valor definido para la nueva velocidad en el mapa, 
+ * muestra un mensaje indicando que no se puede aumentar la velocidad y devuelve la velocidad actual sin cambios.
+ * 
+ * @return la nueva velocidad actual si se incrementa exitosamente, 
+ *         de lo contrario, devuelve la velocidad actual sin cambios.
+ */
+
     @Override
     public int incrementarVelocidad() {
         int newSpeed = velocidadActual + 1;
@@ -159,6 +192,18 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
         }
         
     }   
+
+/**
+ * Decreases the current speed of the liquadora by one unit.
+ * 
+ * If the new speed is within the range of speeds defined in the speed map,
+ * updates the current speed and returns the new speed. 
+ * If there is no defined value for the new speed in the map,
+ * displays a message indicating that the speed cannot be decreased and returns the current speed unchanged.
+ * 
+ * @return the new current speed if successfully decreased,
+ *         otherwise, returns the current speed unchanged.
+ */
 
     @Override
     public int decrementarVelocidad() {
@@ -189,6 +234,11 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
         throw new UnsupportedOperationException("Este metodo no se implementa en esta clase");
     }
 
+    /**
+     * Vacua la liquiadora y la apaga.
+     * 
+     * @return 0.0 si se vacia correctamente, -1.0 si ocurre un error.
+     */
     @Override
     public double vaciar() {
         double totalVolume = volumeList.stream().mapToDouble(Double::doubleValue).sum();
@@ -203,6 +253,15 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     }
     }
 
+    /**
+     * Sirve un volumen de liquido de la liquiadora y la apaga.
+     * 
+     * Si el volumen a servir es mayor que el espacio disponible en la liquiadora, 
+     * se muestra un mensaje de error y se devuelve 0.0.
+     * 
+     * @param volumenRestado el volumen de liquido a servir.
+     * @return el volumen total servido si se puede servir, 0.0 si no se puede servir.
+     */
     @Override
     public double servir(double volumenRestado) {
         double totalVolume = volumeList.stream().mapToDouble(Double::doubleValue).sum();
