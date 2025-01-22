@@ -15,6 +15,8 @@ The Design Analysis and UML and other diagrams can be found in /root/Analysis/..
 
 Highly recomend to have installed drawio in your Integrated Development Environment (IDE).
 
+Due to space contraints, the full ULM can only be seen in the ULM.drawio, the ULM.pdf is rather the simplify version which ignore some of the clases, so that it can fit in a pdf file.
+
 ## IMPORTANT!!!
 
 The system is meant not to close on its own, since is tecnically a car radio, so to fully turn off the system please use the following key-command in terminal:
