@@ -55,6 +55,9 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
         }
     }  
 
+    /**
+     * Los datos todavia no se estan guardando en el archivo JSON, sigue guardandose en memoria.....
+     */
     @Override
     public Map<String, Float> addToLiquiadora(String materialName, Float materialQuantity, Scanner scanner) {
         if (materialName == null || materialQuantity == null) {
