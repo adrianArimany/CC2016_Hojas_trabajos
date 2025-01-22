@@ -2,6 +2,7 @@ package com.example.Data;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -51,15 +52,19 @@ public class LiquadoraData {
     }
 
     /**
-     * Sets the volume list for the liquadora.
+     * Sets the volume level for the liquadora.
      *
-     * @param volumeList the new volume level.
-     * @return the updated volume list.
-     * @throws IOException if there is an error writing the data to the JSON file.
+     * @param newVolume the new volume level.
+     * @throws IOException if there is an error writing the data to the CSV file.
      */
     public void setVolume(double newVolume) throws IOException {
-        this.volume = newVolume;
-        saveVolumeToCSV();
+        volume = newVolume;
+        try {
+            saveVolumeToCSV();
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error saving volume data to CSV", e);
+            throw e;
+        }
     }
 
     /**
@@ -70,7 +75,12 @@ public class LiquadoraData {
      */
     public void deleteVolume() throws IOException {
         volume = 0.0;
-        saveVolumeToCSV();
+        try {
+            saveVolumeToCSV();
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error saving volume data to CSV", e);
+            throw e;
+        }
     }
 
     /**
@@ -93,13 +103,21 @@ public class LiquadoraData {
     }
     
     private void loadVolumeFromCSV() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(LIQUADORA_VOLUME_PATH))) {
+        File csvFile = new File(LIQUADORA_VOLUME_PATH);
+        if (!csvFile.exists()) {
+            logger.log(Level.WARNING, "CSV file does not exist: " + LIQUADORA_VOLUME_PATH);
+            return;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
             String line = reader.readLine();
             if (line != null) {
                 volume = Double.parseDouble(line);
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error loading volume data from CSV", e);
+        } catch (NumberFormatException e) {
+            logger.log(Level.SEVERE, "Error parsing volume data from CSV", e);
         }
     }
 

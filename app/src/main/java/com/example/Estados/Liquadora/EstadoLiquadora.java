@@ -23,7 +23,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     private int velocidadActual;
     private final LiquadoraData data;
     private final Map<Integer, String> speedMap;
-    private double SingleVolume;
+    //private double SingleVolume;
     private final Scanner scanner;
     private final double maxCapacity;
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());
@@ -32,11 +32,9 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             AppConfig prop = new AppConfig();;
             this.velocidadActual = prop.getVelocidadActual(); 
             this.maxCapacity = prop.getMaxCapacity();
-            
-            
             this.data = new LiquadoraData();
             this.speedMap = data.getSpeedMap();
-            this.SingleVolume = data.getVolume();
+            data.getVolume();
             this.scanner = new Scanner(System.in);
         }
     
@@ -57,7 +55,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             menu.append("| -1. Apagar                                          |\n");
             menu.append("======================================================\n");
             menu.append("Velocidad Actual: " + speedMap.get(velocidadActual) + "\n");
-            menu.append("Volumen Actual: " + SingleVolume + "/" + maxCapacity + " ml \n");
+            menu.append("Volumen Actual: " + data.getVolume() + "/" + maxCapacity + " ml \n");
             return menu.toString();
         } 
     
@@ -82,7 +80,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                     }
                     return this;
             case 2:
-                if (SingleVolume > 0) {
+                if (data.getVolume() > 0) {
                     incrementarVelocidad();
                 } else {
                     System.out.println("No se puede aumentar la velocidad ya que no hay liquido en la liquiadora");
@@ -95,7 +93,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                 vaciar();
                 return this;
             case 5:
-                if (SingleVolume == 0) {
+                if (data.getVolume() == 0) {
                     System.out.println("No se puede servir ya que no hay liquido en la liquiadora");
                     return this;
                 }
@@ -156,21 +154,20 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
      */
     @Override
     public double llenar(double volumeToAdd) {
-        double currentVolume = SingleVolume;
+        double currentVolume = data.getVolume();
         double availableSpace = maxCapacity - currentVolume;
 
         if (volumeToAdd > availableSpace) {
-            logger.log(Level.WARNING, "Not enough space available in the blender.");
+            logger.log(Level.WARNING, "No hay suficiente espacio en la liquadora.");
             return currentVolume;
         }
 
         double newTotalVolume = currentVolume + volumeToAdd;
-        SingleVolume = newTotalVolume;
         try {
             data.setVolume(newTotalVolume);
-            logger.log(Level.INFO, "Added a total of " + newTotalVolume + " ml to the blender.");
+            logger.log(Level.INFO, "Se agrego un total de " + newTotalVolume + " ml A la liquiadora.");
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error adding liquid to the blender: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error en agregar liquido a la liquadora: " + e.getMessage());
         }
         return newTotalVolume;
     }
@@ -255,9 +252,9 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             apagar();
             return 0.0;
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error vaciando la liquiadora: " + e.getMessage());
-            return -1.0; 
-    }
+            logger.log(Level.SEVERE, "Error vaciando la liquiadora", e);
+            return -1.0;
+        }
     }
 
     /**
@@ -271,7 +268,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
      */
     @Override
     public double servir(double volumenRestado) {
-        double totalVolume = SingleVolume;
+        double totalVolume = data.getVolume();
         if (totalVolume >= volumenRestado) {
             double newTotalVolume = totalVolume - volumenRestado;
             if (newTotalVolume > 0) {
