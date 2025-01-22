@@ -74,7 +74,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                         scanner.nextLine();
                         llenar(inputQuantity);
                     } catch (Exception e) {
-                        logger.log(Level.WARNING, "Error al llenar la liquiadora: " + e.getMessage());
+                        logger.log(Level.WARNING, "Solo se permiten numeros. " + "Tipo de error: "+  e.getMessage());
                         scanner.nextLine();
                     }
                     return this;
