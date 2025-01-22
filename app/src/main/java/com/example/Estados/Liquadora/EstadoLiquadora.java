@@ -23,7 +23,6 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     private int velocidadActual;
     private final LiquadoraData data;
     private final Map<Integer, String> speedMap;
-    //private double SingleVolume;
     private final Scanner scanner;
     private final double maxCapacity;
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());

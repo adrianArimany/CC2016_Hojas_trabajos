@@ -24,6 +24,13 @@ public class AppConfig {
         }
     }
 
+    /**
+     * Load the properties from the "liquadora.properties" file.
+     * 
+     * The file is expected to be in the classpath.
+     * 
+     * @return the loaded Properties object.
+     */
     public Properties loadProperties() {
         Properties prop = new Properties();
         try (FileInputStream fis = new FileInputStream("liquadora.properties")) {
@@ -35,10 +42,21 @@ public class AppConfig {
     }
 
 
+    /**
+     * Retrieves the current speed setting of the liquadora.
+     *
+     * @return the current speed level as an integer.
+     */
+
     public int getVelocidadActual() {
         return velocidadActual;
     }
 
+    /**
+     * Retrieves the maximum capacity of the liquadora.
+     * 
+     * @return the maximum capacity of the liquadora as a double.
+     */
     public double getMaxCapacity() {
         return maxCapacity;
     }   
