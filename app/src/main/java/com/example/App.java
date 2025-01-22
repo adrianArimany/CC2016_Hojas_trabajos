@@ -7,8 +7,9 @@ import java.util.logging.Logger;
 import com.example.Data.LiquadoraData;
 import com.example.Estados.ManejadorDeEstados;
 /**
- * 
- *
+ * @author Adrian Arimany Zamora
+ * @author Esteban Morales
+ * @author Rodrigo 
  */
 public class App 
 {

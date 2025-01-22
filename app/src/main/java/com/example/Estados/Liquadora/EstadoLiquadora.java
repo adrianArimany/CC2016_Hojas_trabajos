@@ -10,6 +10,14 @@ import java.util.logging.Logger;
 import com.example.Data.LiquadoraData;
 import com.example.Estados.Estado;
 
+/**
+ * Esta clase esta hecha para Manejar la liquiadora y sus interfazes.
+ * @velocidadActual indica la velocidad actual de la liquiadora, esta definida en 0 que indica en el archivo json liquadoraSpeed.json como "off". 
+ * @speedMap son las diferentes velocidades que se encuentra en el archivo json liquadoraSpeed.json
+ * @volumeList son los diferentes volumenes que el usuario va a estar agregando a la liquiadora
+ * @maxCapacity es la capacidad maxima de la liquiadora
+ * 
+ */
 public class EstadoLiquadora extends Estado implements Iliquadora {
     private int velocidadActual = 0;
     private final LiquadoraData data;
@@ -70,7 +78,19 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                 vaciar();
                 return this;
             case 5:
-                
+                if (volumeList.stream().mapToDouble(Double::doubleValue).sum() == 0) {
+                    System.out.println("No se puede servir ya que no hay liquido en la liquiadora");
+                    return this;
+                }
+                System.out.println("Cuanto volumen quiere servir? ");
+                try {
+                    double inputQuantity = scanner.nextDouble();
+                    scanner.nextLine();
+                    servir(inputQuantity);
+                } catch (Exception e) {
+                    logger.log(Level.WARNING, "Error al servir la liquiadora: " + e.getMessage());
+                    scanner.nextLine();
+                }
                 return this;
             default:
                 System.out.println("Error: Accion invalida.");
@@ -90,6 +110,8 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
     /**
      * Note que este metodo se utiliza en MandejadorDeEstados para apagar la liquiadora de manera externa a esta clase cuando el usuario
      * presiona -1.
+     * 
+     * Ademas se utiliza en los metodos vaciar() y servir() para apagar la liquiadora de esa manera se puede evitar riesgos al usuario sirviendo la liquadora.
      */
     @Override
     public void apagar() {
@@ -173,6 +195,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
         try {
             data.deleteVolume(totalVolume);
             volumeList.clear();
+            apagar();
             return 0.0;
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error vaciando la liquiadora: " + e.getMessage());
@@ -182,6 +205,29 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
 
     @Override
     public double servir(double volumenRestado) {
-        return 0.0f;
+        double totalVolume = volumeList.stream().mapToDouble(Double::doubleValue).sum();
+        if (totalVolume >= volumenRestado) {
+            double newTotalVolume = totalVolume - volumenRestado;
+            if (newTotalVolume > 0) {
+                try {
+                    data.setVolumeList(newTotalVolume);
+                } catch (IOException e) {
+                    logger.log(Level.SEVERE, "Error sirviendo la liquiadora: " + e.getMessage());
+                }
+            } else {
+                try {
+                    data.deleteVolume(totalVolume);
+                    volumeList.clear();
+                } catch (IOException e) {
+                    logger.log(Level.SEVERE, "Error sirviendo la liquiadora: " + e.getMessage());
+                }
+            }
+            logger.log(Level.INFO, "Se sirvio " + volumenRestado + " ml de liquido de la liquiadora.");
+            apagar();
+            return volumenRestado;
+        } else {
+            logger.log(Level.SEVERE, "No hay suficiente liquido en la liquiadora. No se puede servir.");
+            return 0.0;
+        }
     }
 }
