@@ -1,4 +1,4 @@
-# UVG LAB 4 - CAR  RADIO SYSTEM SIMULATION
+# UVG HOja de trabajo 1 - Algoritmos y Estructuras de Datos
 
 ## Version:
 Currently at version 1.0
