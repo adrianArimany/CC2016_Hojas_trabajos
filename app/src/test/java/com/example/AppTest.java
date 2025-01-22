@@ -1,9 +1,7 @@
 package com.example;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-import java.util.Map;
-import java.util.Scanner;
 
 import org.junit.Test;
 
@@ -14,14 +12,26 @@ import com.example.Estados.Liquadora.EstadoLiquadora;
  */
 public class AppTest 
 {
-    // @Test
-    // public void addToLiquiadoraTest() {
-    //     EstadoLiquadora liquadora = new EstadoLiquadora();
-    //     Map<String, Float> materialMap = liquadora.addToLiquiadora("Prueba", 10.0f, new Scanner(System.in));
-    //     assertTrue(materialMap.containsKey("Prueba"));
-    //     assertTrue(materialMap.get("Prueba").equals(10.0f));
-        
-    // }
     
-
+    @Test
+    public void testGetVelocidad() {
+        EstadoLiquadora estado = new EstadoLiquadora();
+        assertEquals(0, estado.llenar(0), 0.01);
+    }
+    
+    @Test
+    public void testIncrementarVelocidad() {
+        EstadoLiquadora estado = new EstadoLiquadora();
+        assertEquals(1, estado.incrementarVelocidad(), 0.01);
+    }
+    
+    @Test
+    public void testVaciar() {
+        EstadoLiquadora estado = new EstadoLiquadora();
+        assertEquals(0, estado.vaciar(), 0.01);
+    }
+    
+    
+    
+    
 }
