@@ -7,16 +7,16 @@ import com.example.Data.LiquadoraData;
 import com.example.Estados.Estado;
 
 public class EstadoLiquadora extends Estado implements Iliquadora {
-    private float currentSpeed = 0.0f;
+    private int velocidadActual = 0;
     private final LiquadoraData data;
     private final Map<Integer, String> speedMap;
+    private Map<Double, Object> volumeMap;
     private final Scanner scanner;
-    private final float maxQuantity = 100.0f;
     
         public EstadoLiquadora() {
             this.data = new LiquadoraData();
             this.speedMap = data.getSpeedMap();
-            data.getMaterialMap();
+            volumeMap = data.getVolumeMap();
             this.scanner = new Scanner(System.in);
         }
     
@@ -30,6 +30,8 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             menu.append("| 4. Vaciar liquiadora                                |\n");
             menu.append("| -1. Apagar                                          |\n");
             menu.append("======================================================\n");
+            menu.append("Velocidad Actual: " + speedMap.get(velocidadActual) + "\n");
+            menu.append("Volumen Actual: " + volumeMap.keySet().stream().mapToDouble(Double::doubleValue).sum() + "\n");
             return menu.toString();
         } 
     
@@ -37,21 +39,21 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
         public Estado transition(int action) {
             switch (action) {
                 case 1:
-                    System.out.print("Ingrese la cantidad: ");
+                    System.out.print("Ingrese el volumen: ");
                     try {
-                        Float inputQuantity = scanner.nextFloat();
+                        double inputQuantity = scanner.nextDouble();
                         scanner.nextLine();
-                        addToLiquiadora(inputQuantity);
+                        llenar(inputQuantity);
                     } catch (Exception e) {
                         System.out.println("Entrada inválida. Por favor intente de nuevo.");
                         scanner.nextLine();
                     }
                     return this;
             case 2:
-                System.out.println(increaseVelocity());
+                incrementarVelocidad();
                 return this;
             case 3:
-                System.out.println(decreaseVelocity());
+                decrementarVelocidad();
                 return this;
             case 4:
                 return this;
@@ -59,65 +61,101 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                 System.out.println("Error: Accion invalida.");
                 return this;
         }
-    }  
-
+    } 
+    
     /**
-     * Los datos todavia no se estan guardando en el archivo JSON, sigue guardandose en memoria.....
+     * Este metodo no se implementa en esta clase debido a que el sistema incorpora su propio sistema de encendido
+     * lo cual es externo a esta clase.
      */
     @Override
-    public Float addToLiquiadora(Float materialQuantity) {
-        // Map<String, Float> materialMap = data.getMaterialMap();
+    public void encender() {
+        throw new UnsupportedOperationException("Este metodo no se implementa en esta clase");
+    }
 
-        // float updatedQuantity = materialQuantity;
-        // if (materialMap.containsKey(materialName)) {
-        //     updatedQuantity += materialMap.get(materialName);
-        // }
+    /**
+     * Este metodo no se implementa en esta clase debido a que el sistema incorpora su propio sistema de apagado
+     * lo cual es externo a esta clase.
+     */
+    @Override
+    public void apagar() {
+        throw new UnsupportedOperationException("Este metodo no se implementa en esta clase");
+    }
 
-        // if (updatedQuantity > maxQuantity) {
-        //     return maxQuantity;
-        // }
+    /**
+     * Este metodo no se implementa en esta clase debido a que el sistema incorpora su propio sistema de encendido si esta encendido
+     * lo cual es externo a esta clase.
+     */
+    @Override
+    public boolean estaEncendida() {
+        throw new UnsupportedOperationException("Este metodo no se implementa en esta clase");
+    }
 
-        // materialMap.put(updatedQuantity);
-        // try {
-        //     data.setMaterialMap(materialMap);
-        //     System.out.println("Cantidad: " + updatedQuantity);
-        // } catch (IOException e) {
-        //     materialMap.put(updatedQuantity - materialQuantity);
-        // }
+    
+    @Override
+    public double llenar(double volumen) {
+        double currentVolume = volumeMap.keySet().stream().mapToDouble(Double::doubleValue).sum();
+        double maxCapacity = 100.0; // Assuming max capacity is 100.0
+        double availableCapacity = maxCapacity - currentVolume;
+        
+        if (volumen > availableCapacity) {
+            System.out.println("No hay suficiente capacidad para agregar el volumen solicitado.");
+            return currentVolume;
+        } else {
+            volumeMap.put(volumen, new Object()); // Assuming new Object() represents the material added
+            System.out.println("Volumen Actual: " + currentVolume);
+            return currentVolume + volumen;
+        }
+    }    
+    
 
-        // float totalQuantity = materialMap.values().stream().reduce(0.0f, Float::sum);
-        // return totalQuantity;
+    @Override
+    public int incrementarVelocidad() {
+        int newSpeed = velocidadActual + 1;
+        if (speedMap.containsKey((int) newSpeed)) {
+            velocidadActual = newSpeed;
+            System.out.println("La velocidad actual es: "+ speedMap.get((int) velocidadActual));
+            return (int) velocidadActual;
+        } else {
+            System.out.println("No se puede aumentar la velocidad.");
+            return (int) velocidadActual;
+        }
+        
+    }   
+
+    @Override
+    public int decrementarVelocidad() {
+        int newSpeed = velocidadActual - 1;
+        if (speedMap.containsKey((int) newSpeed)) {
+            velocidadActual = newSpeed;
+            System.out.println("La velocidad actual es: "+ speedMap.get((int) velocidadActual));
+            return (int) velocidadActual;
+        } else {
+            System.out.println("No se puede disminuir la velocidad.");
+            return (int) velocidadActual;
+        }
+    }   
+
+
+    /**
+     * Este metodo no se implementa en esta clase debido a que el sistema ya le deja saber al usuario en el menu principal.
+     */
+    @Override
+    public int consultarVelocidad() {
+        throw new UnsupportedOperationException("Este metodo no se implementa en esta clase");
+    }
+
+    @Override
+    public boolean estaLlena() {
+        return false;
+    }
+
+    @Override
+    public double vaciar() {
         return 0.0f;
     }
 
-
-        
-
     @Override
-    public String increaseVelocity() {
-        float newSpeed = currentSpeed + 1.0f;
-        if (speedMap.containsKey((int) newSpeed)) {
-            currentSpeed = newSpeed;
-            return "Velocidad actual: " + currentSpeed + " - " + speedMap.get((int) newSpeed);
-        } else {
-            return "No se puede aumentar la velocidad.";
-        }
-        
-    }   
-
-    @Override
-    public String decreaseVelocity() {
-        float newSpeed = currentSpeed - 1.0f;
-        if (speedMap.containsKey((int) newSpeed)) {
-            currentSpeed = newSpeed;
-            return "Velocidad actual: " + currentSpeed + " - " + speedMap.get((int) newSpeed);
-        }
-        return "No se puede diminiuir la velocidad.";
-    }   
-
-    @Override
-    public String emptyLiquiadora() {
-        return "";
-    }   
-
+    public double servir(double volumenRestado) {
+        return 0.0f;
+    }
 }

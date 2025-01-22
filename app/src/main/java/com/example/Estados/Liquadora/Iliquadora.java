@@ -1,8 +1,14 @@
 package com.example.Estados.Liquadora;
 
 public interface  Iliquadora {
-    public Float addToLiquiadora(Float materialQuantity);
-    public String increaseVelocity();
-    public String decreaseVelocity();
-    public String emptyLiquiadora();
+    void encender();
+    void apagar();
+    boolean estaEncendida();
+    double llenar(double volumen);
+    int incrementarVelocidad();
+    int decrementarVelocidad();
+    int consultarVelocidad();
+    boolean estaLlena();
+    double vaciar();
+    double servir(double volumenRestado);
 }
