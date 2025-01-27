@@ -251,6 +251,9 @@ public class EstadoLiquadora extends Estado implements Liquadora {
      */
     @Override
     public double vaciar() {
+        if (data.getVolume() == 0) {
+            logger.log(Level.INFO, "La liquiadora ya esta vacia.");
+        }
         try {
             data.deleteVolume();
             apagar();
