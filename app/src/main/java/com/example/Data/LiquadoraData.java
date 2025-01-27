@@ -19,7 +19,8 @@ import com.google.gson.reflect.TypeToken;
 
 public class LiquadoraData {
     private final String LIQUADORA_PATH = getClass().getClassLoader().getResource("com/example/JSON/liquadoraSpeed.json").getPath();
-    private final String LIQUADORA_VOLUME_PATH = getClass().getClassLoader().getResource("com/example/CSV/LiquadoraVolume.csv").getPath();
+    private final String LIQUADORA_VOLUME_PATH = getClass().getClassLoader().getResource("com/example/CSV/LiquadoraVolume.csv").getPath(); 
+    //false path, this is sending it to class, not source.
     private final Map<Integer, String> speedMap = new HashMap<>();
     private double volume;
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());  
