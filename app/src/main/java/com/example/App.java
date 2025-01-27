@@ -8,8 +8,6 @@ import com.example.Data.LiquadoraData;
 import com.example.Estados.ManejadorDeEstados;
 /**
  * @author Adrian Arimany Zamora
- * @author Esteban Morales
- * @author Rodrigo 
  * 
  * @version 1.0
  * 
