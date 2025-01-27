@@ -1,20 +1,15 @@
 package com.example.Estados.ELiquadora;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.Map;
-
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.example.Data.AppConfig;
 import com.example.Data.LiquadoraData;
 import com.example.Estados.Estado;
 
-<<<<<<< HEAD:app/src/main/java/com/example/Estados/ELiquadora/EstadoLiquadora.java
-public class EstadoLiquadora extends Estado implements Liquadora {
-    private float currentSpeed = 0.0f;
-=======
 /**
  * Esta clase esta hecha para Manejar la liquiadora y sus interfazes.
  * @velocidadActual indica la velocidad actual de la liquiadora, esta definida en 0 que indica en el archivo json liquadoraSpeed.json como "off". 
@@ -23,9 +18,8 @@ public class EstadoLiquadora extends Estado implements Liquadora {
  * @maxCapacity es la capacidad maxima de la liquiadora
  * 
  */
-public class EstadoLiquadora extends Estado implements Iliquadora {
+public class EstadoLiquadora extends Estado implements Liquadora {
     private int velocidadActual;
->>>>>>> 86051701ab5c7624fd7b3377c8aa3421db9c6a54:app/src/main/java/com/example/Estados/Liquadora/EstadoLiquadora.java
     private final LiquadoraData data;
     private final Map<Integer, String> speedMap;
     private final Scanner scanner;
@@ -58,8 +52,14 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
             menu.append("| 5. Servir liquiadora                                |\n");
             menu.append("| -1. Apagar                                          |\n");
             menu.append("======================================================\n");
-            menu.append("Velocidad Actual: " + speedMap.get(velocidadActual) + "\n");
-            menu.append("Volumen Actual: " + data.getVolume() + "/" + maxCapacity + " ml \n");
+            menu.append("Velocidad Actual: "); 
+            menu.append(speedMap.get(velocidadActual));
+            menu.append("\n");
+            menu.append("Volumen Actual: "); 
+            menu.append(data.getVolume()); 
+            menu.append("/");
+            menu.append(maxCapacity); 
+            menu.append(" ml \n");
             return menu.toString();
         } 
     
@@ -79,7 +79,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                         scanner.nextLine();
                         llenar(inputQuantity);
                     } catch (Exception e) {
-                        logger.log(Level.WARNING, "Solo se permiten numeros. " + "Tipo de error: "+  e.getMessage());
+                        logger.log(Level.WARNING, "Solo se permiten numeros. Tipo de error: %s", e.getMessage());
                         scanner.nextLine();
                     }
                     return this;
@@ -107,7 +107,7 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                     scanner.nextLine();
                     servir(inputQuantity);
                 } catch (Exception e) {
-                    logger.log(Level.WARNING, "Error al servir la liquiadora: " + e.getMessage());
+                    logger.log(Level.WARNING, "Error al servir la liquiadora: {0}", e.getMessage());
                     scanner.nextLine();
                 }
                 return this;
@@ -169,9 +169,9 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
         double newTotalVolume = currentVolume + volumeToAdd;
         try {
             data.setVolume(newTotalVolume);
-            logger.log(Level.INFO, "Se agrego un total de " + newTotalVolume + " ml A la liquiadora.");
+            logger.log(Level.INFO, String.format("Se agrego un total de %.2f ml A la liquiadora.", newTotalVolume));
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error en agregar liquido a la liquadora: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error en agregar liquido a la liquiadora: {0}", e.getMessage());
         }
         return newTotalVolume;
     }
@@ -279,16 +279,16 @@ public class EstadoLiquadora extends Estado implements Iliquadora {
                 try {
                     data.setVolume(newTotalVolume);
                 } catch (IOException e) {
-                    logger.log(Level.SEVERE, "Error sirviendo la liquiadora: " + e.getMessage());
+                    logger.log(Level.SEVERE, "Error sirviendo la liquiadora: {0}", e.getMessage());
                 }
             } else {
                 try {
                     data.deleteVolume();
                 } catch (IOException e) {
-                    logger.log(Level.SEVERE, "Error sirviendo la liquiadora: " + e.getMessage());
+                    logger.log(Level.SEVERE, "Error sirviendo la liquiadora: {0}", e.getMessage());
                 }
             }
-            logger.log(Level.INFO, "Se sirvio " + volumenRestado + " ml de liquido de la liquiadora.");
+            logger.log(Level.INFO, String.format("Se sirvio %.2f ml de liquido de la liquiadora.", volumenRestado));
             apagar();
             return volumenRestado;
         } else {

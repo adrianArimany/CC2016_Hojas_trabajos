@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -20,10 +19,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class LiquadoraData {
     private final String LIQUADORA_PATH = getClass().getClassLoader().getResource("com/example/JSON/liquadoraSpeed.json").getPath();
-<<<<<<< HEAD
-=======
     private final String LIQUADORA_VOLUME_PATH = getClass().getClassLoader().getResource("com/example/CSV/LiquadoraVolume.csv").getPath();
->>>>>>> 86051701ab5c7624fd7b3377c8aa3421db9c6a54
     private final Map<Integer, String> speedMap = new HashMap<>();
     private double volume;
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());  
@@ -108,7 +104,7 @@ public class LiquadoraData {
     private void loadVolumeFromCSV() {
         File csvFile = new File(LIQUADORA_VOLUME_PATH);
         if (!csvFile.exists()) {
-            logger.log(Level.WARNING, "CSV file does not exist: " + LIQUADORA_VOLUME_PATH);
+            logger.log(Level.WARNING, "CSV file does not exist: {0}", LIQUADORA_VOLUME_PATH);
             return;
         }
 
