@@ -1,4 +1,4 @@
-package com.example.Estados.Liquadora;
+package com.example.Estados.ELiquadora;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.example.Data.LiquadoraData;
 import com.example.Estados.Estado;
 
-public class EstadoLiquadora extends Estado implements Iliquadora {
+public class EstadoLiquadora extends Estado implements Liquadora {
     private float currentSpeed = 0.0f;
     private final LiquadoraData data;
     private final Map<Integer, String> speedMap;
