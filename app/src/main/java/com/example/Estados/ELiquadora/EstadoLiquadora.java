@@ -27,7 +27,7 @@ public class EstadoLiquadora extends Estado implements Liquadora {
     private static final Logger logger = Logger.getLogger(LiquadoraData.class.getName());
     
         public EstadoLiquadora() {
-            AppConfig prop = new AppConfig();;
+            AppConfig prop = new AppConfig();
             this.velocidadActual = prop.getVelocidadActual(); 
             this.maxCapacity = prop.getMaxCapacity();
             this.data = new LiquadoraData();
