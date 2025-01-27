@@ -1,13 +1,13 @@
 {
-    "0":"Off",
-    "1":"Muy Muy Muy lento",
-    "2":"Muy Muy Lento",
-    "3":"Muy Lento",
-    "4":"Lento",
-    "5":"Rapido",
-    "6":"Muy Rapido",
-    "7":"Muy Muy Rapido",
-    "8":"Muy Muy Muy Rapido",
-    "9":"Extremadamente Rapido",
-    "10":"Lo mas rapido posible"
+    "0":"0 - Off",
+    "1":"1 - Muy Muy Muy lento",
+    "2":"2 - Muy Muy Lento",
+    "3":"3 - Muy Lento",
+    "4":"4 - Lento",
+    "5":"5 - Rapido",
+    "6":"6 - Muy Rapido",
+    "7":"7 - Muy Muy Rapido",
+    "8":"8 - Muy Muy Muy Rapido",
+    "9":"9 - Extremadamente Rapido",
+    "10":"10 - Peligro: lo mas rapido posible! "
 }

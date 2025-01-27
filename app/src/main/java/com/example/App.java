@@ -7,8 +7,15 @@ import java.util.logging.Logger;
 import com.example.Data.LiquadoraData;
 import com.example.Estados.ManejadorDeEstados;
 /**
+ * @author Adrian Arimany Zamora
+ * @author Esteban Morales
+ * @author Rodrigo 
  * 
- *
+ * @version 1.0
+ * 
+ * Este programa esta hecho para manejar una liquadora. Implementa un finite state machine para manejar los diferentes estados 
+ * Cual en este caso solo hay 2 estados: encendida y apagada de la liquadora.
+ * 
  */
 public class App 
 {

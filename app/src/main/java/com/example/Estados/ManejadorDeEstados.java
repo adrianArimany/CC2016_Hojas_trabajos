@@ -41,8 +41,9 @@ public class ManejadorDeEstados {
     *               Possible values are:
     *               -1 - Turn off the system.
     */
-    public void transition(int action){
+    public void transition(int action){        
         if (action == -1){
+            ((EstadoLiquadora) this.currEstado).apagar();
             systemOff();
             return;
         }
