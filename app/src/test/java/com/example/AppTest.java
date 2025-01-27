@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-import com.example.Estados.Liquadora.EstadoLiquadora;
+import com.example.Estados.ELiquadora.EstadoLiquadora;
 
 /**
  * Unit test for simple App.
