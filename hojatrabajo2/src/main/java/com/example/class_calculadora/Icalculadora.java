@@ -1,4 +1,4 @@
-package com.example.ClassCalculadora;
+package com.example.class_calculadora;
 
 public interface Icalculadora {
     
