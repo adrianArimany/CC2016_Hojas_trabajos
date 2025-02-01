@@ -14,11 +14,13 @@ public class FileReaderUtil {
             for (String line : lines) {
                 if (isValidExpression(line)) { 
                     validExpression.add(line);
-                } else if (isLetter(line)) {
-                    log.logSevere("Unwanted letter encountered in line: " + line);
-                    removeLetter(line);
                 } else {
-                    log.logSevere("Invalid expression in line: " + line);
+                    line = removeLetter(line);
+                    if (isValidExpression(line)) {
+                        validExpression.add(line);
+                    } else {
+                        log.logSevere("Invalid expression in line: " + line);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -27,17 +29,12 @@ public class FileReaderUtil {
         return validExpression;
     }
 
-    private static boolean isLetter(String str) {
-        return str.matches("[a-zA-Z]+");
-    }
-
-    private static void removeLetter(String line) {
-        if (isLetter(line)) {
-            line = line.replaceAll("[a-zA-Z]+", "");
-        }
+    private static String removeLetter(String line) {
+        return line.replaceAll("[a-zA-Z]+", "");
     }
 
     private static boolean isValidExpression(String line) {
         return line.matches("[-?\\d+\\.\\d*\\s+]+[+\\-*/mod\\s]+");
     }
 }
+

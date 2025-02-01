@@ -16,47 +16,46 @@ public class RPNCalculator<T extends Number> implements Icalculadora<T> {
 
     /**
      * Evaluates a given RPN expression and returns the result as a strongly typed number.
-     * @param expression a string containing a valid RPN expression.
-     * @return the result of the RPN expression as a number of type T.
-     * @throws IllegalStateException if the expression is invalid or results in an arithmetic exception.
-     * @throws IllegalArgumentException if an invalid token is encountered.
      * 
-     * @TODO the part isLetter(token) is not handling letter correctly
+     * @param expression a string containing a valid RPN expression
+     * @return the result of the RPN expression as a number of type T
+     * @throws IllegalStateException if the expression is invalid or results in an arithmetic exception
+     * @throws IllegalArgumentException if an invalid token is encountered
      */
     @Override
-    public T evaluate(String expression) {
-        Vector<T> operandStack = new Vector<>();
-        String[] expressionTokens = expression.split("\\s+");
+    public T evaluate(String expressionString) {
+        log.logInfo("Start evaluating expression: " + expressionString);
+        final Vector<T> operandStack = new Vector<>();
+        final String[] expressionTokens = expressionString.split("\\s+");
+
         try {
-            for (String token : expressionTokens) {
+            for (final String token : expressionTokens) {
                 if (isNumber(token)) {
                     operandStack.add(parseNumber(token));
                 } else if (isValidOperator(token)) {
                     if (operandStack.size() < 2) {
-                        log.logSevere("Not enough operands for operator: " + token);
                         throw new IllegalStateException("Not enough operands for operator: " + token);
                     }
-                    T secondOperand = operandStack.remove(operandStack.size() - 1);
-                    T firstOperand = operandStack.remove(operandStack.size() - 1);
-                    Operation<T> operation = OperationFactory.getOperation(token);
+                    final T secondOperand = operandStack.remove(operandStack.size() - 1);
+                    final T firstOperand = operandStack.remove(operandStack.size() - 1);
+                    final Operation<T> operation = OperationFactory.getOperation(token);
                     operandStack.add(operation.execute(firstOperand, secondOperand));
-                } else if (isLetter(token)) { //This is still not hadnling letter correctly.
+                } else if (isLetter(token)) {
                     removeLetter(operandStack, token);
-                    log.logSevere("Unwanted letter encountered: " + token);
                     throw new IllegalArgumentException("Unwanted letter encountered: " + token);
                 } else {
-                    log.logSevere("Invalid token encountered: " + token);
                     throw new IllegalArgumentException("Invalid token encountered: " + token);
                 }
             }
             if (operandStack.size() != 1) {
-                log.logSevere("Invalid RPN expression");
                 throw new IllegalStateException("Invalid RPN expression");
             }
-            return operandStack.get(0);
-        } catch (ArithmeticException e) {
+            final T result = operandStack.get(0);
+            log.logInfo("Result of expression: " + result);
+            return result;
+        } catch (final ArithmeticException e) {
             log.logSevere("Arithmetic exception: " + e.getMessage());
-            throw new IllegalStateException("Arithmetic exception: " + e.getMessage());
+            throw new IllegalStateException("Arithmetic exception: " + e.getMessage(), e);
         }
     }
 
