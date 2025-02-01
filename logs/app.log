@@ -224,3 +224,97 @@ Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
 INFO: Start evaluating expression: 6 2 * 3 +
 Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
 INFO: Result of expression: 15
+Feb 01, 2025 5:12:20 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 01, 2025 5:12:20 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 8 3 %        
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 3 4 +          
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 7
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 10 2 /         
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 5
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 5 1 2  + 4 * + 3 -   
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 14
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 6 2 * 3 +
+Feb 01, 2025 5:12:28 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 15
+Feb 01, 2025 5:12:38 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 01, 2025 5:12:38 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 01, 2025 5:12:42 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 2 5
+Feb 01, 2025 5:12:42 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 5 0 /          
+Feb 01, 2025 5:12:42 PM com.example.utils.Logger logWarning
+WARNING: Division by zero attempt: 5 / 0
+Feb 01, 2025 5:12:42 PM com.example.utils.Logger logSevere
+SEVERE: Arithmetic exception: Cannot divide by zero
+Feb 01, 2025 5:12:42 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 3 2 +         
+Feb 01, 2025 5:12:42 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 5
+Feb 01, 2025 5:12:42 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 7 4 - *        
+Feb 01, 2025 5:14:58 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 01, 2025 5:14:58 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 01, 2025 5:15:31 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file: /home/richard_camus/Downloads (Is a directory) /home/richard_camus/Downloads
+Feb 01, 2025 5:15:32 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 
+Feb 01, 2025 5:15:39 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 01, 2025 5:15:39 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 01, 2025 5:16:03 PM com.example.utils.Logger logSevere
+SEVERE: An error has occurred, please check the logs for more information.
+Feb 01, 2025 5:16:03 PM com.example.utils.Logger logInfo
+INFO: This is the error message: null
+Feb 01, 2025 5:16:36 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 01, 2025 5:16:36 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 01, 2025 5:17:32 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file: ~/Downloads/delteme.txt (No such file or directory) ~/Downloads/delteme.txt
+Feb 01, 2025 5:17:32 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 
+Feb 01, 2025 5:17:51 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 01, 2025 5:17:51 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 01, 2025 5:18:04 PM com.example.utils.Logger logSevere
+SEVERE: An error has occurred, please check the logs for more information.
+Feb 01, 2025 5:18:04 PM com.example.utils.Logger logInfo
+INFO: This is the error message: null
+Feb 01, 2025 5:18:37 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 01, 2025 5:18:37 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 8 3 %        
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 3 4 +          
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 7
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 10 2 /         
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 5
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 5 1 2  + 4 * + 3 -   
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 14
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 6 2 * 3 +
+Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 15
