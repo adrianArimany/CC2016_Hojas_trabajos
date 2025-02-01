@@ -7,16 +7,16 @@ import java.util.logging.Logger;
 /**
  * @author Adrian Arimany Zamora
  * 
- * @version 0
+ * @version 0.0
  * 
  * 
  */
 public class App 
 {
-    private static final Logger logger = Logger.getLogger(App.class.getName());
+    Logger log = Logger.getInstance();
     public static void main(String[] args)
     {
-        logger.log(Level.INFO, "COme back soon.");
+        log.log(Level.INFO, "COme back soon.");
     }
     
 }
