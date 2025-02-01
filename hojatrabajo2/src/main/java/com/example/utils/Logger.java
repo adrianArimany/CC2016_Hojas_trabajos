@@ -16,7 +16,7 @@ public class Logger {
     private static Logger instance;
     private static java.util.logging.Logger logger;
 
-    private Logger() {
+    public Logger() {
         logger = java.util.logging.Logger.getLogger(Logger.class.getName());
         setupLogger();
     }
