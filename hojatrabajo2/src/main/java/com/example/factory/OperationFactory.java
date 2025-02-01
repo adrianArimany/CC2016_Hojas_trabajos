@@ -7,14 +7,14 @@ import com.example.operations.Multiplication;
 import com.example.operations.Operation;
 import com.example.operations.Substraction;
 
-public class OperationFactory {
-    public static Operation getOperation(String operator) {
+public class OperationFactory<T extends Number> {
+    public static <T extends Number> Operation<T> getOperation(String operator) {
         return switch (operator) {
-            case "+" -> new Addition();
-            case "-" -> new Substraction();
-            case "*" -> new Multiplication();
-            case "/" -> new Division();
-            case "%" -> new Modulus();
+            case "+" -> new Addition<>();
+            case "-" -> new Substraction<>();
+            case "*" -> new Multiplication<>();
+            case "/" -> new Division<>();
+            case "%" -> new Modulus<>();
             default -> throw new IllegalArgumentException(); 
         };
     }
