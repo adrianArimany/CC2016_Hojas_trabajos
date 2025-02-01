@@ -16,44 +16,53 @@ public class RPNCalculator<T extends Number> implements Icalculadora<T> {
 
     @Override
     public T evaluate(String expression) {
-        Vector<T> stack = new Vector<>();
-        String[] tokens = expression.split("\\s+");
-
-        log.logInfo("Evaluating expression: " + expression);
-
-        for (String token : tokens) {
-            log.logInfo("Processing token: " + token);
+        Vector<T> operandStack = new Vector<>();
+        String[] expressionTokens = expression.split("\\s+");
+        try {
+        for (String token : expressionTokens) {
             if (isNumber(token)) {
-                stack.add(parseNumber(token));
-            } else {
-                log.logInfo("Found operator: " + token);
-                Operation<T> operation = OperationFactory.getOperation(token);
-                if (stack.size() < 2) {
-                    log.logSevere("Not enough operands for operation: " + token);
-                    throw new IllegalStateException("Not enough operands for operation: " + token);
+                operandStack.add(parseNumber(token));
+            } else if (isValidOperator(token)) {
+                if (operandStack.size() < 2) {
+                    log.logSevere("Not enough operands for operator: " + token);
+                    throw new IllegalStateException("Not enough operands for operator: " + token);
                 }
-                T b = stack.remove(stack.size() - 1);
-                T a = stack.remove(stack.size() - 1);
-                stack.add(operation.execute(a, b));
+                T secondOperand = operandStack.remove(operandStack.size() - 1);
+                T firstOperand = operandStack.remove(operandStack.size() - 1);
+                Operation<T> operation = OperationFactory.getOperation(token);
+                operandStack.add(operation.execute(firstOperand, secondOperand));
+            } else {
+                log.logSevere("Invalid token encountered: " + token);
+                throw new IllegalArgumentException("Invalid token encountered: " + token);
             }
         }
-        if (stack.size() != 1) {
+        if (operandStack.size() != 1) {
             log.logSevere("Invalid RPN expression");
             throw new IllegalStateException("Invalid RPN expression");
         }
-        return stack.get(0);
+        if (operandStack.size() != 1) {
+            log.logSevere("Invalid RPN expression");
+            throw new IllegalStateException("Invalid RPN expression");
+        }
+        return operandStack.get(0);
+        } catch (ArithmeticException e) {
+        log.logSevere("Arithmetic exception: " + e.getMessage());
+        throw new IllegalStateException("Arithmetic exception: " + e.getMessage());
+        }
     }
-
     private boolean isNumber(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
+    }
+
+    private boolean isValidOperator(String str) {
+        return str.matches("[+\\-*/]") || str.equals("mod");
     }
 
     private T parseNumber(String str) {
         if (type == Integer.class) {
             return type.cast(Integer.valueOf(str));
-        } else if (type == Double.class) {
-            return type.cast(Double.valueOf(str));
-        } else {
+        } //remeber that if you want to add other data types, you need to add them here as well..
+        else {
             log.logSevere("Unsupported type: " + type.getName());
             throw new UnsupportedOperationException("Unsupported type: " + type.getName());
         }

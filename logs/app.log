@@ -1,0 +1,68 @@
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Evaluating expression: 2 a +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 2
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: a
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Found operator: a
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Evaluating expression: 2 3 4 +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 2
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 3
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 4
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Found operator: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logSevere
+SEVERE: Invalid RPN expression
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Evaluating expression: 2 3 ^
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 2
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 3
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: ^
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Found operator: ^
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Evaluating expression: 2 +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 2
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Found operator: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logSevere
+SEVERE: Not enough operands for operation: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Evaluating expression: 2 3 +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 2
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 3
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Found operator: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Evaluating expression: 2 3 + 4 *
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 2
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 3
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Found operator: +
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: 4
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Processing token: *
+Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
+INFO: Found operator: *
