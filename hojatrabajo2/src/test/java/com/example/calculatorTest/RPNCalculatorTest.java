@@ -5,7 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
 
 import com.example.object_calculadora.RPNCalculator;
-
+/**
+ * @Todo 
+ * 
+ * 1. If a file is found with a letter remove it from the line (partially FIXED, as is fixed in the system as another class fixes it for RPNCalculator, but I wasn't able to fix it in RPNCalculator)
+ * 
+ */
 
 public class RPNCalculatorTest {
     
@@ -42,7 +47,7 @@ public class RPNCalculatorTest {
             RPNCalculator<Integer> calculator = new RPNCalculator<>(Integer.class);
             String expression = " a 2 +";
             assertThrows(NumberFormatException.class, () -> calculator.evaluate(expression));
-        } //I thought I fixed this, but I guess I haven't.
+        } //I wansn't able to fix it in this class, but I was able to fix it fileReaderUtil.
     
         @Test
         public void testUnknownOperator() {

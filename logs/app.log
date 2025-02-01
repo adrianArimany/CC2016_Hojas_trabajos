@@ -186,3 +186,41 @@ Feb 01, 2025 5:05:57 PM com.example.utils.Logger logSevere
 SEVERE: Invalid expression in line: 2 5
 Feb 01, 2025 5:05:57 PM com.example.utils.Logger logWarning
 WARNING: Division by zero attempt: 5 / 0
+Feb 01, 2025 5:09:00 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression:  a 2 +
+Feb 01, 2025 5:09:00 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 2 3 4 +
+Feb 01, 2025 5:09:00 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 2 3 ^
+Feb 01, 2025 5:09:00 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 2 +
+Feb 01, 2025 5:09:00 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 2 3 +
+Feb 01, 2025 5:09:00 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 5
+Feb 01, 2025 5:09:00 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 2 3 + 4 *
+Feb 01, 2025 5:09:00 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 20
+Feb 01, 2025 5:11:14 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 01, 2025 5:11:14 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 8 3 %        
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 3 4 +          
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 7
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 10 2 /         
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 5
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 5 1 2  + 4 * + 3 -   
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 14
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 6 2 * 3 +
+Feb 01, 2025 5:11:26 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 15

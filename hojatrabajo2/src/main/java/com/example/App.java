@@ -12,7 +12,7 @@ import com.example.utils.Logger;
  * 
  * 
  * @TODO 
- * -Fix the case where a letter shows up in the txt file
+ * -Fix the case where a letter shows up in the txt file (fixed)
  * 
  * -For some reason the mod or % operator doesn't worl
  * 
