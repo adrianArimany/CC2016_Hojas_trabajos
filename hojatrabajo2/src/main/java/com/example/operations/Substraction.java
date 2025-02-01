@@ -1,8 +1,8 @@
 package com.example.operations;
 
-public class Substraction  implements Operation{
+public class Substraction  implements Operation<Number>{
     @Override
-    public int execute(int n, int m) {
-        return n - m;
+    public Number execute(Number n, Number m) {
+        return n.intValue() - m.intValue();
     }
 }

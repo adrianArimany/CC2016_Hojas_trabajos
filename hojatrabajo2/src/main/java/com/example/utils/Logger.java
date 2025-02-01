@@ -62,4 +62,8 @@ public class Logger {
     public void logSevere(String message) {
         logger.severe(message);
     }
+
+    public void logUnsupportedOperation(Class<?> clazz) {
+        logger.info(String.format("Currently Unsupported operation with this data type: %s", clazz.getName()));
+    }
 }

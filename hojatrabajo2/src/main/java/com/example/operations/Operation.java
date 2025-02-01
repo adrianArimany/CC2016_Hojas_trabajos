@@ -1,5 +1,6 @@
 package com.example.operations;
 
-public interface  Operation {
-    int execute(int n, int m);
+
+public interface  Operation<T extends Number> {
+    T execute(T n, T m);
 }
