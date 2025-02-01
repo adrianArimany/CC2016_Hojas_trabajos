@@ -14,6 +14,9 @@ public class FileReaderUtil {
             for (String line : lines) {
                 if (isValidExpression(line)) { 
                     validExpression.add(line);
+                } else if (isLetter(line)) {
+                    log.logSevere("Unwanted letter encountered in line: " + line);
+                    removeLetter(line);
                 } else {
                     log.logSevere("Invalid expression in line: " + line);
                 }
@@ -22,6 +25,16 @@ public class FileReaderUtil {
             log.logSevere("Error while reading file in FileReaderUtil: " + e.getMessage());
         }
         return validExpression;
+    }
+
+    private static boolean isLetter(String str) {
+        return str.matches("[a-zA-Z]+");
+    }
+
+    private static void removeLetter(String line) {
+        if (isLetter(line)) {
+            line = line.replaceAll("[a-zA-Z]+", "");
+        }
     }
 
     private static boolean isValidExpression(String line) {
