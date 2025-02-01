@@ -1,8 +1,7 @@
 package com.example;
 
 //import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.example.utils.Logger;
 
 /**
  * @author Adrian Arimany Zamora
@@ -13,10 +12,10 @@ import java.util.logging.Logger;
  */
 public class App 
 {
-    Logger log = Logger.getInstance();
+    private static Logger log = Logger.getInstance();
     public static void main(String[] args)
     {
-        log.log(Level.INFO, "COme back soon.");
+        log.logInfo("Come back soon.");
     }
     
 }
