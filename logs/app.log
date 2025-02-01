@@ -122,3 +122,27 @@ Feb 01, 2025 3:10:48 PM com.example.utils.Logger logSevere
 SEVERE: Invalid token encountered: ^
 Feb 01, 2025 3:10:48 PM com.example.utils.Logger logSevere
 SEVERE: Not enough operands for operator: +
+Feb 01, 2025 4:21:06 PM com.example.utils.Logger logInfo
+INFO: Directory created at: ../data/expressions/
+Feb 01, 2025 4:21:06 PM com.example.utils.Logger logInfo
+INFO: Directory created at: ../data/results/
+Feb 01, 2025 4:23:16 PM com.example.utils.Logger logSevere
+SEVERE: Failed to create directory: ../data/expressions/
+Feb 01, 2025 4:23:16 PM com.example.utils.Logger logSevere
+SEVERE: Failed to create directory: ../data/results/
+Feb 01, 2025 4:26:25 PM com.example.utils.Logger logSevere
+SEVERE: Failed to create directory: ../data/expressions/
+Feb 01, 2025 4:26:25 PM com.example.utils.Logger logSevere
+SEVERE: Failed to create directory: ../data/results/
+Feb 01, 2025 4:27:53 PM com.example.utils.Logger logSevere
+SEVERE: Failed to create directory: ../data/expressions/
+Feb 01, 2025 4:27:54 PM com.example.utils.Logger logSevere
+SEVERE: Failed to create directory: ../data/results/
+Feb 01, 2025 4:31:14 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file: non_existent_file.txt (No such file or directory) non_existent_file.txt
+Feb 01, 2025 4:32:37 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file: non_existent_file.txt (No such file or directory) non_existent_file.txt
+Feb 01, 2025 4:32:37 PM com.example.utils.Logger logSevere
+SEVERE: Cannot read file with null path
+Feb 01, 2025 4:32:37 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file:  (No such file or directory) 

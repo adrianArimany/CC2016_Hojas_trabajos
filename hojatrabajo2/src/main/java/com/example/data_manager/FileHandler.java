@@ -8,15 +8,16 @@ import com.example.utils.Logger;
 public class FileHandler {
     private static Logger log = Logger.getInstance();
     public static String readFile(String filePath)  {
-        
+        if (filePath == null) {
+            log.logSevere("Cannot read file with null path");
+            return "";
+        }
         StringBuilder content = new StringBuilder();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
             }
-            reader.close();    
         } catch (IOException e) {
             log.logSevere("Failed to read file: " + e.getMessage() + " " + filePath);
             e.printStackTrace();
