@@ -66,3 +66,11 @@ Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
 INFO: Processing token: *
 Feb 01, 2025 2:47:17 PM com.example.utils.Logger logInfo
 INFO: Found operator: *
+Feb 01, 2025 2:58:28 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: a
+Feb 01, 2025 2:58:28 PM com.example.utils.Logger logSevere
+SEVERE: Invalid RPN expression
+Feb 01, 2025 2:58:28 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: ^
+Feb 01, 2025 2:58:28 PM com.example.utils.Logger logSevere
+SEVERE: Not enough operands for operator: +
