@@ -1,8 +1,6 @@
-com/example/Estados/Liquadora/Iliquadora.class
 com/example/App.class
-com/example/Estados/Liquadora/EstadoLiquadora.class
 com/example/Data/LiquadoraData.class
 com/example/Data/LiquadoraData$1.class
 com/example/Estados/ManejadorDeEstados.class
-com/example/Data/AppConfig.class
 com/example/Estados/Estado.class
+com/example/Data/AppConfig.class

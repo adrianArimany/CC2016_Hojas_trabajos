@@ -1,11 +1,9 @@
 package com.example;
 
 import static org.junit.Assert.assertEquals;
-
-
 import org.junit.Test;
 
-import com.example.Estados.Liquadora.EstadoLiquadora;
+import com.example.Estados.ELiquadora.EstadoLiquadora;
 
 /**
  * Unit test for simple App.

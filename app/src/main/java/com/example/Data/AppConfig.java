@@ -3,8 +3,8 @@ package com.example.Data;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AppConfig {
     private int velocidadActual;
@@ -20,7 +20,7 @@ public class AppConfig {
             this.velocidadActual = Integer.parseInt(prop.getProperty("velocidadActual"));
             this.maxCapacity = Double.parseDouble(prop.getProperty("maxCapacity"));
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Error loading config file", e);
         }
     }
 

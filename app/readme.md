@@ -5,8 +5,6 @@ Currently at version 1.0
 
 ## Contributors:
 - Adrian Arimany 
-- Esteban Morales
-- Rodrigo 
 
 
 ## Information about the Program:

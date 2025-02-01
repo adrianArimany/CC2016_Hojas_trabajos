@@ -1,9 +1,9 @@
-package com.example.Estados.Liquadora;
+package com.example.Estados.ELiquadora;
 
 /**
  * Estas clases fueron las que se decidieron en clase.
  */
-public interface  Iliquadora {
+public interface  Liquadora {
     void encender(); //apagar la liquadora
     void apagar(); //endencer la liquadora
     boolean estaEncendida(); //Esta la liquadora encendida returna un verdadero o falso
@@ -14,4 +14,5 @@ public interface  Iliquadora {
     boolean estaLlena(); //revisa que la liquadora no a llegado a su limite returna un verdadero o falso
     double vaciar(); //se vacia la liquadora returna un double
     double servir(double volumenRestado); //se sirve toda o parte de la liquadora. returna un double
+
 }

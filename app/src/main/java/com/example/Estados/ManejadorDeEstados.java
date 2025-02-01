@@ -2,7 +2,7 @@ package com.example.Estados;
 
 
 
-import com.example.Estados.Liquadora.EstadoLiquadora;
+import com.example.Estados.ELiquadora.EstadoLiquadora;
 
 public class ManejadorDeEstados {
     Estado currEstado;
