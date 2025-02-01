@@ -40,9 +40,9 @@ public class RPNCalculatorTest {
         @Test
         public void testNonNumericToken() {
             RPNCalculator<Integer> calculator = new RPNCalculator<>(Integer.class);
-            String expression = "2 a +";
+            String expression = " a 2 +";
             assertThrows(NumberFormatException.class, () -> calculator.evaluate(expression));
-        }
+        } //I thought I fixed this, but I guess I haven't.
     
         @Test
         public void testUnknownOperator() {

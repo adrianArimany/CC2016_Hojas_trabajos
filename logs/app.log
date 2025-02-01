@@ -74,3 +74,51 @@ Feb 01, 2025 2:58:28 PM com.example.utils.Logger logSevere
 SEVERE: Invalid token encountered: ^
 Feb 01, 2025 2:58:28 PM com.example.utils.Logger logSevere
 SEVERE: Not enough operands for operator: +
+Feb 01, 2025 3:02:47 PM com.example.utils.Logger logSevere
+SEVERE: Unwanted letter encountered: a
+Feb 01, 2025 3:02:47 PM com.example.utils.Logger logSevere
+SEVERE: Invalid RPN expression
+Feb 01, 2025 3:02:47 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: ^
+Feb 01, 2025 3:02:47 PM com.example.utils.Logger logSevere
+SEVERE: Not enough operands for operator: +
+Feb 01, 2025 3:05:18 PM com.example.utils.Logger logSevere
+SEVERE: Unwanted letter encountered: a
+Feb 01, 2025 3:05:18 PM com.example.utils.Logger logSevere
+SEVERE: Invalid RPN expression
+Feb 01, 2025 3:05:18 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: ^
+Feb 01, 2025 3:05:18 PM com.example.utils.Logger logSevere
+SEVERE: Not enough operands for operator: +
+Feb 01, 2025 3:05:29 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: 
+Feb 01, 2025 3:05:29 PM com.example.utils.Logger logSevere
+SEVERE: Invalid RPN expression
+Feb 01, 2025 3:05:29 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: ^
+Feb 01, 2025 3:05:29 PM com.example.utils.Logger logSevere
+SEVERE: Not enough operands for operator: +
+Feb 01, 2025 3:07:00 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: 
+Feb 01, 2025 3:07:00 PM com.example.utils.Logger logSevere
+SEVERE: Invalid RPN expression
+Feb 01, 2025 3:07:00 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: ^
+Feb 01, 2025 3:07:00 PM com.example.utils.Logger logSevere
+SEVERE: Not enough operands for operator: +
+Feb 01, 2025 3:08:32 PM com.example.utils.Logger logSevere
+SEVERE: Unwanted letter encountered: 
+Feb 01, 2025 3:08:32 PM com.example.utils.Logger logSevere
+SEVERE: Invalid RPN expression
+Feb 01, 2025 3:08:32 PM com.example.utils.Logger logSevere
+SEVERE: Unwanted letter encountered: ^
+Feb 01, 2025 3:08:32 PM com.example.utils.Logger logSevere
+SEVERE: Not enough operands for operator: +
+Feb 01, 2025 3:10:48 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: 
+Feb 01, 2025 3:10:48 PM com.example.utils.Logger logSevere
+SEVERE: Invalid RPN expression
+Feb 01, 2025 3:10:48 PM com.example.utils.Logger logSevere
+SEVERE: Invalid token encountered: ^
+Feb 01, 2025 3:10:48 PM com.example.utils.Logger logSevere
+SEVERE: Not enough operands for operator: +
