@@ -1,5 +1,20 @@
 # UVG HOja de trabajo 2 - Algoritmos y Estructuras de Datos
 
+## Assigment descrition:
+
+This program is meant to be a Calculator, however, rather than putting the program to operate in real time, it looks for a plain text and then prints the result from the plain text.
+
+The plain text is suppose to be using Reverse Polish Notation (RPN), also known as reverse Arithmetic Expression. For this we also had to use Abstract Data Types, so that we could work with stacks or vector types. In this case we work with a vector type, who's type was generic T, but extended only to numeric (meaning only numbers). 
+
+To make the assigment more fun and experienceable, we used Factory Method Design (FMD) on the operation logic, this way each operation had its own encapsulation and it was much easier to construct the logic using a polymorphism via the common interface "Operation".
+
+However, it didn't stopped with FMD, we also implement a Graphical User Interface (GUI), this way is much easier for the user to find the file and insert it in the program.
+
+Because we love logger, we thought it would be a nice idea to create a util for the Love Logger this way every class uses the same logger and stores the logger info in a app.log, so that we  have a better track on potential bugs the code might have.
+
+Overall, the program has more potential than what the assigment originally expected, nevertheless, the clear idea behind adding all these additional tools is to gain expirience for fututre assignments that will be more complex and might require to use any of these tools that we have just mentioned. 
+
+
 ## Version:
 Currently at version 1.0
 
