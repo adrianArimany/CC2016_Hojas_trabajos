@@ -42,7 +42,7 @@ public class Logger {
      */
     private void setupLogger() {
         try {
-            String logFilePath = "../logs/app.log";
+            String logFilePath = "logs/app.log";
             
             File logDir = new File("../logs");
             if (!logDir.exists()) {
