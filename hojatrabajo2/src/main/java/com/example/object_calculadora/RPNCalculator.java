@@ -22,43 +22,27 @@ public class RPNCalculator implements ICalculadora {
         try {
             for (final String token : expressionTokens) {
                 if (isNumber(token)) {
-                    operandStack.push(parseNumber(token));  // Push numbers onto the stack
+                    operandStack.push(parseNumber(token));  
                 } else if (isValidOperator(token)) {
                     if (operandStack.size() < 2) {
                         throw new IllegalStateException("Not enough operands for operator: " + token);
                     }
-                    
-                    // Pop two operands from the stack
                     final int secondOperand = operandStack.pop();
                     final int firstOperand = operandStack.pop();
-                    
-                    // Get the correct operation from the factory
-                    final Operation operation = (Operation)OperationFactory.getOperation(token); //here is the issue....
-                    
-                    // Execute the operation and push the result back
+                    final Operation operation = (Operation)OperationFactory.getOperation(token);
                     operandStack.push(operation.execute(firstOperand, secondOperand));
                 } else {
                     throw new IllegalArgumentException("Invalid token encountered: " + token);
                 }
             }
-            
             if (operandStack.size() != 1) {
                 throw new IllegalStateException("Invalid RPN expression. Stack should contain exactly one element at the end.");
             }
-
-            return operandStack.pop(); // The final result
+            return operandStack.pop();
         } catch (final ArithmeticException e) {
             throw new IllegalStateException("Arithmetic exception: " + e.getMessage(), e);
         }
     }
-
-    
-
-
-
-
-
-
 
     /**
      * Returns true if the given string matches the pattern of a number.
