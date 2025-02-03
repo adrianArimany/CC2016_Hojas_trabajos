@@ -3,7 +3,7 @@ package com.example.operations;
 import com.example.utils.Logger;
 
 public class Division<T extends Number> implements Operation<T>{
-    private static Logger log = Logger.getInstance();
+    private static final Logger log = Logger.getInstance();
     
     /**
      * Performs division on two given numbers and returns the result.

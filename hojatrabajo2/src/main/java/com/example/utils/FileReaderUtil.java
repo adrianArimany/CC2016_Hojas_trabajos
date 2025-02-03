@@ -5,7 +5,7 @@ import java.util.List;
  * This class exist to ensure that whatever the FileHandler reads, is first validated here before being sent to the RPNCalculator.java
  */
 public class FileReaderUtil {
-    private static Logger log = Logger.getInstance();
+    private static final Logger log = Logger.getInstance();
     /**
      * This method takes a file content and filters out any invalid expressions.
      * If an expression has a letter, it will be removed and then checked again.

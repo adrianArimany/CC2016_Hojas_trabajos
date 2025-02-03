@@ -2,9 +2,9 @@ package com.example.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.SimpleFormatter;
-import java.util.logging.FileHandler;
 
 /**
  * This class is exclusively to manage logging in the application.
@@ -14,6 +14,7 @@ import java.util.logging.FileHandler;
  */
 public class Logger {
     private static Logger instance;
+    @SuppressWarnings("NonConstantLogger") //Otherwise the logger in the constructor has to be static (and if it works then don't change it.)
     private static java.util.logging.Logger logger;
 
     public Logger() {
@@ -59,7 +60,7 @@ public class Logger {
 
             logger.setUseParentHandlers(false);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Error setting up logger", e);
         }
     }
 

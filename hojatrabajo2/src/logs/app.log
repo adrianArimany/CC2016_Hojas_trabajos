@@ -402,3 +402,7 @@ Feb 02, 2025 7:25:54 PM com.example.utils.Logger logInfo
 INFO: Result of expression: 5
 Feb 02, 2025 7:25:54 PM com.example.utils.Logger logInfo
 INFO: Start evaluating expression: 7 4 - *        
+Feb 03, 2025 10:36:05 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 10:36:05 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/

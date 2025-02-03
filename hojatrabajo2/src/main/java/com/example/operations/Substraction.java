@@ -3,7 +3,7 @@ package com.example.operations;
 import com.example.utils.Logger;
 
 public class Substraction<T extends Number>  implements Operation<T>{
-    private static Logger log = Logger.getInstance();
+    private static final Logger log = Logger.getInstance();
     /**
      * Subtracts the second parameter from the first one.
      * 
