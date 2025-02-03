@@ -5,6 +5,17 @@ import com.example.utils.Logger;
 public class Division<T extends Number> implements Operation<T>{
     private static Logger log = Logger.getInstance();
     
+    /**
+     * Performs division on two given numbers and returns the result.
+     * 
+     * If the result of the division is not an integer, a warning is logged and the result is rounded down to the nearest integer.
+     * 
+     * @param n the dividend
+     * @param m the divisor
+     * @return the result of the division
+     * @throws ArithmeticException if the divisor is zero
+     * @throws UnsupportedOperationException if the given numbers are not integers
+     */
     @SuppressWarnings("unchecked") //Remove this if in the future we use something else than just an int.
     @Override
     public T execute(T n, T m) {

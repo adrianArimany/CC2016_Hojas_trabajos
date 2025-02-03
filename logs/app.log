@@ -318,3 +318,47 @@ Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
 INFO: Start evaluating expression: 6 2 * 3 +
 Feb 01, 2025 5:18:40 PM com.example.utils.Logger logInfo
 INFO: Result of expression: 15
+Feb 02, 2025 5:37:41 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 02, 2025 5:37:41 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 8 3 %        
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 3 4 +          
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 7
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 10 2 /         
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 5
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 5 1 2  + 4 * + 3 -   
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 14
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 6 2 * 3 +
+Feb 02, 2025 5:37:49 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 15
+Feb 02, 2025 5:49:28 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 02, 2025 5:49:28 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 8 3 %        
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 3 4 +          
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 7
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 10 2 /         
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 5
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 5 1 2  + 4 * + 3 -   
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 14
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 6 2 * 3 +
+Feb 02, 2025 5:49:37 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 15

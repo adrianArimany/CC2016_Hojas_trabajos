@@ -7,6 +7,15 @@ public class Addition<T extends Number> implements Operation<T> {
     
     
     
+/**
+ * Executes the addition operation between two given numbers.
+ * 
+ * @param n the first operand
+ * @param m the second operand
+ * @return the sum of n and m
+ * @throws UnsupportedOperationException if the given numbers are not integers
+ */
+
     @SuppressWarnings("unchecked") //Remove this if in the future we use something else than just an int.
     @Override
     public T execute(T n, T m) {

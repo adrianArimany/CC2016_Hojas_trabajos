@@ -29,6 +29,12 @@ public class CalculadoraController {
         }
     }
 
+    /**
+     * Process a file containing expressions, one per line, and display the results
+     * in the text area.
+     *
+     * @param filePath the path to the file to process
+     */
     private void processFile(String filePath) {
         List<String> results = model.processFile(filePath);
         if (results != null) {

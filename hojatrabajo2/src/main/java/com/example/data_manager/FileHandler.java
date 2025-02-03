@@ -7,6 +7,14 @@ import com.example.utils.Logger;
  */
 public class FileHandler {
     private static Logger log = Logger.getInstance();
+/**
+ * Reads the content of a file specified by the given file path.
+ * Logs an error and returns an empty string if the file path is null or if an IOException occurs.
+ *
+ * @param filePath the path to the file to be read
+ * @return the content of the file as a String, or an empty string if an error occurs
+ */
+
     public static String readFile(String filePath)  {
         if (filePath == null) {
             log.logSevere("Cannot read file with null path");
@@ -24,6 +32,14 @@ public class FileHandler {
         }
         return content.toString().trim();
     }
+/**
+ * Writes the given result to a file specified by the given file name in the result directory.
+ * Logs an error if an IOException occurs during the writing process.
+ *
+ * @param fileName the name of the file to write the result to
+ * @param result the content to be written to the file
+ */
+
     public static void writeResult(String fileName, String result) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(Config.RESULT_DIR + fileName));

@@ -40,9 +40,6 @@ public class RPNCalculator<T extends Number> implements Icalculadora<T> {
                     final T firstOperand = operandStack.remove(operandStack.size() - 1);
                     final Operation<T> operation = OperationFactory.getOperation(token);
                     operandStack.add(operation.execute(firstOperand, secondOperand));
-                } else if (isLetter(token)) {
-                    removeLetter(operandStack, token);
-                    throw new IllegalArgumentException("Unwanted letter encountered: " + token);
                 } else {
                     throw new IllegalArgumentException("Invalid token encountered: " + token);
                 }
@@ -59,22 +56,39 @@ public class RPNCalculator<T extends Number> implements Icalculadora<T> {
         }
     }
 
+    /**
+     * Returns true if the given string matches the pattern of a number.
+     * A number is defined as a string containing an optional minus sign followed by one or more digits,
+     * optionally followed by a decimal point and one or more digits.
+     * <p>
+     * This method is used to check if a given string is a valid token in an RPN expression.
+     * @param str the string to check
+     * @return true if the string matches the pattern of a number, false otherwise
+     */
     private boolean isNumber(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
     }
 
+    /**
+     * Checks if the given string is a valid operator in an RPN expression.
+     * 
+     * @param str the string to check
+     * @return true if the string is a valid operator, false otherwise
+     */
     private boolean isValidOperator(String str) {
         return str.matches("[+\\-*/]") || str.equals("mod");
     }
     
-    private boolean isLetter(String str) {
-        return str.matches("[a-zA-Z]+");
-    }
-    private void removeLetter(Vector<T> stack, String token) {
-        if (isLetter(token)) {
-            stack.remove(stack.size() - 1);
-        }
-    }
+    /**
+     * Parses the given string as a number of the specified type.
+     * If the type is Integer, it casts the string to an Integer.
+     * For any unsupported types, it logs an error and throws an UnsupportedOperationException.
+     * 
+     * @param str the string to parse as a number
+     * @return the parsed number of type T
+     * @throws UnsupportedOperationException if the type is not supported
+     */
+
     private T parseNumber(String str) {
         if (type == Integer.class) {
             return type.cast(Integer.valueOf(str));

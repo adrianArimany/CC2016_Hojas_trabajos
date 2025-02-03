@@ -13,7 +13,17 @@ import java.util.ArrayList;
  * Calls RPNCalculator<T> and processes results.
  */
 public class CalculadoraModel {
-   public List<String> processFile(String filePath) {
+/**
+ * Processes a file containing RPN expressions, evaluates each expression, 
+ * and returns a list of results. Each result is a string in the format 
+ * "expression = result" or "expression = ERROR" if evaluation fails.
+ *
+ * @param filePath the path to the file containing RPN expressions
+ * @return a list of strings representing the evaluated results of each expression
+ */
+
+
+     public List<String> processFile(String filePath) {
         String fileContent = FileHandler.readFile(filePath);
         List<String> expressions = FileReaderUtil.readFile(fileContent);
 

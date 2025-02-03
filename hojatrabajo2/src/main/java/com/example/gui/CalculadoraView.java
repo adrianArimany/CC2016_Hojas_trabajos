@@ -22,9 +22,16 @@ public class CalculadoraView extends JFrame {
         add(new JScrollPane(resultArea), BorderLayout.CENTER);
     }
 
+    /**
+     * @return the button used to select a file containing expressions to be evaluated
+     */
     public JButton getBtnSelectFile() {
         return btnSelectFile;
     }
+/**
+ * @return the text area displaying the results of evaluated expressions
+ */
+
     public JTextArea getResultArea() {
         return resultArea;
     }

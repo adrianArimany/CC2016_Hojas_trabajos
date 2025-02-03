@@ -21,6 +21,11 @@ public class Logger {
         setupLogger();
     }
 
+    /**
+     * Gets the instance of the Logger class. If the instance is null, it creates a new Logger and assigns it to the instance variable.
+     * 
+     * @return the instance of the Logger class.
+     */
     public static Logger getInstance() {
         if (instance == null) {
             instance = new Logger();
@@ -28,6 +33,13 @@ public class Logger {
         return instance;
     }
 
+    /**
+     * Configures the logger. This method is private and should only be called from the constructor.
+     * 
+     * It creates a new FileHandler, sets the log level to ALL and adds it to the logger. It also sets the logger to not use parent handlers.
+     * 
+     * If an IOException is thrown, it is caught and the stack trace is printed to the console.
+     */
     private void setupLogger() {
         try {
             String logFilePath = "../logs/app.log";
@@ -51,17 +63,46 @@ public class Logger {
         }
     }
 
+    /**
+     * Logs a message with the INFO level.
+     * 
+     * @param message the message to be logged
+     */
     public void logInfo(String message) {
         logger.info(message);
     }
 
+
+    /**
+     * Logs a message with the WARNING level.
+     * 
+     * @param message the message to be logged
+     */
+
+    /**
+     * Logs a message with the WARNING level.
+     * 
+     * @param message the message to be logged
+     */
     public void logWarning(String message) {
         logger.warning(message);
     }
 
+    /**
+     * Logs a message with the SEVERE level.
+     * 
+     * @param message the message to be logged
+     */
+
     public void logSevere(String message) {
         logger.severe(message);
     }
+
+    /**
+     * Logs a message indicating that an operation is currently unsupported for the given data type.
+     * 
+     * @param clazz the class object representing the unsupported data type
+     */
 
     public void logUnsupportedOperation(Class<?> clazz) {
         logger.info(String.format("Currently Unsupported operation with this data type: %s", clazz.getName()));
