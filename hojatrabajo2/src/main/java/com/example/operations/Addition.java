@@ -7,6 +7,14 @@ public class Addition implements Operation {
     
     private static final Logger log = Logger.getInstance();
     
+    /**
+     * Returns the sum of two numbers.
+     * 
+     * @param n the first number
+     * @param m the second number
+     * @return the sum of n and m
+     * @throws UnsupportedOperationException if the operation is not supported
+     */
     @Override
     public int execute(int n, int m) {
         try {

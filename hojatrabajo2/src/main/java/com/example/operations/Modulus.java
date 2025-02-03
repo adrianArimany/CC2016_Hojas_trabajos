@@ -6,15 +6,23 @@ public class Modulus implements Operation {
     private static final Logger log = Logger.getInstance();
 
 
-@Override
-public int execute(int n, int m) {
-    try {
-    return (int) (n % m);
-    } catch (Exception e) {
-        log.logUnsupportedOperation(Number.class);
-        throw new UnsupportedOperationException();
+    /**
+     * Performs modulus operation on two given numbers and returns the result.
+     * 
+     * @param n the dividend
+     * @param m the divisor
+     * @return the result of the modulus operation
+     * @throws ArithmeticException if the divisor is zero
+     */
+    @Override
+    public int execute(int n, int m) {
+        if (m == 0) {
+                log.logWarning("Modulus by zero attempt: " + n + " % " + m);
+                throw new ArithmeticException("Cannot perform modulus by zero");
+            }
+        return (int) (n % m);
     }
-}
+
 
 
 

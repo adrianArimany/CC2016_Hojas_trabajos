@@ -5,6 +5,15 @@ import com.example.utils.Logger;
 public class Division implements Operation{
     private static final Logger log = Logger.getInstance();
     
+    /**
+     * Calculates the quotient of the division of two numbers.
+     * 
+     * @param n the dividend
+     * @param m the divisor
+     * @return the quotient of the division
+     * @throws ArithmeticException if the divisor is zero
+     * @throws UnsupportedOperationException if the operation is not supported
+     */
     @Override
     public int execute(int n, int m) {
         if (m == 0) {

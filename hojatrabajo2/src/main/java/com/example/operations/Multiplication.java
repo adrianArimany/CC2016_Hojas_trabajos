@@ -5,6 +5,14 @@ import com.example.utils.Logger;
 public class Multiplication implements Operation {
     private static final Logger log = Logger.getInstance();
     
+    /**
+     * Returns the product of n and m.
+     * 
+     * @param n the first number
+     * @param m the second number
+     * @return the product of n and m
+     * @throws UnsupportedOperationException if the operation is not supported
+     */
     @Override
     public int execute(int n, int m) {
         try {

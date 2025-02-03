@@ -486,3 +486,11 @@ Feb 03, 2025 12:34:19 PM com.example.utils.Logger logSevere
 SEVERE: Invalid expression in line: 25 5 / 0 - 2 %
 Feb 03, 2025 12:34:19 PM com.example.utils.Logger logInfo
 INFO: Division result: quotient = 2, residual = 0
+Feb 03, 2025 12:48:09 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:48:09 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:48:13 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 7 / 2
+Feb 03, 2025 12:48:13 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 7 2 %

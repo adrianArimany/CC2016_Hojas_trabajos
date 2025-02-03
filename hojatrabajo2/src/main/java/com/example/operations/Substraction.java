@@ -5,6 +5,14 @@ import com.example.utils.Logger;
 public class Substraction implements Operation {
     private static final Logger log = Logger.getInstance();
     
+    /**
+     * Subtracts the second parameter from the first one.
+     * 
+     * @param n the minuend
+     * @param m the subtrahend
+     * @return the difference of n and m
+     * @throws UnsupportedOperationException if the given numbers are not integers
+     */
     @Override
     public int execute(int n, int m) {
         try {
