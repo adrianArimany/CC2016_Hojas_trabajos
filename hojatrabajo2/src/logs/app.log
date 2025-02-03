@@ -384,3 +384,21 @@ Feb 02, 2025 7:25:10 PM com.example.utils.Logger logInfo
 INFO: Directory created at: /data/expressions/
 Feb 02, 2025 7:25:10 PM com.example.utils.Logger logInfo
 INFO: Directory created at: /data/results/
+Feb 02, 2025 7:25:44 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 02, 2025 7:25:44 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 02, 2025 7:25:54 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 2 5
+Feb 02, 2025 7:25:54 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 5 0 /          
+Feb 02, 2025 7:25:54 PM com.example.utils.Logger logWarning
+WARNING: Division by zero attempt: 5 / 0
+Feb 02, 2025 7:25:54 PM com.example.utils.Logger logSevere
+SEVERE: Arithmetic exception: Cannot divide by zero
+Feb 02, 2025 7:25:54 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 3 2 +         
+Feb 02, 2025 7:25:54 PM com.example.utils.Logger logInfo
+INFO: Result of expression: 5
+Feb 02, 2025 7:25:54 PM com.example.utils.Logger logInfo
+INFO: Start evaluating expression: 7 4 - *        
