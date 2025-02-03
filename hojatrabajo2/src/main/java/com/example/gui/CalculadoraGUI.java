@@ -1,8 +1,10 @@
 package com.example.gui;
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 /**
  * The main GUI window (JFrame/JavaFX).
  * This runs the graphical interface, which is launched in App.java
+ * 
+ * 
  */
 
  public class CalculadoraGUI {

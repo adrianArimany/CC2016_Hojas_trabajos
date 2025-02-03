@@ -8,6 +8,10 @@ import java.util.Vector;
  * I will keep it just in case.
  * 
  * THIS CLASS IS NOT BEING IMPLEMENTED AS OF THIS VERSION.
+ * 
+ * So my Desktop Computer has a different compiler version of java, which if you find wanrning of potential conflict then is because you probably have the newest version of
+ * Java compiler.
+ * 
  */
 
 

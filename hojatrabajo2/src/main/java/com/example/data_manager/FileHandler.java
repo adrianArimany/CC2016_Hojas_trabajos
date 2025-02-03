@@ -1,12 +1,17 @@
 package com.example.data_manager;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import com.example.utils.Logger;
 
 /**
  * Handles file I/O
  */
 public class FileHandler {
-    private static Logger log = Logger.getInstance();
+    private static final Logger log = Logger.getInstance();
 /**
  * Reads the content of a file specified by the given file path.
  * Logs an error and returns an empty string if the file path is null or if an IOException occurs.
