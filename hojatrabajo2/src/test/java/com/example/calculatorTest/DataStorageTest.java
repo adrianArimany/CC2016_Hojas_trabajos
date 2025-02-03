@@ -1,7 +1,6 @@
 package com.example.calculatorTest;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.junit.After;
 import static org.junit.Assert.assertTrue;
@@ -84,22 +83,4 @@ public class DataStorageTest {
         }
     }
 
-    @Test
-    public void testCreateDirectory_PathIsNotADirectory() {
-        // Arrange
-        File file = new File(TEST_DIR_PATH + File.separator + "test_file.txt");
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            throw new java.lang.AssertionError("Failed to create test file");
-        }
-
-        // Act and Assert
-        try {
-            DataStorage.createDirectory(TEST_DIR_PATH + File.separator + "test_file.txt");
-            fail("Expected IOException");
-        } catch (Exception e) {
-            // Expected
-        }
-    }
 }

@@ -8,16 +8,18 @@ public class Division implements Operation{
     @Override
     public int execute(int n, int m) {
         if (m == 0) {
-                log.logWarning("Division by zero attempt: " + n + " / " + m);
-                throw new ArithmeticException("Cannot divide by zero");
-            }
+            log.logWarning("Division by zero attempt: " + n + " / " + m);
+            throw new ArithmeticException("Cannot divide by zero");
+        }
         try {
-            return (int) (n/m);
+            int quotient = n / m;
+            int residual = n % m;
+            log.logInfo("Division result: quotient = " + quotient + ", residual = " + residual);
+            return quotient;
         } catch (Exception e) {
             log.logUnsupportedOperation(Number.class);
             throw new UnsupportedOperationException();
         }
-        
     }
 
 

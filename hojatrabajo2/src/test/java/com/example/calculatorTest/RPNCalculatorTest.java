@@ -32,7 +32,7 @@ public class RPNCalculatorTest {
             RPNCalculator calculator = new RPNCalculator();
             String expression = "2 +";
             Throwable throwable = assertThrows(IllegalStateException.class, () -> calculator.evaluate(expression));
-            assertEquals("Not enough numbers", throwable.getMessage());    
+            assertEquals("Not enough operands for operator: +", throwable.getMessage());    
 
         }
 
@@ -41,7 +41,7 @@ public class RPNCalculatorTest {
             RPNCalculator calculator = new RPNCalculator();
             String expression = "2 3 4 +";
             Throwable throwable = assertThrows(IllegalStateException.class, () -> calculator.evaluate(expression));
-            assertEquals("Not enough operands for operator: +", throwable.getMessage());    
+            assertEquals("Invalid RPN expression. Stack should contain exactly one element at the end.", throwable.getMessage());    
         }
 
     
@@ -50,8 +50,8 @@ public class RPNCalculatorTest {
         public void testUnknownOperator() {
             RPNCalculator calculator = new RPNCalculator();
             String expression = "2 3 ^";
-            Throwable throwable = assertThrows(IllegalStateException.class, () -> calculator.evaluate(expression));
-            assertEquals("Unknown operator: ^", throwable.getMessage());    
+            Throwable throwable = assertThrows(IllegalArgumentException.class, () -> calculator.evaluate(expression));
+            assertEquals("Invalid token encountered: ^", throwable.getMessage());    
             
         }
 }

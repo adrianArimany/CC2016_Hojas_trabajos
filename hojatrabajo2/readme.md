@@ -1,5 +1,19 @@
 # UVG HOja de trabajo 2 - Algoritmos y Estructuras de Datos
 
+## Instrucciones para mover la clase 
+
+Para mover la clase RPNCalculator.java se va requerir mover dos carpetas para que el codigo funcione adecuada mente, 
+
+Esto es porque las operaciones se implemento un polimorfismo. 
+
+Los directorios son:
+
+/src/main/java/com/example/factory
+
+src/main/java/com/example/operations
+
+Factory maneja la traduccion de simbolo a operacion, la cual utiliza la interfaz operacion, donde se usa un polimorfismo para cada operacion del programa.
+
 ## Assigment descrition:
 
 This program is meant to be a Calculator, however, rather than putting the program to operate in real time, it looks for a plain text and then prints the result from the plain text.
