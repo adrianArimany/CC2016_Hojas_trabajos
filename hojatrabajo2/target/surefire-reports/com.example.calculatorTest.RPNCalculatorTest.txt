@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: com.example.calculatorTest.RPNCalculatorTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.061 s <<< FAILURE! - in com.example.calculatorTest.RPNCalculatorTest
+testTooManyOperands(com.example.calculatorTest.RPNCalculatorTest)  Time elapsed: 0.027 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Not enough operands for operator: +]> but was:<[Invalid RPN expression. Stack should contain exactly one element at the end.]>
+	at com.example.calculatorTest.RPNCalculatorTest.testTooManyOperands(RPNCalculatorTest.java:44)
+
+testUnknownOperator(com.example.calculatorTest.RPNCalculatorTest)  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown ==> expected: <java.lang.IllegalStateException> but was: <java.lang.IllegalArgumentException>
+	at com.example.calculatorTest.RPNCalculatorTest.testUnknownOperator(RPNCalculatorTest.java:53)
+Caused by: java.lang.IllegalArgumentException: Invalid token encountered: ^
+	at com.example.calculatorTest.RPNCalculatorTest.lambda$2(RPNCalculatorTest.java:53)
+	at com.example.calculatorTest.RPNCalculatorTest.testUnknownOperator(RPNCalculatorTest.java:53)
+
+testNotEnoughOperands(com.example.calculatorTest.RPNCalculatorTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<Not enough [numbers]> but was:<Not enough [operands for operator: +]>
+	at com.example.calculatorTest.RPNCalculatorTest.testNotEnoughOperands(RPNCalculatorTest.java:35)
+

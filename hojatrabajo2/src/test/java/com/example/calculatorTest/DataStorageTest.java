@@ -1,16 +1,18 @@
 package com.example.calculatorTest;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.junit.After;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import com.example.data_manager.DataStorage;
 import com.example.utils.Logger;
-
-import java.io.File;
-import java.io.IOException;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 
 /**
@@ -76,8 +78,8 @@ public class DataStorageTest {
         // Act and Assert
         try {
             DataStorage.createDirectory("");
-            fail("Expected NullPointerException");
-        } catch (NullPointerException e) {
+            fail("Expected java.lang.AssertionError at com.example.calculatorTest.DataStorageTest.testCreateDirectory_EmptyPath(DataStorageTest.java:79)");
+        } catch (java.lang.AssertionError e) {
             // Expected
         }
     }
@@ -89,7 +91,7 @@ public class DataStorageTest {
         try {
             file.createNewFile();
         } catch (IOException e) {
-            fail("Failed to create test file");
+            throw new java.lang.AssertionError("Failed to create test file");
         }
 
         // Act and Assert

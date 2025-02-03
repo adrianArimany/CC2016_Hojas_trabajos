@@ -5,6 +5,6 @@ package com.example.operations;
  * The operation is defined in the implementing class and can be any valid mathematical operation.
  * All the operations in the com.example.operations package implement this interface.
  */
-public interface  Operation<T extends Number> {
-    T execute(T n, T m);
+public interface  Operation {
+    int execute(int n, int m);
 }

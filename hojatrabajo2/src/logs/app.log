@@ -406,3 +406,25 @@ Feb 03, 2025 10:36:05 AM com.example.utils.Logger logInfo
 INFO: Directory created at: /data/expressions/
 Feb 03, 2025 10:36:05 AM com.example.utils.Logger logInfo
 INFO: Directory created at: /data/results/
+Feb 03, 2025 11:14:27 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 11:14:27 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 11:24:34 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 11:24:34 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:05:04 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:05:04 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:06:02 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file: non_existent_file.txt (No such file or directory) non_existent_file.txt
+Feb 03, 2025 12:06:02 PM com.example.utils.Logger logSevere
+SEVERE: Cannot read file with null path
+Feb 03, 2025 12:06:02 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file:  (No such file or directory) 
+Feb 03, 2025 12:18:42 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:18:42 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/

@@ -1,60 +1,64 @@
 package com.example.object_calculadora;
 
-import java.util.Vector;
+import java.util.Stack;
 
 import com.example.factory.OperationFactory;
 import com.example.operations.Operation;
-import com.example.utils.Logger;
 
-public class RPNCalculator<T extends Number> implements Icalculadora<T> {
-    private static Logger log = Logger.getInstance();
-    private final Class<T> type; // Store type for casting results
 
-    public RPNCalculator(Class<T> type) {
-        this.type = type;
-    }
+/**
+ * This is my calculator logic, that uses the interface Icalculator.
+ * 
+ * @note THis class will not use logger because other people need to reuse this class, so to avoid any conflict, I will not use logger.
+ * 
+ */
 
-    /**
-     * Evaluates a given RPN expression and returns the result as a strongly typed number.
-     * 
-     * @param expression a string containing a valid RPN expression
-     * @return the result of the RPN expression as a number of type T
-     * @throws IllegalStateException if the expression is invalid or results in an arithmetic exception
-     * @throws IllegalArgumentException if an invalid token is encountered
-     */
+public class RPNCalculator implements ICalculadora {  
     @Override
-    public T evaluate(String expressionString) {
-        log.logInfo("Start evaluating expression: " + expressionString);
-        final Vector<T> operandStack = new Vector<>();
+    public int evaluate(String expressionString) {
+        final Stack<Integer> operandStack = new Stack<>();
         final String[] expressionTokens = expressionString.split("\\s+");
 
         try {
             for (final String token : expressionTokens) {
                 if (isNumber(token)) {
-                    operandStack.add(parseNumber(token));
+                    operandStack.push(parseNumber(token));  // Push numbers onto the stack
                 } else if (isValidOperator(token)) {
                     if (operandStack.size() < 2) {
                         throw new IllegalStateException("Not enough operands for operator: " + token);
                     }
-                    final T secondOperand = operandStack.remove(operandStack.size() - 1);
-                    final T firstOperand = operandStack.remove(operandStack.size() - 1);
-                    final Operation<T> operation = OperationFactory.getOperation(token);
-                    operandStack.add(operation.execute(firstOperand, secondOperand));
+                    
+                    // Pop two operands from the stack
+                    final int secondOperand = operandStack.pop();
+                    final int firstOperand = operandStack.pop();
+                    
+                    // Get the correct operation from the factory
+                    final Operation operation = (Operation)OperationFactory.getOperation(token); //here is the issue....
+                    
+                    // Execute the operation and push the result back
+                    operandStack.push(operation.execute(firstOperand, secondOperand));
                 } else {
                     throw new IllegalArgumentException("Invalid token encountered: " + token);
                 }
             }
+            
             if (operandStack.size() != 1) {
-                throw new IllegalStateException("Invalid RPN expression");
+                throw new IllegalStateException("Invalid RPN expression. Stack should contain exactly one element at the end.");
             }
-            final T result = operandStack.get(0);
-            log.logInfo("Result of expression: " + result);
-            return result;
+
+            return operandStack.pop(); // The final result
         } catch (final ArithmeticException e) {
-            log.logSevere("Arithmetic exception: " + e.getMessage());
             throw new IllegalStateException("Arithmetic exception: " + e.getMessage(), e);
         }
     }
+
+    
+
+
+
+
+
+
 
     /**
      * Returns true if the given string matches the pattern of a number.
@@ -89,13 +93,11 @@ public class RPNCalculator<T extends Number> implements Icalculadora<T> {
      * @throws UnsupportedOperationException if the type is not supported
      */
 
-    private T parseNumber(String str) {
-        if (type == Integer.class) {
-            return type.cast(Integer.valueOf(str));
-        } // remember that if you want to add other data types, you need to add them here as well..
-        else {
-            log.logSevere("Unsupported type: " + type.getName());
-            throw new UnsupportedOperationException("Unsupported type: " + type.getName());
+    private int parseNumber(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid number format: " + str, e);
         }
     }
 }

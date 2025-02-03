@@ -1,12 +1,11 @@
 package com.example.gui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.data_manager.FileHandler;
 import com.example.object_calculadora.RPNCalculator;
 import com.example.utils.FileReaderUtil;
-
-import java.util.ArrayList;
 
 
 /**
@@ -27,7 +26,7 @@ public class CalculadoraModel {
         String fileContent = FileHandler.readFile(filePath);
         List<String> expressions = FileReaderUtil.readFile(fileContent);
 
-        RPNCalculator<Integer> calculator = new RPNCalculator<>(Integer.class);
+        RPNCalculator calculator = new RPNCalculator();
         List<String> results = new ArrayList<>();
 
         for (String expression : expressions) {
