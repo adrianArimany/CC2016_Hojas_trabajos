@@ -1,0 +1,118 @@
+---
+title: "results algoritms"
+author: "Adrian Arimany - 211063"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr)
+input_sizes <- c(1000, 2000, 5000, 10000, 20000, 50000)
+```
+
+```{r function}
+algorithm_times <- function(data, name) {
+  ggplot(data, aes(x = InputSize)) +
+    geom_line(aes(y = TimeNano, color = "Measured Time"), size = 1) +
+    geom_point(aes(y = TimeNano, color = "Measured Time"), size = 2) +
+    geom_line(aes(y = theoretical_time, color = "Theoretical Time"), linetype = "dashed", size = 1) +
+    geom_point(aes(y = theoretical_time, color = "Theoretical Time"), size = 2) +
+    theme_minimal() +
+    labs(title = paste("Measured vs Theoretical Execution Time for", name),
+         x = "Input Size (n)",
+         y = "Time (nanoseconds)",
+         color = "Legend") +
+    scale_color_manual(values = c("Measured Time" = "blue", "Theoretical Time" = "red"))
+}
+
+```
+
+# Merge Sort Method 
+
+## Data:
+
+```{r mergedata}
+mergedata <- csvPath("merge_sort_times.csv", removeSpace = FALSE)
+# Compute O(n log n)
+mergedata <- mergedata %>%
+  mutate(
+    theoretical_time = input_sizes * log2(input_sizes)
+  )
+head(mergedata)
+```
+
+## Plots:
+
+
+
+```{r pressure, echo=FALSE}
+algorithm_times(mergedata, name = "merge algoritm")
+```
+
+
+# Insertion Sort Method
+
+## Data:
+
+```{r }
+
+```
+
+## Plots:
+
+
+
+```{r pressure, echo=FALSE}
+
+```
+
+
+# Quick sort 
+
+## Data:
+
+```{r }
+
+```
+
+## Plots:
+
+
+
+```{r pressure, echo=FALSE}
+
+```
+
+# Radix Sort
+
+## Data:
+
+```{r }
+
+```
+
+## Plots:
+
+
+
+```{r pressure, echo=FALSE}
+
+```
+
+# Bucket Sort
+
+## Data:
+
+```{r }
+
+```
+
+## Plots:
+
+
+
+```{r pressure, echo=FALSE}
+
+```
