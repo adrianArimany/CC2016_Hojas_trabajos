@@ -63,7 +63,7 @@ Insertiondata <- Insertiondata %>%
   mutate(
     theoretical_time = (Insertiondata$InputSize)^2  # O(n^2)
   )
-
+head(Insertiondata)
 ```
 
 ## Plots:

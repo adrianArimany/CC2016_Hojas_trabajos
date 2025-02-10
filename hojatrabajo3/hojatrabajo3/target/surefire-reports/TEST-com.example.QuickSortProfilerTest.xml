@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.RadixSortProfilerTest" time="0.028" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.QuickSortProfilerTest" time="0.032" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,9 +12,9 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo3/hojatrabajo3/target/surefire/surefirebooter6985482809396067631.jar /home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo3/hojatrabajo3/target/surefire 2025-02-10T01-03-24_349-jvmRun1 surefire6444945564709977570tmp surefire_06926036804425961064tmp"/>
+    <property name="sun.java.command" value="/home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo3/hojatrabajo3/target/surefire/surefirebooter2761399956340550262.jar /home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo3/hojatrabajo3/target/surefire 2025-02-10T01-00-29_888-jvmRun1 surefire9032518826478767167tmp surefire_014614758576237183075tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="com.example.RadixSortProfilerTest"/>
+    <property name="test" value="com.example.QuickSortProfilerTest#testQuickSort_NegativeNumbers"/>
     <property name="surefire.test.class.path" value="/home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo3/hojatrabajo3/target/test-classes:/home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo3/hojatrabajo3/target/classes:/home/adrianarimany/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/adrianarimany/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/adrianarimany"/>
@@ -28,7 +28,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo3/hojatrabajo3/target/surefire/surefirebooter6985482809396067631.jar"/>
+    <property name="surefire.real.class.path" value="/home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo3/hojatrabajo3/target/surefire/surefirebooter2761399956340550262.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+7-Ubuntu-124.04.1"/>
     <property name="user.name" value="adrianarimany"/>
@@ -55,9 +55,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testCountSort_MultiElementArray_SameDigits" classname="com.example.RadixSortProfilerTest" time="0.005"/>
-  <testcase name="testCountSort_SingleElementArray" classname="com.example.RadixSortProfilerTest" time="0"/>
-  <testcase name="testCountSort_ArrayWithNegativeNumbers" classname="com.example.RadixSortProfilerTest" time="0"/>
-  <testcase name="testCountSort_EmptyArray" classname="com.example.RadixSortProfilerTest" time="0.001"/>
-  <testcase name="testCountSort_ArrayWithZeros" classname="com.example.RadixSortProfilerTest" time="0"/>
+  <testcase name="testQuickSort_NegativeNumbers" classname="com.example.QuickSortProfilerTest" time="0.005"/>
 </testsuite>

@@ -6,6 +6,14 @@ import java.util.Random;
 
 public class InsertionSortProfiler {
 
+    /**
+     * Sorts the given array using the insertion sort algorithm. This algorithm
+     * iterates over the array, starting from the second element. For each
+     * element, it compares it with the previous elements and shifts them as
+     * necessary to insert the current element in its correct sorted position.
+     *
+     * @param arr the array to be sorted
+     */
     public static void insertionSort(int[] arr) {
         int n = arr.length;
         for (int i = 1; i < n; i++) {
@@ -20,6 +28,12 @@ public class InsertionSortProfiler {
         }
     }
 
+    /**
+     * Generates an array of random integers of the given size.
+     * 
+     * @param size the size of the array to be generated
+     * @return an array of random integers of the given size
+     */
     public static int[] generateRandomArray(int size) {
         Random rand = new Random();
         int[] arr = new int[size];
@@ -30,7 +44,7 @@ public class InsertionSortProfiler {
     }
 
     public static void main(String[] args) {
-        int[] sizes = {1000, 2000, 5000, 10000, 20000, 50000};
+        int[] sizes = {6, 66, 666, 6666, 66666, 666666};
         try (FileWriter writer = new FileWriter("insertion_sort_times.csv")) {
             writer.write("InputSize,TimeNano\n");
 

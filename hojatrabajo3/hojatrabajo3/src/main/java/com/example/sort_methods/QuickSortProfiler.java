@@ -6,6 +6,13 @@ import java.util.Random;
 
 public class QuickSortProfiler {
 
+    /**
+     * This function sorts an array of integers using the quick sort algorithm.
+     * 
+     * @param arr the array to be sorted
+     * @param low the starting index of the array to be sorted
+     * @param high the ending index of the array to be sorted
+     */
     public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
             int pi = partition(arr, low, high);
@@ -14,6 +21,14 @@ public class QuickSortProfiler {
         }
     }
 
+    /**
+     * This function partitions the given array for the quick sort algorithm.
+     * 
+     * @param arr the array to be partitioned
+     * @param low the starting index of the array to be partitioned
+     * @param high the ending index of the array to be partitioned
+     * @return the index of the pivot element after partitioning
+     */
     public static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = (low - 1);
@@ -32,6 +47,12 @@ public class QuickSortProfiler {
         return i + 1;
     }
 
+    /**
+     * Generates an array of random integers of the given size.
+     * 
+     * @param size the size of the array to be generated
+     * @return an array of random integers of the given size
+     */
     public static int[] generateRandomArray(int size) {
         Random rand = new Random();
         int[] arr = new int[size];
@@ -41,8 +62,14 @@ public class QuickSortProfiler {
         return arr;
     }
 
+    /**
+     * Runs the quick sort algorithm on arrays of different sizes and prints the
+     * execution time to the console and a CSV file. The sizes of the arrays are
+     * 1000, 2000, 5000, 10000, 20000, and 50000. The execution times are in
+     * nanoseconds.
+     */
     public static void main(String[] args) {
-        int[] sizes = {1000, 2000, 5000, 10000, 20000, 50000};
+        int[] sizes = {1000, 5053, 55222, 994200, 952220, 9935200};
 
         try (FileWriter writer = new FileWriter("quick_sort_times.csv")) {
             writer.write("InputSize,TimeNano\n");

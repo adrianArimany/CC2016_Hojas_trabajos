@@ -9,6 +9,18 @@ import java.util.Random;
 
 public class BucketSortProfiler {
 
+/**
+ * Sorts an array of integers using the bucket sort algorithm.
+ * 
+ * This function divides the array into a number of buckets determined by the
+ * square root of the array's length. Each element is distributed into a
+ * bucket based on its value. Each bucket is then sorted individually using
+ * the Collections.sort method, and the sorted buckets are merged back into
+ * the original array.
+ * 
+ * @param arr the array to be sorted
+ */
+
     public static void bucketSort(int[] arr) {
         int n = arr.length;
         int maxVal = Arrays.stream(arr).max().orElse(1);

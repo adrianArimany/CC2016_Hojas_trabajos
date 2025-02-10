@@ -5,7 +5,13 @@ import java.util.Random;
 
 
 public class MergeSortProfiler {
-    // 1. Merge Sort Implementation
+    
+    
+    /**
+     * This function sorts an array of integers using the merge sort algorithm.
+     * 
+     * @param arr the array to be sorted
+     */
     public static void mergeSort(int[] arr) {
         if (arr.length <= 1) {
             return;
@@ -23,6 +29,13 @@ public class MergeSortProfiler {
         merge(arr, left, right);
     }
 
+    /**
+     * Merges two sorted arrays into a single sorted array.
+     * 
+     * @param arr the array to store the merged result
+     * @param left the first sorted array
+     * @param right the second sorted array
+     */
     public static void merge(int[] arr, int[] left, int[] right) {
         int i = 0, j = 0, k = 0;
 
@@ -42,7 +55,13 @@ public class MergeSortProfiler {
         }
     }
 
-    // 2. Method to generate a random array of given size
+
+    /**
+     * Generates an array of random integers of the given size.
+     * 
+     * @param size the size of the array to be generated
+     * @return an array of random integers of the given size
+     */
     public static int[] generateRandomArray(int size) {
         Random rand = new Random();
         int[] arr = new int[size];
@@ -54,7 +73,7 @@ public class MergeSortProfiler {
 
     public static void main(String[] args) {
         // Define the input sizes you want to test
-        int[] sizes = {1000, 2000, 5000, 10000, 20000, 50000};
+        int[] sizes = {1000, 253532, 553256, 1999999, 2000000, 5535352};
 
         // Prepare CSV file
         try (FileWriter writer = new FileWriter("merge_sort_times.csv")) {
