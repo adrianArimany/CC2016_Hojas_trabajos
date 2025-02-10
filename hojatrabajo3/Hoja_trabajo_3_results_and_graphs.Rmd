@@ -10,6 +10,16 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(dplyr)
 input_sizes <- c(1000, 2000, 5000, 10000, 20000, 50000)
+
+
+
+# Theoretical Time Complexities
+#theoretical_insertion_sort <- input_sizes^2  # O(n^2)
+theoretical_quick_sort <- input_sizes * log2(input_sizes)  # O(n log n)
+theoretical_radix_sort <- input_sizes * log10(max(input_sizes))  # O(nk), assuming k ≈ log(n)
+theoretical_bucket_sort <- input_sizes + sqrt(input_sizes)  # O(n + k), where k ≈ sqrt(n)
+
+
 ```
 
 ```{r function}
@@ -56,16 +66,20 @@ algorithm_times(mergedata, name = "merge algoritm")
 
 ## Data:
 
-```{r }
+```{r insertionData}
+Insertiondata <- csvPath("insertion_sort_times.csv", removeSpace = FALSE)
+
+Insertiondata <- Insertiondata %>%
+  mutate(
+    theoretical_time = (input_sizes)^2  # O(n^2)
+  )
 
 ```
 
 ## Plots:
 
-
-
 ```{r pressure, echo=FALSE}
-
+algorithm_times(Insertiondata, name = "Insertion Algoritm")
 ```
 
 
@@ -73,23 +87,26 @@ algorithm_times(mergedata, name = "merge algoritm")
 
 ## Data:
 
-```{r }
-
+```{r quisort}
+quicksortData <- csvPath("quick_sort_times.csv", removeSpace = FALSE)
+quicksortData <- quicksortData %>%
+  mutate(
+    theoretical_time = input_sizes * log2(input_sizes)  # O(n log n)
+  )
+head(quicksortData)
 ```
 
 ## Plots:
 
-
-
 ```{r pressure, echo=FALSE}
-
+algorithm_times(quicksortData, name = "Qucik Sort Algoritm")
 ```
 
 # Radix Sort
 
 ## Data:
 
-```{r }
+```{r radfixdata}
 
 ```
 
