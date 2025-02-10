@@ -9,17 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(dplyr)
-input_sizes <- c(1000, 2000, 5000, 10000, 20000, 50000)
-
-
-
-# Theoretical Time Complexities
-#theoretical_insertion_sort <- input_sizes^2  # O(n^2)
-theoretical_quick_sort <- input_sizes * log2(input_sizes)  # O(n log n)
-theoretical_radix_sort <- input_sizes * log10(max(input_sizes))  # O(nk), assuming k ≈ log(n)
-theoretical_bucket_sort <- input_sizes + sqrt(input_sizes)  # O(n + k), where k ≈ sqrt(n)
-
-
+source("/home/adrianarimany/Documents/UVG/Year_2/Stats_2/functions_general.R") 
 ```
 
 ```{r function}
@@ -45,10 +35,10 @@ algorithm_times <- function(data, name) {
 
 ```{r mergedata}
 mergedata <- csvPath("merge_sort_times.csv", removeSpace = FALSE)
-# Compute O(n log n)
+
 mergedata <- mergedata %>%
   mutate(
-    theoretical_time = input_sizes * log2(input_sizes)
+    theoretical_time = mergedata$InputSize * log2(mergedata$InputSize)# Compute O(n log n)
   )
 head(mergedata)
 ```
@@ -57,7 +47,7 @@ head(mergedata)
 
 
 
-```{r pressure, echo=FALSE}
+```{r echo=FALSE}
 algorithm_times(mergedata, name = "merge algoritm")
 ```
 
@@ -71,14 +61,14 @@ Insertiondata <- csvPath("insertion_sort_times.csv", removeSpace = FALSE)
 
 Insertiondata <- Insertiondata %>%
   mutate(
-    theoretical_time = (input_sizes)^2  # O(n^2)
+    theoretical_time = (Insertiondata$InputSize)^2  # O(n^2)
   )
 
 ```
 
 ## Plots:
 
-```{r pressure, echo=FALSE}
+```{r  echo=FALSE}
 algorithm_times(Insertiondata, name = "Insertion Algoritm")
 ```
 
@@ -91,14 +81,14 @@ algorithm_times(Insertiondata, name = "Insertion Algoritm")
 quicksortData <- csvPath("quick_sort_times.csv", removeSpace = FALSE)
 quicksortData <- quicksortData %>%
   mutate(
-    theoretical_time = input_sizes * log2(input_sizes)  # O(n log n)
+    theoretical_time = quicksortData$InputSize * log2(quicksortData$InputSize)  # O(n log n)
   )
 head(quicksortData)
 ```
 
 ## Plots:
 
-```{r pressure, echo=FALSE}
+```{r  echo=FALSE}
 algorithm_times(quicksortData, name = "Qucik Sort Algoritm")
 ```
 
@@ -107,29 +97,58 @@ algorithm_times(quicksortData, name = "Qucik Sort Algoritm")
 ## Data:
 
 ```{r radfixdata}
-
+radfixdata <- csvPath("radix_sort_times.csv")
+radfixdata <- radfixdata %>%
+  mutate(
+    theoretical_time = radfixdata$InputSize * log10(max(radfixdata$InputSize))  # O(nk), assuming k = log(n)
+  )
+head(radfixdata)
 ```
 
 ## Plots:
 
-
-
-```{r pressure, echo=FALSE}
-
+```{r echo=FALSE}
+algorithm_times(radfixdata, name = "Radix sort")
 ```
 
 # Bucket Sort
 
 ## Data:
 
-```{r }
-
+```{r bucketdata}
+bucketdata <- csvPath("bucket_sort_times.csv")
+bucketdata <- bucketdata %>%
+  mutate(
+    theoretical_time = bucketdata$InputSize + sqrt(bucketdata$InputSize)  # O(n + k), where k = sqrt(n)
+  )
+head(bucketdata)
 ```
 
 ## Plots:
 
-
-
-```{r pressure, echo=FALSE}
-
+```{r echo=FALSE}
+algorithm_times(bucketdata, name = "Bucket Algorithm")
 ```
+# Bogo Sort
+
+## data
+
+```{r bogosort}
+bogodata <- csvPath("bogo_sort_times.csv")
+bogodata <- bogodata %>%
+  mutate(theoretical_time = factorial(bogodata$InputSize))  # O(n!) complexity
+head(bogodata)
+```
+
+## plot
+
+```{r}
+algorithm_times(bogodata, name ="THE OG BOGO SORT")
+```
+
+
+# References:
+
+Programiz. (2025). Sorting Algorithm. Programiz: Learn to Code for Free. https://www.programiz.com/dsa/sorting-algorithm
+
+Neto, A. (2023, May 5). Bogosort: The Stupid Sorting Algorithm. DEV Community. http://dev.to/adolfont/bogosort-the-stupid-sorting-algorithm-168f

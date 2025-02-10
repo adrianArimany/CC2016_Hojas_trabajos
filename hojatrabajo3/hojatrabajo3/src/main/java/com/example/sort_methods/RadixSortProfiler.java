@@ -5,6 +5,15 @@ import java.util.Random;
 
 public class RadixSortProfiler {
 
+    /**
+     * Radix sort implementation
+     * 
+     * This function sorts an array of integers using radix sort. It works by
+     * sorting the array based on the digits of the numbers, starting from the
+     * least significant digit and moving up to the most significant digit.
+     * 
+     * @param arr the array to be sorted
+     */
     public static void radixSort(int[] arr) {
         int max = getMax(arr);
         for (int exp = 1; max / exp > 0; exp *= 10) {
@@ -12,6 +21,12 @@ public class RadixSortProfiler {
         }
     }
 
+    /**
+     * This function finds the maximum element in the given array.
+     * 
+     * @param arr the array to search for the maximum element
+     * @return the maximum element in the array
+     */
     private static int getMax(int[] arr) {
         int max = arr[0];
         for (int i : arr) {
@@ -20,7 +35,14 @@ public class RadixSortProfiler {
         return max;
     }
 
-    private static void countSort(int[] arr, int exp) {
+    /**
+     * This function performs a count sort on the given array, using the given
+     * exponent to determine which digit of the numbers to sort on.
+     * 
+     * @param arr the array to be sorted
+     * @param exp the exponent to be used for sorting
+     */
+    public static void countSort(int[] arr, int exp) {
         int n = arr.length;
         int[] output = new int[n];
         int[] count = new int[10];
@@ -41,6 +63,15 @@ public class RadixSortProfiler {
         System.arraycopy(output, 0, arr, 0, n);
     }
 
+    /**
+     * Generates a random array of integers of the specified size.
+     * Each integer in the array is randomly generated and can
+     * range from 0 to 99999 inclusive.
+     *
+     * @param size the size of the array to generate
+     * @return an array of randomly generated integers
+     */
+
     public static int[] generateRandomArray(int size) {
         Random rand = new Random();
         int[] arr = new int[size];
@@ -49,6 +80,15 @@ public class RadixSortProfiler {
         }
         return arr;
     }
+
+    /**
+     * Main method to profile the performance of the radix sort algorithm.
+     * Generates random arrays of varying sizes, sorts each using radix sort, 
+     * and records the time taken for each sort operation in nanoseconds.
+     * Results are written to a CSV file named "radix_sort_times.csv".
+     *
+     * @param args command line arguments (not used)
+     */
 
     public static void main(String[] args) {
         int[] sizes = {1000, 2000, 5000, 10000, 20000, 50000};

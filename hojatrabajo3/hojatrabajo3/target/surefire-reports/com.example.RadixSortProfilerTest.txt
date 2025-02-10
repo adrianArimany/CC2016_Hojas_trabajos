@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.example.RadixSortProfilerTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.037 s <<< FAILURE! - in com.example.RadixSortProfilerTest
+testCountSort_MultiElementArray_DifferentDigits(com.example.RadixSortProfilerTest)  Time elapsed: 0.009 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [0]; expected:<2> but was:<170>
+	at com.example.RadixSortProfilerTest.testCountSort_MultiElementArray_DifferentDigits(RadixSortProfilerTest.java:36)
+
+testCountSort_LargeArray(com.example.RadixSortProfilerTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.example.RadixSortProfilerTest.testCountSort_LargeArray(RadixSortProfilerTest.java:55)
+
