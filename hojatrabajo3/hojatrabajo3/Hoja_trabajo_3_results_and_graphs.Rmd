@@ -9,22 +9,39 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(dplyr)
+library(patchwork)
 source("/home/adrianarimany/Documents/UVG/Year_2/Stats_2/functions_general.R") 
 ```
 
 ```{r function}
 algorithm_times <- function(data, name) {
-  ggplot(data, aes(x = InputSize)) +
+  # First plot: Measured Time
+  measured_plot <- ggplot(data, aes(x = InputSize)) +
     geom_line(aes(y = TimeNano, color = "Measured Time"), size = 1) +
     geom_point(aes(y = TimeNano, color = "Measured Time"), size = 2) +
+    theme_minimal() +
+    labs(title = paste("Measured Execution Time for", name),
+         x = "Input Size (n)",
+         y = "Time (nanoseconds)") +
+    scale_color_manual(values = c("Measured Time" = "blue")) +
+    theme(legend.position = "bottom")
+
+  # Second plot: Theoretical Time
+  theoretical_plot <- ggplot(data, aes(x = InputSize)) +
     geom_line(aes(y = theoretical_time, color = "Theoretical Time"), linetype = "dashed", size = 1) +
     geom_point(aes(y = theoretical_time, color = "Theoretical Time"), size = 2) +
     theme_minimal() +
-    labs(title = paste("Measured vs Theoretical Execution Time for", name),
+    labs(title = paste("Theoretical Execution Time for", name),
          x = "Input Size (n)",
-         y = "Time (nanoseconds)",
-         color = "Legend") +
-    scale_color_manual(values = c("Measured Time" = "blue", "Theoretical Time" = "red"))
+         y = "Theoretical Computation") +
+    scale_color_manual(values = c("Theoretical Time" = "red")) +
+    theme(legend.position = "bottom")
+
+  # Combine both plots stacked vertically
+  combined_plot <- measured_plot / theoretical_plot 
+
+  # Print the combined plot
+  print(combined_plot)
 }
 
 ```
