@@ -5,6 +5,14 @@ import java.util.Random;
 
 public class BogoSortProfiler {
 
+/**
+ * Sorts the given array using the bogo sort algorithm. This algorithm 
+ * repeatedly shuffles the array until it is sorted. It is highly 
+ * inefficient for large arrays due to its factorial time complexity.
+ * 
+ * @param arr the array to be sorted
+ */
+
     public static void bogoSort(int[] arr) {
         Random rand = new Random();
         while (!isSorted(arr)) {
@@ -12,6 +20,12 @@ public class BogoSortProfiler {
         }
     }
 
+    /**
+     * Checks if the given array is sorted in ascending order.
+     * 
+     * @param arr the array to be checked
+     * @return true if the array is sorted, false otherwise
+     */
     private static boolean isSorted(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] < arr[i - 1]) {
@@ -21,6 +35,12 @@ public class BogoSortProfiler {
         return true;
     }
 
+    /**
+     * Shuffles the given array using the Fisher-Yates shuffle algorithm.
+     * 
+     * @param arr the array to be shuffled
+     * @param rand the random number generator to be used
+     */
     private static void shuffle(int[] arr, Random rand) {
         for (int i = arr.length - 1; i > 0; i--) {
             int j = rand.nextInt(i + 1);
