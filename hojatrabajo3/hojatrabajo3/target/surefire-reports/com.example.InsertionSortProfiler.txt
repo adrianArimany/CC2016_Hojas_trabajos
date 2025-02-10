@@ -1,0 +1,34 @@
+-------------------------------------------------------------------------------
+Test set: com.example.InsertionSortProfiler
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.034 s <<< FAILURE! - in com.example.InsertionSortProfiler
+testEmptyArray(com.example.InsertionSortProfiler)  Time elapsed: 0.006 s  <<< ERROR!
+java.lang.UnsupportedOperationException: Not supported yet.
+	at com.example.InsertionSortProfiler.insertionSort(InsertionSortProfiler.java:10)
+	at com.example.InsertionSortProfiler.testEmptyArray(InsertionSortProfiler.java:15)
+
+testUnsortedArrayWithDuplicates(com.example.InsertionSortProfiler)  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException: Not supported yet.
+	at com.example.InsertionSortProfiler.insertionSort(InsertionSortProfiler.java:10)
+	at com.example.InsertionSortProfiler.testUnsortedArrayWithDuplicates(InsertionSortProfiler.java:39)
+
+testUnsortedArrayWithNegativeNumbers(com.example.InsertionSortProfiler)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.UnsupportedOperationException: Not supported yet.
+	at com.example.InsertionSortProfiler.insertionSort(InsertionSortProfiler.java:10)
+	at com.example.InsertionSortProfiler.testUnsortedArrayWithNegativeNumbers(InsertionSortProfiler.java:45)
+
+testReverseSortedArray(com.example.InsertionSortProfiler)  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException: Not supported yet.
+	at com.example.InsertionSortProfiler.insertionSort(InsertionSortProfiler.java:10)
+	at com.example.InsertionSortProfiler.testReverseSortedArray(InsertionSortProfiler.java:33)
+
+testAlreadySortedArray(com.example.InsertionSortProfiler)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.UnsupportedOperationException: Not supported yet.
+	at com.example.InsertionSortProfiler.insertionSort(InsertionSortProfiler.java:10)
+	at com.example.InsertionSortProfiler.testAlreadySortedArray(InsertionSortProfiler.java:27)
+
+testSingleElementArray(com.example.InsertionSortProfiler)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.UnsupportedOperationException: Not supported yet.
+	at com.example.InsertionSortProfiler.insertionSort(InsertionSortProfiler.java:10)
+	at com.example.InsertionSortProfiler.testSingleElementArray(InsertionSortProfiler.java:21)
+
