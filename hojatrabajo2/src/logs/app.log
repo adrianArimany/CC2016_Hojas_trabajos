@@ -406,3 +406,91 @@ Feb 03, 2025 10:36:05 AM com.example.utils.Logger logInfo
 INFO: Directory created at: /data/expressions/
 Feb 03, 2025 10:36:05 AM com.example.utils.Logger logInfo
 INFO: Directory created at: /data/results/
+Feb 03, 2025 11:14:27 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 11:14:27 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 11:24:34 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 11:24:34 AM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:05:04 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:05:04 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:06:02 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file: non_existent_file.txt (No such file or directory) non_existent_file.txt
+Feb 03, 2025 12:06:02 PM com.example.utils.Logger logSevere
+SEVERE: Cannot read file with null path
+Feb 03, 2025 12:06:02 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file:  (No such file or directory) 
+Feb 03, 2025 12:18:42 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:18:42 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:22:53 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:22:53 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:23:08 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: =             �����7��$'��7?�\��#��_����|��=��*����
+Feb 03, 2025 12:23:08 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: ���!�������^�ñ(��<����]ؗ���%���${/:�~�\�/����@�쭊��(�6��>@"Ɨ��#��(��*�ʤ��������;�2{��ƕ���=*��7,����������3��{���{������&����ّꭍ�*:<�����##�'��������7��<��@����6*��@Τ�/0ĭ���>�}���+��澁��32�1.��������/ŝ��Ɛ��`���] ���`��'�_���͔]6��|�]��/���4�0`�Ė�{\���\�"��<�+��
+Feb 03, 2025 12:23:08 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: (�����~��ঢ>��յ���*7_�"}Ƅ�`����1�|*�������~��1����4���
+Feb 03, 2025 12:23:15 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: =             �����7��$'��7?�\��#��_����|��=��*����
+Feb 03, 2025 12:23:15 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: ���!�������^�ñ(��<����]ؗ���%���${/:�~�\�/����@�쭊��(�6��>@"Ɨ��#��(��*�ʤ��������;�2{��ƕ���=*��7,����������3��{���{������&����ّꭍ�*:<�����##�'��������7��<��@����6*��@Τ�/0ĭ���>�}���+��澁��32�1.��������/ŝ��Ɛ��`���] ���`��'�_���͔]6��|�]��/���4�0`�Ė�{\���\�"��<�+��
+Feb 03, 2025 12:23:15 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: (�����~��ঢ>��յ���*7_�"}Ƅ�`����1�|*�������~��1����4���
+Feb 03, 2025 12:23:40 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:23:40 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:23:45 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: =             �����7��$'��7?�\��#��_����|��=��*����
+Feb 03, 2025 12:23:45 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: ���!�������^�ñ(��<����]ؗ���%���${/:�~�\�/����@�쭊��(�6��>@"Ɨ��#��(��*�ʤ��������;�2{��ƕ���=*��7,����������3��{���{������&����ّꭍ�*:<�����##�'��������7��<��@����6*��@Τ�/0ĭ���>�}���+��澁��32�1.��������/ŝ��Ɛ��`���] ���`��'�_���͔]6��|�]��/���4�0`�Ė�{\���\�"��<�+��
+Feb 03, 2025 12:23:45 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: (�����~��ঢ>��յ���*7_�"}Ƅ�`����1�|*�������~��1����4���
+Feb 03, 2025 12:24:36 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:24:36 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:24:43 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: =             �����7��$'��7?�\��#��_����|��=��*����
+Feb 03, 2025 12:24:43 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: ���!�������^�ñ(��<����]ؗ���%���${/:�~�\�/����@�쭊��(�6��>@"Ɨ��#��(��*�ʤ��������;�2{��ƕ���=*��7,����������3��{���{������&����ّꭍ�*:<�����##�'��������7��<��@����6*��@Τ�/0ĭ���>�}���+��澁��32�1.��������/ŝ��Ɛ��`���] ���`��'�_���͔]6��|�]��/���4�0`�Ė�{\���\�"��<�+��
+Feb 03, 2025 12:24:43 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: (�����~��ঢ>��յ���*7_�"}Ƅ�`����1�|*�������~��1����4���
+Feb 03, 2025 12:28:39 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:28:39 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:28:56 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 23 17 + 3
+Feb 03, 2025 12:28:56 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 25 5 / 0 - 2 %
+Feb 03, 2025 12:29:26 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 7 / 2
+Feb 03, 2025 12:29:26 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 7 2 %
+Feb 03, 2025 12:34:15 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:34:15 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:34:19 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 23 17 + 3
+Feb 03, 2025 12:34:19 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 25 5 / 0 - 2 %
+Feb 03, 2025 12:34:19 PM com.example.utils.Logger logInfo
+INFO: Division result: quotient = 2, residual = 0
+Feb 03, 2025 12:48:09 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/expressions/
+Feb 03, 2025 12:48:09 PM com.example.utils.Logger logInfo
+INFO: Directory created at: /data/results/
+Feb 03, 2025 12:48:13 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 7 / 2
+Feb 03, 2025 12:48:13 PM com.example.utils.Logger logSevere
+SEVERE: Invalid expression in line: 7 2 %

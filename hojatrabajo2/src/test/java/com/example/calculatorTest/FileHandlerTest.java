@@ -1,13 +1,13 @@
 package com.example.calculatorTest;
 
-import org.junit.Test;
-
-import com.example.data_manager.FileHandler;
-
-import static org.junit.Assert.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+import com.example.data_manager.FileHandler;
 
 
 /**
@@ -23,9 +23,9 @@ public class FileHandlerTest {
     public void testReadFileWithContent() throws IOException {
         // Create a test file with content
         File file = new File("test.txt");
-        FileWriter writer = new FileWriter(file);
-        writer.write("Hello World!");
-        writer.close();
+        try (FileWriter writer = new FileWriter(file)) {
+            writer.write("Hello World!");
+        }
 
         // Read the file using FileHandler
         String content = FileHandler.readFile(file.getAbsolutePath());

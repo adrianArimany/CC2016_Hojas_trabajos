@@ -23,7 +23,7 @@ import com.example.utils.Logger;
  */
 public class App 
 {
-    private static Logger log = Logger.getInstance();
+    private static final Logger log = Logger.getInstance();
 
     public static void main(String[] args)
     {

@@ -33,7 +33,7 @@ public class FileHandler {
             }
         } catch (IOException e) {
             log.logSevere("Failed to read file: " + e.getMessage() + " " + filePath);
-            e.printStackTrace();
+            
         }
         return content.toString().trim();
     }
@@ -46,13 +46,11 @@ public class FileHandler {
  */
 
     public static void writeResult(String fileName, String result) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(Config.RESULT_DIR + fileName));
-            writer.write(result);
-            writer.close();
-        } catch (IOException e) {
-            log.logSevere("Failed to read file: " + e.getMessage() + " " + fileName);
-            e.printStackTrace();
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Config.RESULT_DIR + fileName))) {
+                writer.write(result);
+            } catch (IOException e) {
+                log.logSevere("Failed to write file: " + e.getMessage() + " " + fileName);
+            }
         }
     }
-}
+
