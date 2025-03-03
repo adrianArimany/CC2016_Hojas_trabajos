@@ -17,14 +17,34 @@ def plot_results(results):
     avg_turnaround = results.get('avg_turnaround', 0)
     std_turnaround = results.get('std_turnaround', 0)
     
-    # Plot 1: Histogram of Turnaround Times
+    # # Plot 1: Histogram of Turnaround Times
+    # plt.figure()
+    # plt.hist(turnaround_times, bins=10, edgecolor='black')
+    # plt.title("Histogram of Turnaround Times")
+    # plt.xlabel("Turnaround Time")
+    # plt.ylabel("Frequency")
+    # plt.axvline(avg_turnaround, color='red', linestyle='dashed', linewidth=1,
+    #             label=f"Avg: {avg_turnaround:.2f}")
+    # plt.legend()
+    # plt.show()
+
+    # # Plot 2: Bar Chart for Average Turnaround Time with Standard Deviation
+    # plt.figure()
+    # plt.bar(['Average Turnaround'], [avg_turnaround], yerr=[std_turnaround], capsize=10)
+    # plt.title("Average Turnaround Time with Standard Deviation")
+    # plt.ylabel("Time")
+    # plt.show()
+    
+    
+    # Scatter Plot: Process ID vs Turnaround Time
     plt.figure()
-    plt.hist(turnaround_times, bins=10, edgecolor='black')
-    plt.title("Histogram of Turnaround Times")
-    plt.xlabel("Turnaround Time")
-    plt.ylabel("Frequency")
-    plt.axvline(avg_turnaround, color='red', linestyle='dashed', linewidth=1,
+    process_ids = list(range(1, len(turnaround_times) + 1))
+    plt.scatter(process_ids, turnaround_times, color='blue', label='Turnaround Time')
+    plt.axhline(avg_turnaround, color='red', linestyle='dashed', linewidth=1,
                 label=f"Avg: {avg_turnaround:.2f}")
+    plt.title("Scatter Plot of Turnaround Times")
+    plt.xlabel("Process ID")
+    plt.ylabel("Turnaround Time")
     plt.legend()
     plt.show()
 
