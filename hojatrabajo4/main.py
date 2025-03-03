@@ -1,6 +1,6 @@
 #Other modules:
 #Env deals with the actual simulation process
-from env import config, resources, simulation
+from enviroment import config, resources, simulation
 #results gets the calculations from simulation and obtains the required graphs.
 from results import metrics, plotting
 
@@ -12,11 +12,11 @@ import simpy
 def main():
     #Initialize random seed and simulation enviroment
     random.seed(config.RANDOM_SEED)
-    env = simpy.Enviroment()
+    env = simpy.Environment()
 
-    ram, cpu = resources.initialize_resources(env, config)
+    ram, cpu = resources.initialize_resources(env)
 
-    simulation.run_simulation(env, cpu, ram, config)
+    simulation.run_simulation(env, cpu, ram)
 
     results = metrics.compute_metrics(simulation.get_process_data())
 

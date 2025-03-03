@@ -18,9 +18,12 @@ INSTRUCTION_REQUEST_MIN = 1
 
 INSTRUCTION_REQUEST_MAX = 10
 
+#IF the state is waiting, then there is a 1/21 chance  for the process to return to ready.
 IO_PROBABILITY = 1/21
 
+#The average time between process arrivals
 INTERARRIVAL_TIME = 10
 
+#The duration of the simulation (in case the simulation never terminates)
 SIM_DURATION = 10000
 
