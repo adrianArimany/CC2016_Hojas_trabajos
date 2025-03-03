@@ -8,10 +8,10 @@ def plot_results(results):
     Parameters:
         results (dict): A dictionary containing simulation metrics.
                         Expected keys:
-                          - 'turnaround_times': list of turnaround times.
-                          - 'avg_turnaround': average turnaround time.
-                          - 'std_turnaround': standard deviation of turnaround times.
-                          - 'count': total number of processes.
+                          turnaround_times: list of turnaround times.
+                          avg_turnaround: average turnaround time.
+                          std_turnaround: standard deviation of turnaround times.
+                          count: total number of processes.
     """
     turnaround_times = results.get('turnaround_times', [])
     avg_turnaround = results.get('avg_turnaround', 0)
