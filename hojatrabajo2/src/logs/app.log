@@ -494,3 +494,9 @@ Feb 03, 2025 12:48:13 PM com.example.utils.Logger logSevere
 SEVERE: Invalid expression in line: 7 / 2
 Feb 03, 2025 12:48:13 PM com.example.utils.Logger logSevere
 SEVERE: Invalid expression in line: 7 2 %
+Feb 28, 2025 10:07:08 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file: non_existent_file.txt (No such file or directory) non_existent_file.txt
+Feb 28, 2025 10:07:08 PM com.example.utils.Logger logSevere
+SEVERE: Cannot read file with null path
+Feb 28, 2025 10:07:08 PM com.example.utils.Logger logSevere
+SEVERE: Failed to read file:  (No such file or directory) 
