@@ -1,5 +1,5 @@
+import numpy as np
 import statistics
-
 def compute_metrics(process_data):
     """
     Computes and retuns the simulation metrics based on the collected process data
@@ -14,18 +14,17 @@ def compute_metrics(process_data):
             turnaround_time: the list of individual turnaround times.
     """
     
-    turnaround_times = [data['turnaround_time'] for data in process_data]
+    turnaround_times = [data['turnaround'] for data in process_data]
     
     if turnaround_times:
-        avg_turnaround = statistics.mean(turnaround_times)
-        std_turnaround = statistics.stdev(turnaround_times)
+        avg_turnaround = np.mean(turnaround_times)
+        std_turnaround = statistics.stdev(turnaround_times) if len(turnaround_times) > 1 else 0
     else:
-        avg_turnaround = 0
-        std_turnaround = 0
-
+        avg_turnaround = "No data"
+        std_turnaround = "No data"
     return {
         'avg_turnaround': avg_turnaround,
         'std_turnaround': std_turnaround,
-        'count': len(process_data),
+        'count': len(turnaround_times),
         'turnaround_time': turnaround_times
     }

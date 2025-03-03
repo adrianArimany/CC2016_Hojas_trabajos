@@ -1,7 +1,7 @@
 import random
 
 from . import config
-from . import process
+from enviroment import process
 
 def process_generator(env, cpu, ram, process_data):
     """
@@ -15,9 +15,8 @@ def process_generator(env, cpu, ram, process_data):
     """
     
     process_id = 0
-    running = True
-    while running:
-        interarrival = random.expovariate(1/config.INTERARRIVAL_TIME)
+    while True:
+        interarrival = random.expovariate(1 / config.INTERARRIVAL_TIME)
         yield env.timeout(interarrival)
         process_id += 1
         env.process(process.process_behavior(env, process_id, cpu, ram, process_data))
@@ -36,7 +35,6 @@ def run_simulation(env, cpu, ram):
     """
     process_data = []
     env.process(process_generator(env, cpu, ram, process_data))
-
     env.run(until=config.SIM_DURATION)
 
     return process_data

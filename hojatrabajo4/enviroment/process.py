@@ -31,23 +31,24 @@ def process_behavior(env, process_id, cpu, ram, process_data):
             yield req  # Wait until the CPU is available
             yield env.timeout(1)
             
-            # Process executes a fixed number of instructions per CPU cycle
+            # Simulate CPU execution
             executed = config.CPU_SPEED
             if instructions < executed:
                 executed = instructions
             instructions -= executed
             print(f"Process {process_id} executed {executed} instructions; {instructions} remaining at time {env.now}")
         
-        # If there are still instructions left, decide the next state
+        # If there are still instructions left, move between ready and waiting states
         if instructions > 0:
-            decision = random.randint(1, 21)
+            decision = random.randint(1, 2)
+            #GOTO Waiting State
             if decision == 1:
                 # Simulate I/O operation delay (process goes to waiting)
                 print(f"Process {process_id} performing I/O operations at time {env.now}")
-                io_delay = 1  # You can also randomize or adjust the I/O delay as needed
+                io_delay = 1
                 yield env.timeout(io_delay)
+            #GOTO READY STATE
             else:
-                # Otherwise, simply continue (return to the ready state)
                 print(f"Process {process_id} returns to ready state at time {env.now} (decision value: {decision})")
     
     termination_time = env.now
@@ -63,3 +64,4 @@ def process_behavior(env, process_id, cpu, ram, process_data):
         'termination': termination_time,
         'turnaround': turnaround_time
     })
+    print(f"Process {process_id} data appended: {process_data[-1]}")
