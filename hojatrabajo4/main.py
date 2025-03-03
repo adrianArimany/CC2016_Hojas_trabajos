@@ -1,6 +1,6 @@
 #Other modules:
 #Env deals with the actual simulation process
-from env import config, resources, simulation, process
+from env import config, resources, simulation
 #results gets the calculations from simulation and obtains the required graphs.
 from results import metrics, plotting
 

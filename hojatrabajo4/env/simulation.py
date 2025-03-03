@@ -1,4 +1,3 @@
-import simpy
 import random
 
 from env import config
