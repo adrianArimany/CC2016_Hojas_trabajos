@@ -1,6 +1,6 @@
 import random
 
-from . import config
+from enviroment import config
 from enviroment import process
 
 def process_generator(env, cpu, ram, process_data):
