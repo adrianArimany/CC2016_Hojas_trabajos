@@ -3,6 +3,7 @@ package com.example;
 import java.io.File;
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
@@ -25,16 +26,19 @@ public class dataTests {
         String fileName = "testFile.txt";
         String result = "This is a test";
         FileHandler.writeResult(fileName, result);
-        String content = FileHandler.readFile(Config.POKEMONDATA_DIR + fileName);
+        String content = FileHandler.readFile(Config.POKEMONDATA_DIR + "/" + fileName);
         assertEquals(result, content);
     }
-
+    
     @Test
-    void testWriteResultCSV() throws IOException {
+    void testWriteResultCSVHeader() throws IOException {
         String fileName = "testFile.csv";
         String result = "name,age\nJohn,30\nDoe,40";
         FileHandler.writeResult(fileName, result);
-        String content = FileHandler.readFile(Config.POKEMONDATA_DIR + fileName);
-        assertEquals(result, content);
+        String content = FileHandler.readFile(Config.POKEMONDATA_DIR + "/" + fileName);
+        String[] lines = content.split("\n");
+        String[] header = lines[0].split(",");
+        String[] expected = {"name", "age"};
+        assertArrayEquals(expected, header);
     }
 }

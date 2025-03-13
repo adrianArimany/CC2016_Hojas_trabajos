@@ -25,7 +25,7 @@ public class FileHandler {
     }
 
     public static void writeResult(String fileName, String result) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(Config.POKEMONDATA_DIR + fileName))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(Config.POKEMONDATA_DIR + "/" + fileName))) {
             writer.write(result);
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
