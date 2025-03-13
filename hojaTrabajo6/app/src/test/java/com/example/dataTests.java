@@ -29,6 +29,12 @@ public class dataTests {
         assertEquals(result, content);
     }
 
-    
-
+    @Test
+    void testWriteResultCSV() throws IOException {
+        String fileName = "testFile.csv";
+        String result = "name,age\nJohn,30\nDoe,40";
+        FileHandler.writeResult(fileName, result);
+        String content = FileHandler.readFile(Config.POKEMONDATA_DIR + fileName);
+        assertEquals(result, content);
+    }
 }
