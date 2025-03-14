@@ -3,8 +3,8 @@ package com.example.gui;
 import com.example.gui.PokemonModel.Pokemon;
 
 public class PokemonController {
-    private PokemonModel model;
-    private PokemonView view;
+    private final PokemonModel model;
+    private final PokemonView view;
     
     public PokemonController(PokemonModel model, PokemonView view) {
         this.model = model;

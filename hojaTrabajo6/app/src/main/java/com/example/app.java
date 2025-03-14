@@ -17,6 +17,7 @@ public class app {
         // Step 1: File selection.
         PokemonView tempView = new PokemonView();
         String filePath = tempView.showFileSelection();
+        
         if (filePath != null) {
             String fileContent = FileHandler.readFile(filePath);
             System.out.println("File content loaded: " + fileContent);

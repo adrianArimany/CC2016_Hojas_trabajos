@@ -30,7 +30,8 @@ public class PokemonView extends JFrame {
     private final JTextArea resultArea;
     private final JTextArea listArea;
     
-    // Listener interfaces for communicating with the controller.
+    // Interfaces for listeners.
+    
     public interface AddPokemonListener {
         void addPokemon(String name, String ability);
     }
