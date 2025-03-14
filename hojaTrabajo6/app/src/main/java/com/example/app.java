@@ -1,6 +1,5 @@
 package com.example;
 import com.example.data.DataHandler;
-import com.example.data.FileHandler;
 import com.example.factory.MappingType;
 import com.example.gui.PokemonController;
 import com.example.gui.PokemonView;
@@ -15,7 +14,6 @@ public class app {
         PokemonView tempView = new PokemonView();
         String filePath = tempView.showFileSelection();
         if (filePath != null) {
-            String fileContent = FileHandler.readFile(filePath);
             System.out.println("File content loaded");
         }
         
