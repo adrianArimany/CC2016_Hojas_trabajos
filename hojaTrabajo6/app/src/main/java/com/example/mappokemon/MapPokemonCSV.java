@@ -9,14 +9,21 @@ import com.example.factory.MappingType;
 
 
 
-public class MapPokemon implements Ipokemon{ 
+public class MapPokemonCSV implements Ipokemon{ 
 
     private final Map<String, PokemonRecord> pokemonMap;
 
-    public MapPokemon(MappingType mappingType) {
+    public MapPokemonCSV(MappingType mappingType) {
         pokemonMap = com.example.factory.MapFactory.getMap(mappingType); 
     }
 
+    /**
+     * Adds a Pokemon to the data.
+     * 
+     * @param name the name of the Pokemon to add.
+     * @param ability the ability of the Pokemon to add.
+     * @return true if the Pokemon was successfully added, false if a Pokemon with the given name already exists.
+     */
     @Override
     public boolean addPokemon(String name, String ability) {
         if (pokemonMap.containsKey(name)) {
@@ -38,6 +45,12 @@ public class MapPokemon implements Ipokemon{
         return pokemonMap.get(name);
     }
 
+    /**
+     * Searches for Pokemon by name.
+     * 
+     * @param nameQuery the name of the Pokemon to search for.
+     * @return a list of PokemonRecord objects that match the name query. The list is sorted by Type1.
+     */
     @Override
     public List<PokemonRecord> searchByName(String nameQuery) {
         return pokemonMap.values().stream()
@@ -46,6 +59,12 @@ public class MapPokemon implements Ipokemon{
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Searches for Pokemon by ability.
+     * 
+     * @param abilityQuery the ability of the Pokemon to search for.
+     * @return a list of PokemonRecord objects that match the ability query. The list is sorted by Type1.
+     */
     @Override
     public List<PokemonRecord> searchByAbility(String abilityQuery) {
         return pokemonMap.values().stream()
@@ -53,7 +72,13 @@ public class MapPokemon implements Ipokemon{
                 .sorted(Comparator.comparing(PokemonRecord::getType1))
                 .collect(Collectors.toList());
     }
-
+    
+    /**
+     * Retrieves all Pokemon in the map as a string. Each PokemonRecord is displayed
+     * on a single line, with its fields separated by commas.
+     * 
+     * @return a string containing all Pokemon in the map.
+     */
     @Override
     public String getAllPokemon() {
         StringBuilder result = new StringBuilder();
@@ -108,6 +133,8 @@ public class MapPokemon implements Ipokemon{
             return;
         }
         
+        pokemonMap.clear();
+
         // Process each line of CSV data.
         for (int i = 1; i < lines.length; i++) {
             String line = lines[i];
@@ -121,6 +148,18 @@ public class MapPokemon implements Ipokemon{
             // Add the record to the map.
             pokemonMap.put(name, new PokemonRecord(name, type1, ability));
         }
+    }
+
+    @Override
+    public void saveTo(String fileName) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name,Type1,Abilities\n"); 
+        pokemonMap.values().forEach(record -> {
+            sb.append(record.getName()).append(",")
+              .append(record.getType1()).append(",")
+              .append(record.getAbility()).append("\n");
+        });
+        com.example.data.FileHandler.writeResult(fileName, sb.toString());
     }
 
 

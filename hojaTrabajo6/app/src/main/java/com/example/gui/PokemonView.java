@@ -116,6 +116,10 @@ public class PokemonView extends JFrame {
         attachListeners();
     }
     
+    /**
+     * Attach action listeners to the buttons in the view. These listeners delegate
+     * the actions to the corresponding methods on the controller.
+     */
     private void attachListeners() {
         addPokemonButton.addActionListener(e -> {
             if (addPokemonListener != null) {
@@ -147,28 +151,81 @@ public class PokemonView extends JFrame {
     }
     
     // Methods to set listeners from the controller.
+
+    
+    /**
+     * Set the listener for adding a Pokemon. This listener will be notified
+     * when the "Add Pokemon" button is clicked.
+     * 
+     * @param listener the listener to notify.
+     */
     public void addAddPokemonListener(AddPokemonListener listener) {
         this.addPokemonListener = listener;
     }
+/**
+ * Set the listener for searching Pokemon by name. This listener will be 
+ * notified when the "Search by Name" button is clicked.
+ * 
+ * @param listener the listener to notify.
+ */
+
+    /**
+     * Set the listener for searching Pokemon by name. This listener will be 
+     * notified when the "Search by Name" button is clicked.
+     * 
+     * @param listener the listener to notify.
+     */
     public void addSearchByNameListener(SearchByNameListener listener) {
         this.searchByNameListener = listener;
     }
+/**
+ * Set the listener for searching Pokemon by ability. This listener will be 
+ * notified when the "Search by Ability" button is clicked.
+ * 
+ * @param listener the listener to notify.
+ */
+
     public void addSearchByAbilityListener(SearchByAbilityListener listener) {
         this.searchByAbilityListener = listener;
     }
+    /**
+     * Set the listener for refreshing the Pokemon list. This listener will be 
+     * notified when the "Refresh Pokemon List" button is clicked.
+     * 
+     * @param listener the listener to notify.
+     */
     public void addRefreshListListener(RefreshListListener listener) {
         this.refreshListListener = listener;
     }
     
     // Methods for updating UI components.
+
+
+    
+    /**
+     * Shows a message dialog with the given message. The dialog is modal and
+     * centered on the main window of the application.
+     * 
+     * @param message the message to be displayed in the dialog.
+     */
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(mainFrame, message);
     }
     
+    /**
+     * Displays the given search result in the search result area of the view.
+     * 
+     * @param result the search result to be displayed.
+     */
     public void showSearchResult(String result) {
         resultArea.setText(result);
     }
     
+    /**
+     * Updates the Pokemon list in the view with the given list content.
+     * 
+     * @param listContent the content of the list to be displayed.
+     */
     public void updatePokemonList(String listContent) {
         listArea.setText(listContent);
     }
@@ -179,6 +236,13 @@ public class PokemonView extends JFrame {
         return GUIUTIL.chooseFile(new JFrame("Select File"));
     }
     
+    /**
+     * Opens a dialog for mapping selection. The dialog presents the user with
+     * three options: "Hash Map", "Tree Map", and "Linked Hash Map". The
+     * selected mapping type is returned as a MappingSelectionResult object.
+     * 
+     * @return a MappingSelectionResult object containing the selected mapping type.
+     */
     public MappingSelectionResult showMappingSelection() {
         // Opens a dialog for mapping selection.
         String[] options = {"Hash Map", "Tree Map", "Linked Hash Map"};
@@ -196,11 +260,18 @@ public class PokemonView extends JFrame {
     }
     
     // Show the main window.
+    
+    /**
+     * Shows the main window of the application. This method should be called
+     * once the model and controller are set up.
+     */
     public void showMainWindow() {
         mainFrame.setVisible(true);
     }
     
     // Helper class to encapsulate the mapping selection.
+
+    
     public static class MappingSelectionResult {
         private final String mappingType;
         

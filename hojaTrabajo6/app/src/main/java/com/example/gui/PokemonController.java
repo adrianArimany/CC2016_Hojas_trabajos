@@ -15,8 +15,20 @@ public class PokemonController {
         this.model = model;
         this.view = view;
         initController();
+        view.updatePokemonList(model.getAllPokemon());
     }
     
+    /**
+     * Initialize the controller by adding the necessary listeners to the view.
+     * 
+     * The listeners are:
+     * <ul>
+     * <li>addAddPokemonListener: adds a Pokemon to the model and displays a message with the result.
+     * <li>addSearchByNameListener: searches for Pokemon by name and displays a message with the result.
+     * <li>addSearchByAbilityListener: searches for Pokemon by ability and displays a message with the result.
+     * <li>addRefreshListListener: refreshes the list of Pokemon in the view.
+     * </ul>
+     */
     private void initController() {
         // Listener for adding a Pokemon.
         view.addAddPokemonListener((name, ability) -> {
@@ -26,6 +38,12 @@ public class PokemonController {
                 view.showMessage("Error: Pokemon with name " + name + " already exists.");
             } else {
                 view.showMessage("Pokemon added: " + name);
+                // Save the updated file here if needed.
+                if (model instanceof com.example.mappokemon.MapPokemonCSV) {
+                    ((com.example.mappokemon.MapPokemonCSV) model).saveTo("updated_pokemon_data.csv");
+                }
+                // Refresh the displayed list after adding.
+                view.updatePokemonList(model.getAllPokemon());
             }
         });
         
@@ -35,7 +53,6 @@ public class PokemonController {
             if (results.isEmpty()) {
                 view.showSearchResult("No Pokemon found with name: " + name);
             } else {
-                // For simplicity, display all matching records.
                 StringBuilder sb = new StringBuilder();
                 for (PokemonRecord record : results) {
                     sb.append(record.toString()).append("\n");
@@ -60,8 +77,7 @@ public class PokemonController {
         
         // Listener for refreshing the list.
         view.addRefreshListListener(() -> {
-            String all = model.getAllPokemon();
-            view.updatePokemonList(all);
+            view.updatePokemonList(model.getAllPokemon());
         });
     }
 }

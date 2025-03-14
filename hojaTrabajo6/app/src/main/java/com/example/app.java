@@ -1,9 +1,11 @@
 package com.example;
+import com.example.data.Config;
 import com.example.data.DataHandler;
+import static com.example.data.FileHandler.copyFile;
 import com.example.factory.MappingType;
 import com.example.gui.PokemonController;
 import com.example.gui.PokemonView;
-import com.example.mappokemon.MapPokemon;
+import com.example.mappokemon.MapPokemonCSV;
 
 public class app {
     public static void main(String[] args) {
@@ -15,6 +17,7 @@ public class app {
         String filePath = tempView.showFileSelection();
         if (filePath != null) {
             System.out.println("File content loaded");
+            copyFile(filePath, Config.POKEMONDATA_DIR);
         }
         
         // Step 2: Mapping selection.
@@ -34,7 +37,7 @@ public class app {
         }
         
         // Initialize the model using our new MapPokemon.
-        MapPokemon model = new MapPokemon(mappingType);
+        MapPokemonCSV model = new MapPokemonCSV(mappingType);
         if (filePath != null) {
             model.loadFrom(filePath);
         }

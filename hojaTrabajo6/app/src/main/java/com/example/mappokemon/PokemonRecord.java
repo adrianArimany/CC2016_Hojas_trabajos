@@ -11,23 +11,44 @@ public class PokemonRecord {
         this.type1 = type1;
     }
 
+    /**
+     * @return the name of the Pokemon represented by this PokemonRecord
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return the ability of the Pokemon represented by this PokemonRecord
+     */
     public String getAbility() {
         return ability;
     }
 
+    /**
+     * @return the type of the Pokemon represented by this PokemonRecord
+     */
     public String getType1() {
         return type1;
     }
 
+    /**
+    * Returns a string representation of the Pokemon, including its name and primary type.
+    *
+    * @return a string in the format "Pokemon [name : {name}, type1 : {type1}]"
+    */
     @Override
     public String toString() {
         return "Pokemon [name : " + name + ", type1 : " + type1 + "]";
     }
 
+
+    
+    /**
+     * Returns a string representation of the Pokemon, including its name, primary type, and ability.
+     *
+     * @return a string in the format "Pokemon [name : {name}, type1 : {type1}, ability : {ability}]"
+     */
     public String toStringWithAbility() {
         return "Pokemon [name : " + name + ", type1 : " + type1 + ", ability : " + ability + "]";
     }
