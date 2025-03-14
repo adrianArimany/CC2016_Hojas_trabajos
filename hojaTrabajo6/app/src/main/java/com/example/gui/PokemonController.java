@@ -63,6 +63,7 @@ public class PokemonController {
         
         // Listener for searching by ability.
         view.addSearchByAbilityListener((ability) -> {
+            //System.out.println("Searching for ability: " + ability); // Debugging
             List<PokemonRecord> results = model.searchByAbility(ability);
             if (results.isEmpty()) {
                 view.showSearchResult("No Pokemon found with ability: " + ability);

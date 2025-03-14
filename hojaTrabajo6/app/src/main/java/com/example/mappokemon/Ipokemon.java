@@ -4,8 +4,7 @@ import java.util.List;
 
 
 public interface Ipokemon {
-    boolean addPokemon(String name, String ability); //Adds a Pokemon to the data
-    PokemonRecord getPokemon(String name); //Gets a Pokemon by name
+    boolean addPokemon(String name, String Type1); //Adds a Pokemon to the data
     List<PokemonRecord> searchByName(String nameQuery); //Searches for a Pokemon by name
     List<PokemonRecord> searchByAbility(String abilityQuery); //Searches for a Pokemon by ability
     String getAllPokemon(); //gETS ALL THE POKEMOS FROM THE DATA

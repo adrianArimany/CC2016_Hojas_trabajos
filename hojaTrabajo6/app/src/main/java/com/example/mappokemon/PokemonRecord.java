@@ -1,14 +1,18 @@
 package com.example.mappokemon;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class PokemonRecord {
     private final String name;
-    private final String ability;
     private final String type1;
+    private final List<String> abilities;
 
-    public PokemonRecord(String name, String ability, String type1) {
+    public PokemonRecord(String name, String type1, String abilityField) {
         this.name = name;
-        this.ability = ability;
         this.type1 = type1;
+        this.abilities = Arrays.asList(abilityField.split(",")); //please have the abilities separated by commas
+        this.abilities.replaceAll(String::trim);
     }
 
     /**
@@ -21,8 +25,8 @@ public class PokemonRecord {
     /**
      * @return the ability of the Pokemon represented by this PokemonRecord
      */
-    public String getAbility() {
-        return ability;
+    public List<String> getAbilities() {
+        return abilities;
     }
 
     /**
@@ -32,6 +36,15 @@ public class PokemonRecord {
         return type1;
     }
 
+     /**
+     * Returns a string representation of the Pokemon, including its name, primary type, and ability.
+     *
+     * @return a string in the format "Pokemon [name : {name}, type1 : {type1}, ability : {ability}]"
+     */
+    
+    public String toStringWithAbility() {
+        return "Pokemon [name : " + name + ", type1 : " + type1 + ", abilities : " + abilities + "]";
+    }
     /**
     * Returns a string representation of the Pokemon, including its name and primary type.
     *
@@ -44,12 +57,5 @@ public class PokemonRecord {
 
 
     
-    /**
-     * Returns a string representation of the Pokemon, including its name, primary type, and ability.
-     *
-     * @return a string in the format "Pokemon [name : {name}, type1 : {type1}, ability : {ability}]"
-     */
-    public String toStringWithAbility() {
-        return "Pokemon [name : " + name + ", type1 : " + type1 + ", ability : " + ability + "]";
-    }
+   
 }
