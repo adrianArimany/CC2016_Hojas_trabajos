@@ -1,25 +1,27 @@
 package com.example.factory;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 import com.example.gui.PokemonModel.MappingType;
-import com.example.typemaps.Imaps;
-import com.example.typemaps.typeHashMap;
-import com.example.typemaps.typeLinkedHashMap;
-import com.example.typemaps.typeTreeMap;
+import com.example.mappokemon.PokemonRecord;
+
 
 public class MapFactory {
-    public static Imaps getMap(MappingType type) {
+    public static  Map<String, PokemonRecord> getMap(MappingType type) {
         if (type == null) {
-            throw new IllegalArgumentException("Can't find any Mapping type. there is a null pointer exception");
+            throw new IllegalArgumentException("Can't find any Mapping type. Check for a null pointer exception.");
         }
         switch (type) {
             case TREE_MAP:
-                return new typeTreeMap();
+                return new TreeMap<>();
             case LINKED_HASH_MAP:
-                return new typeLinkedHashMap();
+                return new LinkedHashMap<>();
             case HASH_MAP:
-                return new typeHashMap();
             default:
-                return new typeHashMap();
+                return new HashMap<>();
         }
     }
 }
