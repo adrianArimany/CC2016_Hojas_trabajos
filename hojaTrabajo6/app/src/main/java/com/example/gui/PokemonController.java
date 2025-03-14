@@ -1,12 +1,17 @@
 package com.example.gui;
 
-import com.example.gui.PokemonModel.Pokemon;
+import java.util.List;
+
+import com.example.mappokemon.Ipokemon;
+import com.example.mappokemon.PokemonRecord;
+
+
 
 public class PokemonController {
-    private final PokemonModel model;
+    private final Ipokemon model;
     private final PokemonView view;
     
-    public PokemonController(PokemonModel model, PokemonView view) {
+    public PokemonController(Ipokemon model, PokemonView view) {
         this.model = model;
         this.view = view;
         initController();
@@ -26,21 +31,30 @@ public class PokemonController {
         
         // Listener for searching by name.
         view.addSearchByNameListener((name) -> {
-            Pokemon pokemon = model.searchByName(name);
-            if (pokemon != null) {
-                view.showSearchResult(pokemon.toString());
-            } else {
+            List<PokemonRecord> results = model.searchByName(name);
+            if (results.isEmpty()) {
                 view.showSearchResult("No Pokemon found with name: " + name);
+            } else {
+                // For simplicity, display all matching records.
+                StringBuilder sb = new StringBuilder();
+                for (PokemonRecord record : results) {
+                    sb.append(record.toString()).append("\n");
+                }
+                view.showSearchResult(sb.toString());
             }
         });
         
         // Listener for searching by ability.
         view.addSearchByAbilityListener((ability) -> {
-            String result = model.searchByAbility(ability);
-            if (result.isEmpty()) {
+            List<PokemonRecord> results = model.searchByAbility(ability);
+            if (results.isEmpty()) {
                 view.showSearchResult("No Pokemon found with ability: " + ability);
             } else {
-                view.showSearchResult(result);
+                StringBuilder sb = new StringBuilder();
+                for (PokemonRecord record : results) {
+                    sb.append(record.toStringWithAbility()).append("\n");
+                }
+                view.showSearchResult(sb.toString());
             }
         });
         

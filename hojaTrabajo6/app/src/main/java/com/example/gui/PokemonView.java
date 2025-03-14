@@ -202,7 +202,7 @@ public class PokemonView extends JFrame {
     
     // Helper class to encapsulate the mapping selection.
     public static class MappingSelectionResult {
-        private String mappingType;
+        private final String mappingType;
         
         public MappingSelectionResult(String mappingType) {
             this.mappingType = mappingType;

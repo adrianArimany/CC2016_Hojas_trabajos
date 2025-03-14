@@ -1,6 +1,6 @@
 package com.example.factory;
 
-public enum maptypes {
+public enum MappingType {
     HASH_MAP,
 
     LINKED_HASH_MAP,

@@ -5,15 +5,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.example.factory.MapFactory;
-import com.example.gui.PokemonModel.MappingType;
+import com.example.factory.MappingType;
+
+
 
 public class MapPokemon implements Ipokemon{ 
 
     private final Map<String, PokemonRecord> pokemonMap;
 
     public MapPokemon(MappingType mappingType) {
-        pokemonMap = MapFactory.getMap(mappingType);   
+        pokemonMap = com.example.factory.MapFactory.getMap(mappingType); 
     }
 
     @Override
@@ -53,6 +54,12 @@ public class MapPokemon implements Ipokemon{
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public String getAllPokemon() {
+        StringBuilder result = new StringBuilder();
+        pokemonMap.values().forEach(record -> result.append(record.toString()).append("\n"));
+        return result.toString();
+    }
 
 
 
@@ -87,23 +94,17 @@ public class MapPokemon implements Ipokemon{
         int nameIndex = -1, type1Index = -1, abilityIndex = -1;
         for (int i = 0; i < headers.length; i++) {
             String header = headers[i].trim().toLowerCase();
-            switch (header) {
-                case "Name":
-                    nameIndex = i;
-                    break;
-                case "Type1":
-                    type1Index = i;
-                    break;
-                case "Abilities":
-                    abilityIndex = i;
-                    break;
-                default:
-                    break;
+            if (header.equals("name")) {
+                nameIndex = i;
+            } else if (header.equals("type1")) {
+                type1Index = i;
+            } else if (header.equals("abilities")) {
+                abilityIndex = i;
             }
         }
         
         if (nameIndex == -1 || type1Index == -1 || abilityIndex == -1) {
-            System.out.println("CSV file missing required columns. Make sure the columns are named 'Name', 'Type1', and 'Abilities'.");
+            System.out.println("CSV file missing required columns. Make sure the columns are named 'name', 'type1', and 'abilities'.");
             return;
         }
         

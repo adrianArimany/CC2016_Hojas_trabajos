@@ -5,8 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.example.gui.PokemonModel.MappingType;
 import com.example.mappokemon.PokemonRecord;
+
 
 
 public class MapFactory {
@@ -20,6 +20,7 @@ public class MapFactory {
             case LINKED_HASH_MAP:
                 return new LinkedHashMap<>();
             case HASH_MAP:
+                return new HashMap<>();
             default:
                 return new HashMap<>();
         }

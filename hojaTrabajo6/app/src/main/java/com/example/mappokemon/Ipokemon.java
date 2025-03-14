@@ -8,7 +8,7 @@ public interface Ipokemon {
     PokemonRecord getPokemon(String name);
     List<PokemonRecord> searchByName(String nameQuery);
     List<PokemonRecord> searchByAbility(String abilityQuery);
-
+    String getAllPokemon();
     //Generic Loading format, can be CSV, JSON, XML, etc.
     void loadFrom(String filePath);
 }
