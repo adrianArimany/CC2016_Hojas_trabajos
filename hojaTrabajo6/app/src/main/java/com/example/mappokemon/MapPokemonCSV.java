@@ -86,7 +86,6 @@ public class MapPokemonCSV implements Ipokemon{
      * 
      * 
      * @param filePath The path to the CSV file.
-     * @throws IllegalArgumentException If the file is empty or cannot be read.
      * 
      * Heavily assited by CHATGPT, I really really hate csv files.
      * 
