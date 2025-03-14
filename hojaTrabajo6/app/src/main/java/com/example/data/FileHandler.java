@@ -19,7 +19,6 @@ public class FileHandler {
      * @return The content of the file as a string. If the file path is null, 
      * returns "Error: File path is null". If an error occurs during reading, an empty string is returned.
      */
-
     public static String readFile(String filePath) {
         if (filePath == null) {
             return "Error: File path is null";

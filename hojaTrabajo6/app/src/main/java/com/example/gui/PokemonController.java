@@ -33,7 +33,7 @@ public class PokemonController {
         // Listener for adding a Pokemon.
         view.addAddPokemonListener((name, ability) -> {
             if (name.isEmpty() || ability.isEmpty()) {
-                view.showMessage("Please provide both a name and an ability.");
+                view.showMessage("Please provide both a name and a Type.");
             } else if (!model.addPokemon(name, ability)) {
                 view.showMessage("Error: Pokemon with name " + name + " already exists.");
             } else {

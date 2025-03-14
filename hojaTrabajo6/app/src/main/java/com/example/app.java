@@ -44,6 +44,7 @@ public class app {
         
         // Create the main view and controller.
         PokemonView mainView = new PokemonView();
+        @SuppressWarnings("unused")
         PokemonController controller = new PokemonController(model, mainView);
         
         // Show the main program window.

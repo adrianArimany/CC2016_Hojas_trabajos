@@ -65,7 +65,7 @@ public class PokemonView extends JFrame {
         addPanel.add(new JLabel("Name:"));
         addNameField = new JTextField(10);
         addPanel.add(addNameField);
-        addPanel.add(new JLabel("Ability:"));
+        addPanel.add(new JLabel("Type:"));
         addAbilityField = new JTextField(10);
         addPanel.add(addAbilityField);
         addPokemonButton = new JButton("Add Pokemon");
@@ -271,7 +271,7 @@ public class PokemonView extends JFrame {
     
     // Helper class to encapsulate the mapping selection.
 
-    
+
     public static class MappingSelectionResult {
         private final String mappingType;
         
