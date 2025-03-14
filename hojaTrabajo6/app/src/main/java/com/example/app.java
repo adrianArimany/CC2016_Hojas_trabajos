@@ -7,6 +7,16 @@ import com.example.gui.PokemonController;
 import com.example.gui.PokemonView;
 import com.example.mappokemon.MapPokemonCSV;
 
+
+/**
+ * The main application to run the Pokemon application.
+ * @author Adrian Arimany Zamora - 211063
+ * @version 1.0
+ * @see https://github.com/adrianArimany/CC2016_Hojas_trabajos check hojaTrabajo6
+ * 
+ * 
+ * 
+ */
 public class app {
     public static void main(String[] args) {
         // Initialize the data directory.
