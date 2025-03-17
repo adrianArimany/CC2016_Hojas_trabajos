@@ -22,15 +22,11 @@ public class MapFactory {
         if (type == null) {
             throw new IllegalArgumentException("Can't find any Mapping type. Check for a null pointer exception.");
         }
-        switch (type) {
-            case TREE_MAP:
-                return new TreeMap<>();
-            case LINKED_HASH_MAP:
-                return new LinkedHashMap<>();
-            case HASH_MAP:
-                return new HashMap<>();
-            default:
-                return new HashMap<>();
-        }
+        return switch (type) {
+            case TREE_MAP -> new TreeMap<>();
+            case LINKED_HASH_MAP -> new LinkedHashMap<>();
+            case HASH_MAP -> new HashMap<>();
+            default -> new HashMap<>();
+        };
     }
 }

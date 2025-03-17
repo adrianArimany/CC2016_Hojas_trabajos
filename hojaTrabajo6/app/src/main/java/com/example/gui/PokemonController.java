@@ -39,8 +39,8 @@ public class PokemonController {
             } else {
                 view.showMessage("Pokemon added: " + name);
                 // Save the updated file here if needed.
-                if (model instanceof com.example.mappokemon.MapPokemonCSV) {
-                    ((com.example.mappokemon.MapPokemonCSV) model).saveTo("updated_pokemon_data.csv");
+                if (model instanceof com.example.mappokemon.MapPokemonCSV csvModel) {
+                    csvModel.saveTo("updated_pokemon_data.csv");
                 }
                 // Refresh the displayed list after adding.
                 view.updatePokemonList(model.getAllPokemon());

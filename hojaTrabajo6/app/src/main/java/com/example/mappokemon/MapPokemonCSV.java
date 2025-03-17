@@ -113,18 +113,11 @@ public class MapPokemonCSV implements Ipokemon{
         String header = headers[i].trim().toLowerCase();
         //System.out.println("Header " + i + ": " + header);
         switch (header) {
-            case "name":
-                nameIndex = i;
-                break;
-            case "type1":
-                type1Index = i;
-                break;
-            case "abilities":
-            case "ability":
-                abilityIndex = i;
-                break;
-            default:
-                break;
+            case "name" -> nameIndex = i;
+            case "type1" -> type1Index = i;
+            case "abilities", "ability" -> abilityIndex = i;
+            default -> {
+            }
         }
     }
     
