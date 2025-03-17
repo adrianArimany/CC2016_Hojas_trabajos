@@ -13,6 +13,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+/**
+ * Assited by ChatGPT (2025)
+ * 
+ */
 public class PokemonView extends JFrame {
     private final JFrame mainFrame;
     // Components for the main program window:
@@ -269,9 +273,8 @@ public class PokemonView extends JFrame {
         mainFrame.setVisible(true);
     }
     
-    // Helper class to encapsulate the mapping selection.
-
-
+    
+    // Inner class for mapping selection result.
     public static class MappingSelectionResult {
         private final String mappingType;
         
@@ -279,6 +282,11 @@ public class PokemonView extends JFrame {
             this.mappingType = mappingType;
         }
         
+
+        /**
+         * Returns the selected mapping type.
+         * @return map type
+         */
         public String getMappingType() {
             return mappingType;
         }
