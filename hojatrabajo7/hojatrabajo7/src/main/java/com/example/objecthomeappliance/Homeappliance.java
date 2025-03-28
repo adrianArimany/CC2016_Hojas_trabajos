@@ -8,9 +8,9 @@ public class Homeappliance {
     private final String category;
 
 
-    public Homeappliace(String sku, float price_retail, float price_current, String product_name, String category) {
+    public Homeappliance(String sku, float price_retail, float price_current, String product_name, String category) {
         this.sku = sku;
-        this.price_retual = price_retail;
+        this.price_retail = price_retail;
         this.price_current = price_current;
         this.product_name = product_name;
         this.category = category;
@@ -30,15 +30,20 @@ public class Homeappliance {
     }
 
     public String getProductName() {
-        return getProductName;
+        return product_name;
     }
 
     public String getCategory() {
-        return getCategory;
+        return category;
     }
 
     @Override
     public String toString() {
-        return "Home appliance [Category : " + category + ", product name:  " + product_name + " = ]"
+        return "Home appliance [Category : " + category 
+        + ", product name:  " + product_name 
+        + " , sku: " + sku 
+        + ", price current: " + price_current 
+        + ", price retail: " + price_retail 
+        + "= ]";
     }
 }
