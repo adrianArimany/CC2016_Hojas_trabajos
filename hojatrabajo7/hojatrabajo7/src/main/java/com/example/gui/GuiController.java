@@ -3,7 +3,7 @@ package com.example.gui;
 
 import java.util.List;
 
-import com.example.objecthomeappliance.Homeappliance;
+import com.example.objecthomeappliance.HomeApplianceRecord;
 import com.example.searchstructure.Ibst;
 
 
@@ -28,7 +28,7 @@ public class GuiController {
                 view.showSearchResult("No Pokemon found with name: " + name);
             } else {
                 StringBuilder sb = new StringBuilder();
-                for (Homeappliance record : results) {
+                for (HomeApplianceRecord record : results) {
                     sb.append(record.toString()).append("\n");
                 }
                 view.showSearchResult(sb.toString());
