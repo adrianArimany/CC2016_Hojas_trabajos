@@ -24,14 +24,6 @@ public class HomeApplianceRecord {
     public float getPriceRetail() {
         return price_retail;
     }
-    
-/*************  ✨ Codeium Command ⭐  *************/
-    /**
-     * Gets the current price of the home appliance.
-     *
-     * @return The current price of the home appliance.
-     */
-/******  0503885c-85e7-4ed5-be4c-f697ed7256cc  *******/
     public float getPriceCurrent() {
         return price_current;
     }

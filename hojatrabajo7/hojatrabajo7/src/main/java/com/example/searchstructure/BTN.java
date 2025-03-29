@@ -1,6 +1,6 @@
 package com.example.searchstructure;
 
-public class BTN<K extends Comparable<K>, V> {
+public final class BTN<K extends Comparable<K>, V> {
     private K _key;
     private V _value;
     private BTN<K, V> _leftChild;
@@ -8,6 +8,16 @@ public class BTN<K extends Comparable<K>, V> {
     private BTN<K, V> _parent;
     private boolean isRightChild;
 
+
+    public BTN(K key, V value, BTN<K, V> parent, boolean isrightchild){
+        set_key(key);
+        set_value(value);
+        set_parent(parent);
+        set_rightChild(null);
+        set_leftChild(null);
+        setIsRightChild(isrightchild);
+    }   
+    
     public K get_key() {
         return _key;
     }
@@ -45,12 +55,5 @@ public class BTN<K extends Comparable<K>, V> {
         this.isRightChild = isRightChild;
     }
 
-    public BTN(K key, V value, BTN<K, V> parent, boolean isrightchild){
-        set_key(key);
-        set_value(value);
-        set_parent(parent);
-        set_rightChild(null);
-        set_leftChild(null);
-        setIsRightChild(isrightchild);
-    }    
+     
 }

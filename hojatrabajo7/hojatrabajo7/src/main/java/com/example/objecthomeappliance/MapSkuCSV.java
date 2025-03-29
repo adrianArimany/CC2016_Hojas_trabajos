@@ -1,5 +1,6 @@
 package com.example.objecthomeappliance;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,10 +11,11 @@ import com.example.searchstructure.Ibst;
 public class MapSkuCSV implements Isku {
 
     private final Map<String, HomeApplianceRecord> homeAppliaceMap;
+    private final Ibst<String, HomeApplianceRecord> bst;
 
     public MapSkuCSV(Map<String, HomeApplianceRecord> homeAppliaceMap) {
         this.homeAppliaceMap = homeAppliaceMap;
-        Ibst<String, HomeApplianceRecord> bst = new BST<>();
+        this.bst = new BST<>();
         for (HomeApplianceRecord record : homeAppliaceMap.values()) {
             bst.insert(record.getSKU(), record);
         }
@@ -29,7 +31,6 @@ public class MapSkuCSV implements Isku {
     
     // Split on both Windows and Unix line breaks.
     String[] lines = fileContent.split("\\r?\\n");
-    System.out.println("Total lines read: " + lines.length);
     if (lines.length < 2) {
         System.out.println("File has no data.");
         return;
@@ -42,18 +43,17 @@ public class MapSkuCSV implements Isku {
         String header = headers[i].trim().toLowerCase();
         //System.out.println("Header " + i + ": " + header);
         switch (header) {
-            case "CATEGORY" -> categoryIndex = i;
-            case "PRODUCT NAME" -> nameIndex = i;
-            case "SKU" -> skuIndex = i;
-            case "PRICE CURRENT" -> priceIndex = i;
-            case "PRICE RETAIL" -> ratailIndex = i;
-            default -> {
-            }
+            case "category" -> categoryIndex = i;
+            case "product name" -> nameIndex = i;
+            case "sku" -> skuIndex = i;
+            case "price current" -> priceIndex = i;
+            case "price retail" -> ratailIndex = i;
+            default -> {}
         }
     }
     
     if (categoryIndex == -1 || nameIndex == -1 || skuIndex == -1 || priceIndex == -1 || ratailIndex == -1) {
-        System.out.println("File missing required columns. nameIndex: " + categoryIndex + nameIndex + skuIndex + priceIndex + ratailIndex);
+        System.out.println("File missing required columns.");
         return;
     }
     
@@ -76,7 +76,9 @@ public class MapSkuCSV implements Isku {
         float retail = Float.parseFloat(parts[ratailIndex].trim());
         HomeApplianceRecord record = new HomeApplianceRecord(sku, retail, price, name, category);
         homeAppliaceMap.put(sku, record);
-    }
+        // By Inserting into BST. The duplicate key handling in BST will ensure only the record with the best price remains.
+        bst.insert(sku, record);
+        }
     }
 
 
@@ -95,14 +97,20 @@ public class MapSkuCSV implements Isku {
 
     @Override
     public List<HomeApplianceRecord> searchBySku(String skuQuery) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchBySku'");
+        // Here I use  BST to efficiently search by SKU.
+        HomeApplianceRecord found = bst.search(skuQuery);
+        List<HomeApplianceRecord> result = new ArrayList<>();
+        if (found != null) {
+            result.add(found);
+        }
+        return result;
     }
 
     @Override
     public String getAllHomeAppliaceRecord() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllHomeAppliaceRecord'");
+        StringBuilder result = new StringBuilder();
+        homeAppliaceMap.values().forEach(record -> result.append(record.toString()).append("\n"));
+        return result.toString();
     }
     
 }
