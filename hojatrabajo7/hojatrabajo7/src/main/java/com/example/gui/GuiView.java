@@ -18,12 +18,10 @@ import javax.swing.JTextField;
  * 
  */
 public class GuiView extends JFrame {
-    private final JFrame mainFrame;
+    
     // Components for the main program window:
-    
-    private final JTextField searchNameField;
-    private final JButton searchByNameButton;
-    
+    private final JTextField searchSkuField;
+    private final JButton searchBySkuButton;
     private final JButton refreshListButton;
     private final JTextArea resultArea;
     private final JTextArea listArea;
@@ -32,10 +30,9 @@ public class GuiView extends JFrame {
     
     
     public interface SearchBySkuListener {
-        void searchBySku(String name);
+        void searchBySku(String sku);
     }
-    private SearchBySkuListener searchByNameListener;
-    
+    private SearchBySkuListener searchBySkuListener;
     
     public interface RefreshListListener {
         void refreshList();
@@ -43,55 +40,52 @@ public class GuiView extends JFrame {
     private RefreshListListener refreshListListener;
     
     public GuiView() {
-        mainFrame = new JFrame("Home Appliaince Data Base");
-        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        mainFrame.setSize(800, 600);
-        mainFrame.setLayout(new BorderLayout());
+        super("Home Appliance Data Base");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(800, 600);
+        setLayout(new BorderLayout());
         
+        // Create the search panel (placed at the top).
+        JPanel searchPanel = new JPanel();
+        searchPanel.setBorder(BorderFactory.createTitledBorder("Search by SKU"));
+        searchSkuField = new JTextField(20);
+        searchBySkuButton = new JButton("Search");
+        searchPanel.add(new JLabel("SKU:"));
+        searchPanel.add(searchSkuField);
+        searchPanel.add(searchBySkuButton);
         
-        // Panel for searching home appliance by sku.
-        JPanel searchPanel = new JPanel(new GridLayout(2,1));
-        JPanel nameSearchPanel = new JPanel();
-        nameSearchPanel.setBorder(BorderFactory.createTitledBorder("Search by Name"));
-        searchNameField = new JTextField(10);
-        nameSearchPanel.add(new JLabel("SKU found:"));
-        nameSearchPanel.add(searchNameField);
-        searchByNameButton = new JButton("Search by  SKU");
-        nameSearchPanel.add(searchByNameButton);
-        
-        // Panel for displaying results and the complete list.
+        // Create the output panel for results and list.
         JPanel outputPanel = new JPanel(new GridLayout(2, 1));
         resultArea = new JTextArea(5, 30);
-        resultArea.setBorder(BorderFactory.createTitledBorder("Search Result"));
         resultArea.setEditable(false);
+        resultArea.setBorder(BorderFactory.createTitledBorder("Search Result"));
         listArea = new JTextArea(5, 30);
-        listArea.setBorder(BorderFactory.createTitledBorder("Home Appliance List"));
         listArea.setEditable(false);
+        listArea.setBorder(BorderFactory.createTitledBorder("Home Appliance List"));
         outputPanel.add(new JScrollPane(resultArea));
         outputPanel.add(new JScrollPane(listArea));
         
+        // Create a panel for the refresh button.
+        JPanel refreshPanel = new JPanel();
         refreshListButton = new JButton("Refresh Home Appliance List");
+        refreshPanel.add(refreshListButton);
         
-        // Main container layout.
-        JPanel centerPanel = new JPanel(new BorderLayout());
-        centerPanel.add(searchPanel, BorderLayout.CENTER);
-        centerPanel.add(outputPanel, BorderLayout.SOUTH);
-        
-        mainFrame.add(centerPanel, BorderLayout.CENTER);
-        mainFrame.add(refreshListButton, BorderLayout.SOUTH);
+        // Add panels to the main frame.
+        add(searchPanel, BorderLayout.NORTH);
+        add(outputPanel, BorderLayout.CENTER);
+        add(refreshPanel, BorderLayout.SOUTH);
         
         attachListeners();
     }
     
     /**
-     * Attach action listeners to the buttons in the view. These listeners delegate
-     * the actions to the corresponding methods on the controller.
+     * Attach action listeners to the buttons.
      */
     private void attachListeners() {
-        searchByNameButton.addActionListener(e -> {
-            if (searchByNameListener != null) {
-                String sku = searchNameField.getText().trim();
-                searchByNameListener.searchBySku(sku);
+        searchBySkuButton.addActionListener(e -> {
+            if (searchBySkuListener != null) {
+                String sku = searchSkuField.getText().trim();
+                searchBySkuListener.searchBySku(sku);
             }
         });
         
@@ -102,69 +96,53 @@ public class GuiView extends JFrame {
         });
     }
     
-    
-    
-
     /**
-     * Set the listener for searching Pokemon by name. This listener will be 
-     * notified when the "Search by Name" button is clicked.
-     * 
-     * @param listener the listener to notify.
+     * Set the listener for searching by SKU.
      */
     public void addSearchBySkuListener(SearchBySkuListener listener) {
-        this.searchByNameListener = listener;
+        this.searchBySkuListener = listener;
     }
     
     /**
-     * Set the listener for refreshing the Pokemon list. This listener will be 
-     * notified when the "Refresh Pokemon List" button is clicked.
-     * 
-     * @param listener the listener to notify.
+     * Set the listener for refreshing the list.
      */
     public void addRefreshListListener(RefreshListListener listener) {
         this.refreshListListener = listener;
-    }    
-    /**
-     * Shows a message dialog with the given message. The dialog is modal and
-     * centered on the main window of the application.
-     * 
-     * @param message the message to be displayed in the dialog.
-     */
-    public void showMessage(String message) {
-        JOptionPane.showMessageDialog(mainFrame, message);
     }
     
     /**
-     * Displays the given search result in the search result area of the view.
-     * 
-     * @param result the search result to be displayed.
+     * Displays the search result.
      */
     public void showSearchResult(String result) {
         resultArea.setText(result);
     }
     
     /**
-     * Updates the SKU list in the view with the given list content.
-     * 
-     * @param listContent the content of the list to be displayed.
+     * Updates the home appliance list display.
      */
     public void updateSkuList(String listContent) {
         listArea.setText(listContent);
     }
     
-    // Methods to display the initial dialogs.
+    /**
+     * Opens a file chooser dialog.
+     */
     public String showFileSelection() {
-        // Opens a file chooser dialog.
-        return GuiUtil.chooseFile(new JFrame("Select File"));
+        return GuiUtil.chooseFile(this);
     }
     
-    
     /**
-     * Shows the main window of the application. This method should be called
-     * once the model and controller are set up.
+     * Shows the main window.
      */
     public void showMainWindow() {
-        mainFrame.setVisible(true);
+        setVisible(true);
+    }
+    
+    /**
+     * Shows a message dialog.
+     */
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
     }
 }
 

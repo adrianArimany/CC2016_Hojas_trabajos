@@ -4,15 +4,15 @@ package com.example.gui;
 import java.util.List;
 
 import com.example.objecthomeappliance.HomeApplianceRecord;
-import com.example.searchstructure.Ibst;
+import com.example.objecthomeappliance.Isku;
 
 
 
 public class GuiController {
-    private final Ibst<String, String> model;
+    private final Isku model;
     private final GuiView view;
     
-    public GuiController(Ibst<String, String> model, GuiView view) {
+    public GuiController(Isku model, GuiView view) {
         this.model = model;
         this.view = view;
         initController();
@@ -21,11 +21,11 @@ public class GuiController {
     
     
     private void initController() {
-        // Listener for searching by name.
-        view.addSearchBySkuListener((name) -> {
-            List<> results = model.searchBySku(name);
+        // Listener for searching by SKU.
+        view.addSearchBySkuListener((sku) -> {
+            List<HomeApplianceRecord> results = model.searchBySku(sku);
             if (results.isEmpty()) {
-                view.showSearchResult("No Pokemon found with name: " + name);
+                view.showSearchResult("No Home Appliance found with SKU: " + sku);
             } else {
                 StringBuilder sb = new StringBuilder();
                 for (HomeApplianceRecord record : results) {
@@ -35,11 +35,10 @@ public class GuiController {
             }
         });
         
-        
-        
         // Listener for refreshing the list.
         view.addRefreshListListener(() -> {
-            view.updateSkuList(model.getAllSku());
+            view.updateSkuList(model.getAllHomeAppliaceRecord());
         });
     }
+    
 }

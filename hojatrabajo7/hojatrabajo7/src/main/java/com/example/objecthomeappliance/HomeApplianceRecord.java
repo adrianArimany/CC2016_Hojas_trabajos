@@ -38,11 +38,11 @@ public class HomeApplianceRecord {
 
     @Override
     public String toString() {
-        return "Home appliance [Category : " + category 
-        + ", product name:  " + product_name 
-        + " , sku: " + sku 
+        return "Home appliance [Sku : " + sku 
         + ", price current: " + price_current 
+        + " , Category: " + category 
+        + ", product name:  " + product_name 
         + ", price retail: " + price_retail 
-        + "= ]";
+        + " ]";
     }
 }

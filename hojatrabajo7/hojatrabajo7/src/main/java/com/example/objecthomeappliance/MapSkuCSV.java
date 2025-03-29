@@ -22,7 +22,7 @@ public class MapSkuCSV implements Isku {
     }
 
     @Override
-    public void loadFrom(String filePath) {
+public void loadFrom(String filePath) {
     String fileContent = FileHandler.readFile(filePath);
     if (fileContent == null || fileContent.isEmpty()) {
         System.out.println("File is empty or could not be read.");
@@ -31,29 +31,30 @@ public class MapSkuCSV implements Isku {
     
     // Split on both Windows and Unix line breaks.
     String[] lines = fileContent.split("\\r?\\n");
+    System.out.println("Total lines read: " + lines.length);
     if (lines.length < 2) {
         System.out.println("File has no data.");
         return;
     }
     
-    // Parse header
+    // Parse header. Normalize headers by replacing underscores with spaces.
     String[] headers = lines[0].split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-    int categoryIndex = -1, nameIndex = -1, skuIndex  = -1, priceIndex = -1, ratailIndex = -1;
+    int categoryIndex = -1, nameIndex = -1, skuIndex = -1, priceIndex = -1, retailIndex = -1;
     for (int i = 0; i < headers.length; i++) {
-        String header = headers[i].trim().toLowerCase();
-        //System.out.println("Header " + i + ": " + header);
+        String header = headers[i].trim().toLowerCase().replace("_", " ");
         switch (header) {
             case "category" -> categoryIndex = i;
             case "product name" -> nameIndex = i;
             case "sku" -> skuIndex = i;
             case "price current" -> priceIndex = i;
-            case "price retail" -> ratailIndex = i;
-            default -> {}
+            case "price retail" -> retailIndex = i;
+            default -> { }
         }
     }
     
-    if (categoryIndex == -1 || nameIndex == -1 || skuIndex == -1 || priceIndex == -1 || ratailIndex == -1) {
-        System.out.println("File missing required columns.");
+    if (categoryIndex == -1 || nameIndex == -1 || skuIndex == -1 || priceIndex == -1 || retailIndex == -1) {
+        System.out.println("File missing required columns. Columns found: " 
+                + categoryIndex + ", " + nameIndex + ", " + skuIndex + ", " + priceIndex + ", " + retailIndex);
         return;
     }
     
@@ -65,21 +66,43 @@ public class MapSkuCSV implements Isku {
         String line = lines[i];
         // Use regex-based split for the entire line.
         String[] parts = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-        if (parts.length <= Math.max(categoryIndex, Math.max(nameIndex, Math.max(skuIndex, Math.max(priceIndex, ratailIndex))))) {
+        if (parts.length <= Math.max(categoryIndex, Math.max(nameIndex, Math.max(skuIndex, Math.max(priceIndex, retailIndex))))) {
             System.out.println("Skipping line " + i + ": insufficient parts.");
             continue;
         }
         String category = parts[categoryIndex].trim();
         String name = parts[nameIndex].trim();
         String sku = parts[skuIndex].trim();
-        float price = Float.parseFloat(parts[priceIndex].trim());
-        float retail = Float.parseFloat(parts[ratailIndex].trim());
+        
+        // Normalize the numeric strings by removing quotes.
+        String priceStr = parts[priceIndex].trim().replace("\"", "");
+        String retailStr = parts[retailIndex].trim().replace("\"", "");
+        // Replace empty numeric fields with "0".
+        if (priceStr.isEmpty()) {
+            priceStr = "0";
+        }
+        if (retailStr.isEmpty()) {
+            retailStr = "0";
+        }
+        
+        float price;
+        float retail;
+        try {
+            price = Float.parseFloat(priceStr);
+            retail = Float.parseFloat(retailStr);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Skipping line " + i + " due to number format exception: " + nfe.getMessage());
+            continue;
+        }
+        
         HomeApplianceRecord record = new HomeApplianceRecord(sku, retail, price, name, category);
         homeAppliaceMap.put(sku, record);
-        // By Inserting into BST. The duplicate key handling in BST will ensure only the record with the best price remains.
+        // Insert into BST (with duplicate key handling based on Price_Current).
         bst.insert(sku, record);
-        }
     }
+    }
+
+
 
 
     @Override
