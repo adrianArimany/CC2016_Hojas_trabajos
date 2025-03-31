@@ -20,6 +20,17 @@ public class GuiController {
     }
     
     
+    /**
+     * Initializes the controller by adding listeners to the view.
+     * 
+     * Adds a listener to the view for searching by SKU. When a search is performed,
+     * the model is queried and the results are displayed in the view. If no results
+     * are found, a message is displayed indicating that no Home Appliances were found
+     * with the given SKU.
+     * 
+     * Also adds a listener to the view for refreshing the list. When the list is refreshed,
+     * the model is queried and the results are displayed in the view.
+     */
     private void initController() {
         // Listener for searching by SKU.
         view.addSearchBySkuListener((sku) -> {

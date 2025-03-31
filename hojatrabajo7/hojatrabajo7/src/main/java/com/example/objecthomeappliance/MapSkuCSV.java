@@ -21,6 +21,14 @@ public class MapSkuCSV implements Isku {
         }
     }
 
+    /**
+     * Reads the content of a file specified by the file path into the
+     * HomeApplianceRecord map and the BST data structure.
+     * 
+     * @param filePath The path of the file to be read.
+     * @return The content of the file as a string. If the file path is null, 
+     * returns "Error: File path is null". If an error occurs during reading, an empty string is returned.
+     */
     @Override
 public void loadFrom(String filePath) {
     String fileContent = FileHandler.readFile(filePath);
@@ -64,7 +72,6 @@ public void loadFrom(String filePath) {
     // Process each record.
     for (int i = 1; i < lines.length; i++) {
         String line = lines[i];
-        // Use regex-based split for the entire line.
         String[] parts = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
         if (parts.length <= Math.max(categoryIndex, Math.max(nameIndex, Math.max(skuIndex, Math.max(priceIndex, retailIndex))))) {
             System.out.println("Skipping line " + i + ": insufficient parts.");
@@ -74,6 +81,7 @@ public void loadFrom(String filePath) {
         String name = parts[nameIndex].trim();
         String sku = parts[skuIndex].trim();
         
+        // Since some of the values for the price index and retail index are empty, we need to handle that case. 
         // Normalize the numeric strings by removing quotes.
         String priceStr = parts[priceIndex].trim().replace("\"", "");
         String retailStr = parts[retailIndex].trim().replace("\"", "");
@@ -105,6 +113,23 @@ public void loadFrom(String filePath) {
 
 
 
+    /**
+     * Saves the home appliance data to a CSV file.
+     * 
+     * This method will write the contents of the homeAppliaceMap to a file
+     * named by the given filename. The file will be written in a CSV format
+     * with the following columns:
+     * 
+     * <ul>
+     * <li>Category</li>
+     * <li>Product Name</li>
+     * <li>SKU</li>
+     * <li>Price Current</li>
+     * <li>Price Retail</li>
+     * </ul>
+     * 
+     * @param fileName the name of the file to write to.
+     */
     @Override
     public void saveTo(String fileName) {
         StringBuilder sb = new StringBuilder();
@@ -118,6 +143,16 @@ public void loadFrom(String filePath) {
         com.example.datahandler.FileHandler.writeResult(fileName, sb.toString());
     }
 
+/**
+ * Searches for a home appliance record by its SKU.
+ *
+ * This method utilizes a binary search tree (BST) to efficiently locate
+ * a home appliance record based on the provided SKU query. If a matching
+ * record is found, it is added to the result list.
+ *
+ * @param skuQuery the SKU code to search for
+ * @return a list containing the HomeApplianceRecord if found; otherwise, an empty list
+ */
     @Override
     public List<HomeApplianceRecord> searchBySku(String skuQuery) {
         // Here I use  BST to efficiently search by SKU.
@@ -129,6 +164,14 @@ public void loadFrom(String filePath) {
         return result;
     }
 
+    /**
+     * Retrieves all home appliance records as a string.
+     * 
+     * This method iterates over the homeAppliaceMap and appends each
+     * HomeApplianceRecord's string representation to a StringBuilder.
+     * 
+     * @return a string containing all home appliance records, each separated by a newline.
+     */
     @Override
     public String getAllHomeAppliaceRecord() {
         StringBuilder result = new StringBuilder();
