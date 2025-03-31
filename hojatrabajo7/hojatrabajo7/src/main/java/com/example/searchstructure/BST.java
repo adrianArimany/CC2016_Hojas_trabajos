@@ -20,16 +20,37 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         _root = null;
     }
     
+/**
+ * Returns the number of nodes currently present in the binary search tree.
+ *
+ * @return the count of nodes in the tree
+ */
     @Override
     public int count() {
         return _count;
     }
     
+    /**
+     * Indicates whether the binary search tree is empty or not.
+     * 
+     * @return true if the tree is empty, false otherwise
+     */
     @Override
     public boolean isEmpty() {
         return _count == 0;
     }
     
+/**
+ * Inserts a new node with the specified key and value into the binary search tree.
+ * 
+ * If the tree is empty, the new node becomes the root. Otherwise, it is inserted 
+ * in the appropriate position to maintain the binary search tree property.
+ * If a node with the same key already exists, the node's value is updated if the 
+ * new value has a lower price (specific to HomeApplianceRecord).
+ *
+ * @param key   the key of the new node
+ * @param value the value of the new node
+ */
     @Override
     public void insert(K key, V value) {
         BTN<K, V> newNode = new BTN<>(key, value, null, false);
@@ -42,6 +63,17 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         }
     }
     
+    /**
+     * Recursively inserts a new node into the binary search tree.
+     * 
+     * It starts at the given parent node and navigates to the appropriate position
+     * to insert the new node, maintaining the binary search tree property. If a node
+     * with the same key already exists, the node's value is updated if the new value
+     * has a lower price (specific to HomeApplianceRecord).
+     * 
+     * @param parent the parent node to start the insertion from
+     * @param newNode the new node to be inserted
+     */
     private void internalInsert(BTN<K, V> parent, BTN<K, V> newNode){
         int result = parent.get_key().compareTo(newNode.get_key());
     
@@ -75,6 +107,12 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         }
     }
     
+    /**
+     * Searches for a node in the binary search tree with the given key.
+     * 
+     * @param keyToFind the key of the node to search for
+     * @return the value associated with the node with the given key, or null if the key is not present
+     */
     @Override
     public V search(K keyToFind) {
         if (isEmpty()){
@@ -84,6 +122,17 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         }
     }
     
+    /**
+     * Recursively searches for a node in the binary search tree with the given key.
+     * 
+     * It starts at the given parent node and navigates to the appropriate position
+     * to find the node with the given key, maintaining the binary search tree property.
+     * If the key is not present, it returns null.
+     * 
+     * @param parent the parent node to start the search from
+     * @param keyToFind the key of the node to search for
+     * @return the value associated with the node with the given key, or null if the key is not present
+     */
     private V internalSearch(BTN<K, V> parent, K keyToFind){
         if (parent != null){
             int result = parent.get_key().compareTo(keyToFind);
@@ -99,6 +148,14 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         }
     }
     
+    /**
+     * Removes a node from the binary search tree with the given key.
+     * 
+     * If the key is not present, it returns null.
+     * 
+     * @param key the key of the node to remove
+     * @return the value associated with the removed node, or null if the key is not present
+     */
     @Override
     public V remove(K key) {
         BTN<K,V> nodeToRemove = findNode(_root, key);
@@ -111,7 +168,19 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         return removedValue;
     }
     
-    // Helper method to locate the node with the given key.
+    
+    /**
+     * Finds a node in the binary search tree with the given key.
+     * 
+     * Recursively searches for a node in the binary search tree with the given key.
+     * It starts at the given parent node and navigates to the appropriate position
+     * to find the node with the given key, maintaining the binary search tree property.
+     * If the key is not present, it returns null.
+     * 
+     * @param node the parent node to start the search from
+     * @param key the key of the node to search for
+     * @return the node with the given key, or null if the key is not present
+     */
     private BTN<K,V> findNode(BTN<K,V> node, K key) {
         if (node == null) return null;
         int cmp = node.get_key().compareTo(key);
@@ -186,7 +255,13 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         }
     }
     
-    // Helper method to find the minimum node in a subtree.
+    
+    /**
+     * Returns the node with the minimum key in the subtree rooted at the given node.
+     * 
+     * @param node the node to start searching from
+     * @return the node with the minimum key
+     */
     private BTN<K,V> getMin(BTN<K,V> node) {
         while (node.get_leftChild() != null) {
             node = node.get_leftChild();
@@ -194,6 +269,16 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         return node;
     }
     
+/**
+ * Performs an in-order traversal of the binary search tree.
+ * 
+ * This method uses the in-order traversal technique, which visits 
+ * the left subtree, the current node, and then the right subtree.
+ * It applies the provided traversal method to each node during 
+ * the traversal.
+ * 
+ * @param traversalMethod the method to be applied to each node during the traversal
+ */
     @Override
     public void InOrder(ITraversal<K, V> traversalMethod) {
         if (isEmpty()){
@@ -203,6 +288,17 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         }
     }
     
+/**
+ * Recursively performs an in-order traversal of the binary search tree
+ * starting from the specified node.
+ *
+ * This method visits the left subtree, applies the traversal method
+ * to the current node, and then visits the right subtree.
+ *
+ * @param traversalMethod the method to be applied to each node during the traversal
+ * @param actualNode the current node to start the traversal from
+ */
+
     private void internalInOrder(ITraversal<K, V> traversalMethod, BTN<K, V> actualNode){
         if (actualNode.get_leftChild() != null){
             internalInOrder(traversalMethod, actualNode.get_leftChild());
@@ -213,11 +309,29 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         }
     }
     
+    /**
+     * Performs a pre-order traversal of the binary search tree.
+     *
+     * This method applies the provided traversal method to the root node
+     * first, then recursively traverses the left and right subtrees.
+     *
+     * @param traversalMethod the method to be applied to each node during the traversal
+     */
     @Override
     public void PreOrder(ITraversal<K, V> traversalMethod) {
         internalPreOrder(_root, traversalMethod);
     }
     
+    /**
+     * Recursively performs a pre-order traversal of the binary search tree
+     * starting from the specified node.
+     *
+     * This method applies the provided traversal method to the current node
+     * first, then recursively traverses the left and right subtrees.
+     *
+     * @param node            the current node to start the traversal from
+     * @param traversalMethod the method to be applied to each node during the traversal
+     */
     private void internalPreOrder(BTN<K, V> node, ITraversal<K, V> traversalMethod) {
         if (node != null) {
             traversalMethod.check(node);
@@ -226,11 +340,31 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
         }
     }
     
+/**
+ * Performs a post-order traversal of the binary search tree.
+ *
+ * This method recursively traverses the left and right subtrees
+ * first, then applies the provided traversal method to the root node.
+ *
+ * @param traversalMethod the method to be applied to each node during the traversal
+ */
+
     @Override
     public void PostOrder(ITraversal<K, V> traversalMethod) {
         internalPostOrder(_root, traversalMethod);
     }
     
+/**
+ * Recursively performs a post-order traversal of the binary search tree
+ * starting from the specified node.
+ *
+ * This method first traverses the left and right subtrees, then applies
+ * the traversal method to the current node.
+ *
+ * @param node            the current node to start the traversal from
+ * @param traversalMethod the method to be applied to each node during the traversal
+ */
+
     private void internalPostOrder(BTN<K, V> node, ITraversal<K, V> traversalMethod) {
         if (node != null) {
             internalPostOrder(node.get_leftChild(), traversalMethod);
