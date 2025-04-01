@@ -96,13 +96,17 @@ public class BST<K extends Comparable<K>, V> implements Ibst<K, V> {
                 internalInsert(parent.get_rightChild(), newNode);
             }   
         } else {
-            // Duplicate key: if the same SKU is being inserted, we want to keep the product
-            // with the lowest Price_Current.
+            // (new Instructions) if the same SKU is being inserted, we want to keep the product with the lowest SKU (i.e. by comparing the sku)
             HomeApplianceRecord current = (HomeApplianceRecord) parent.get_value();
             V newRecord = newNode.get_value();
-            if(((HomeApplianceRecord)newRecord).getPriceCurrent() < ((HomeApplianceRecord)current).getPriceCurrent()){ 
+            if(((HomeApplianceRecord)newRecord).getSKU().compareTo(((HomeApplianceRecord)current).getSKU()) < 0){
                 parent.set_value(newRecord);
             }
+            // (Old instructions) Duplicate key: if the same SKU is being inserted, we want to keep the product
+            // with the lowest Price_Current.
+            // if(((HomeApplianceRecord)newRecord).getPriceCurrent() < ((HomeApplianceRecord)current).getPriceCurrent()){ 
+            //     parent.set_value(newRecord);
+            // }
             return;
         }
     }
