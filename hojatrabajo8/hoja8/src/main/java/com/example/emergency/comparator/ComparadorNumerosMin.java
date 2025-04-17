@@ -1,4 +1,4 @@
-package com.example.orderobject;
+package com.example.emergency.comparator;
 
 import java.util.Comparator;
 /**
