@@ -14,19 +14,34 @@ public class EmergencyCareSystemCF implements ISystem<Patient> {
         this.queue = new PriorityQueue<>();
     }
 
-    /** Enqueue a new patient. */
+    
+    /**
+     * Admit a patient into the system.
+     * 
+     * @param p the patient to admit
+     */
     @Override
     public void admit(Patient p) {
         queue.offer(p);
     }
 
-    /** Dequeue the highest‐priority patient, or null if none. */
+   
+    /**
+     * Retrieve the next patient to be treated from the system.
+     * 
+     * @return the next patient, or null if the system is empty
+     */
     @Override
     public Patient nextPatient() {
         return queue.poll();
     }
 
-    /** True if no one’s waiting. */
+
+    /**
+     * Is there another patient in the system to be treated?
+     * 
+     * @return true if there is another patient, false otherwise
+     */
     public boolean hasNext() {
         return !queue.isEmpty();
     }

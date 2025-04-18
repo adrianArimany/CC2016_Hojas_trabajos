@@ -8,6 +8,15 @@ import java.util.Comparator;
  */
 public class ComparadorNumerosMin implements Comparator<Integer>{
 
+/**
+ * Compares two Integer objects for order.
+ *
+ * @param o1 the first Integer to compare
+ * @param o2 the second Integer to compare
+ * @return a positive integer if o1 is less than o2, zero if they are equal,
+ *         or a negative integer if o1 is greater than o2
+ */
+
     @Override
     public int compare(Integer o1, Integer o2) {
         if (o1.equals(o2)){

@@ -17,12 +17,22 @@ public class EmergencyCareSystem implements ISystem<Patient>  {
     }
 
     
+    /**
+     * Enqueue a new patient. 
+     * 
+     * @param p the new patient.
+     */
     @Override
     public void admit(Patient p) {
         queue.Insert(p, p);
     }
 
     
+    /**
+     * Dequeue the highest-priority patient, or null if none.
+     * 
+     * @return the highest-priority patient, or null if none.
+     */
     @Override
     public Patient nextPatient() {
         return queue.remove();

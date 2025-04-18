@@ -13,18 +13,39 @@ public class VectorHeap<T extends Comparable<? super T>> {
     /** Create an empty heap */
     public VectorHeap() { }
 
-    /** Insert an element into the heap */
+    
+    /**
+     * Insert a new element into the heap. This adds the element to the end of
+     * the list and then "percolates" it up the heap, swapping it with parents
+     * that are smaller than it.
+     * 
+     * @param item the element to be inserted
+     */
     public void add(T item) {
         heap.add(item);
         percolateUp(heap.size() - 1);
     }
 
-    /** Peek at (but don’t remove) the top priority element, or null if empty */
+   
+    /**
+     * Return the highest priority element in the heap, or null if empty.
+     * This just returns the value of the root of the tree.
+     * 
+     * @return the highest priority element, or null if the heap is empty
+     */
     public T peek() {
         return heap.isEmpty() ? null : heap.get(0);
     }
 
-    /** Remove and return the top priority element, or null if empty */
+ 
+    /**
+     * Remove and return the highest priority element from the heap, or null if the heap is empty.
+     * This method removes the root element, replaces it with the last element in the list, and 
+     * percolates it down to maintain the heap property.
+     * 
+     * @return the removed highest priority element, or null if the heap is empty
+     */
+
     public T remove() {
         if (heap.isEmpty()) return null;
         T root = heap.get(0);
@@ -36,19 +57,38 @@ public class VectorHeap<T extends Comparable<? super T>> {
         return root;
     }
 
-    /** Number of elements in the queue */
+   
+/**
+ * Returns the number of elements currently in the heap.
+ * 
+ * @return the size of the heap
+ */
+
     public int size() {
         return heap.size();
     }
 
-    /** True if no elements are queued */
+  
+    /**
+     * True if no elements are queued.
+     * 
+     * @return true if the heap is empty, false otherwise
+     */
     public boolean isEmpty() {
         return heap.isEmpty();
     }
 
     //––– Internal helpers –––
 
-    /** Restore heap order by bubbling the item at idx up */
+/**
+ * Moves the element at the specified index up the heap until the heap property
+ * is restored. This involves comparing the element with its parent and swapping
+ * if necessary, to ensure that parent nodes are always less than or equal to
+ * the value of their children in a min-heap.
+ * 
+ * @param idx the index of the element to move up the heap
+ */
+
     private void percolateUp(int idx) {
         T value = heap.get(idx);
         while (idx > 0) {
@@ -61,7 +101,15 @@ public class VectorHeap<T extends Comparable<? super T>> {
         heap.set(idx, value);
     }
 
-    /** Restore heap order by bubbling the item at idx down */
+    
+    /**
+     * Moves the element at the specified index down the heap until the heap property
+     * is restored. This involves comparing the element with its children and swapping
+     * if necessary, to ensure that parent nodes are always less than or equal to
+     * the value of their children in a min-heap.
+     * 
+     * @param idx the index of the element to move down the heap
+     */
     private void percolateDown(int idx) {
         int size = heap.size();
         T value = heap.get(idx);

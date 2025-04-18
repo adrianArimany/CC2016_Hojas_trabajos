@@ -23,6 +23,15 @@ public class HeapUsingIterativeBinaryTree<P, V> implements IHeap<P, V> {
 		_priorityComparator = priorityComparator;
 	}
 	
+	/**
+	 * Inserts a new element into the heap. If the heap is empty, the element is
+	 * inserted at the root. Otherwise, the element is inserted at the next
+	 * available position in the heap and then swapped up the tree according to
+	 * the priority of the element.
+	 * 
+	 * @param priority the priority of the element to be inserted
+	 * @param value    the value to be inserted
+	 */
 	@Override
 	public void Insert(P priority, V value) {
 		TreeNode<P, V> newNode = new TreeNode<>(priority, value);
@@ -72,6 +81,15 @@ public class HeapUsingIterativeBinaryTree<P, V> implements IHeap<P, V> {
 		
 	}
 	
+    /**
+     * Converts an integer value to its binary representation as an array of bytes.
+     * Each byte represents a bit (0 or 1) of the binary number, with the least
+     * significant bit at the beginning of the array.
+     *
+     * @param value the integer value to convert to binary
+     * @return a byte array representing the binary form of the given integer
+     */
+
 	private byte[] convertToBinary(int value) {
 		
 		ArrayList<Byte> listBytes = new ArrayList<>();
@@ -91,6 +109,12 @@ public class HeapUsingIterativeBinaryTree<P, V> implements IHeap<P, V> {
 		return binaryBytes;
 	}
 	
+	/**
+	 * Swap the values of two nodes if the child has a higher priority than its parent.
+	 * This is a helper method for the Insert method.
+	 * 
+	 * @param actualNode the node that is being swapped
+	 */
 	private void Swap(TreeNode<P, V> actualNode) {
 		if (actualNode != null) {
 			
@@ -115,6 +139,12 @@ public class HeapUsingIterativeBinaryTree<P, V> implements IHeap<P, V> {
 	}
 	
 
+	/**
+	 * Return the highest priority element in the heap, or null if empty.
+	 * This just returns the value of the root of the tree.
+	 * 
+	 * @return the highest priority element, or null if the heap is empty
+	 */
 	@Override
 	public V get() {
 		if (isEmpty())
@@ -122,6 +152,15 @@ public class HeapUsingIterativeBinaryTree<P, V> implements IHeap<P, V> {
 		else 
 			return _root.get_value();
 	}
+
+/**
+ * Removes and returns the value with the highest priority from the heap.
+ * If the heap is empty, returns null. This method performs a swap between
+ * the root and the last node, removes the last node, and then restores
+ * the heap property by swapping the root down the tree as necessary.
+ * 
+ * @return the value of the removed node, or null if the heap is empty
+ */
 
 	@Override
 	public V remove() {
@@ -292,11 +331,19 @@ public class HeapUsingIterativeBinaryTree<P, V> implements IHeap<P, V> {
 		return tempValue;
 	}
 
+	/**
+	 * @return the number of elements in the heap
+	 */
 	@Override
 	public int count() {
 		return _count;
 	}
 
+	/**
+	 * True if no elements are queued.
+	 * 
+	 * @return true if the heap is empty, false otherwise
+	 */
 	@Override
 	public boolean isEmpty() {
 		return _count == 0;
