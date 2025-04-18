@@ -1,0 +1,13 @@
+Isabel Torres, nausea, E
+Juan Perez, leg fracture, C
+Elena Ruiz, dehydration, D
+Roberto Martinez, head trauma, A
+Ana Gomez, high fever, C
+Pedro Sanchez, allergic reaction, B
+Maria Ramirez, appendicitis, A
+Lucia Fernandez, sprained ankle, D
+Carmen Sarmientos, labor pains, B
+Francisco Ortega, stroke symptoms, A
+Lorenzo Toledo, chikungunya, E
+Marta Diaz, severe asthma attack, A
+David Lopez, chest pain, B
