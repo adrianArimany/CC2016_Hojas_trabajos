@@ -22,7 +22,20 @@ public class Patient implements Comparable<Patient> {
         this.arrivalSeq = SEQUENCE.getAndIncrement();
     }
 
-    /** Parse a line “Name, symptom, Code” (commas optional spaces) */
+    
+    /**
+     * Factory method to create a new Patient from a CSV string.
+     * Expects a string of the form "name,symptom,code" where
+     * <ul>
+     * <li>name is the patient's name</li>
+     * <li>symptom is the symptom or diagnosis</li>
+     * <li>code is a character between 'A' and 'E' indicating
+     * the priority of the patient</li>
+     * </ul>
+     * @param line the CSV string
+     * @return a new Patient
+     * @throws IllegalArgumentException if the input string is not valid
+     */
     public static Patient fromCsv(String line) {
         String[] parts = line.split("\\s*,\\s*");
         if (parts.length != 3) {
@@ -38,6 +51,17 @@ public class Patient implements Comparable<Patient> {
     public String getSymptom() { return symptom; }
     public char   getCode()    { return code; }
 
+    /**
+     * Compares this Patient with another based on priority code and then on
+     * arrival sequence.
+     * <ul>
+     * <li>Patients with the same code are compared by arrival sequence</li>
+     * <li>If the codes are different, the highest priority code is first</li>
+     * </ul>
+     * @param other the other Patient to compare
+     * @return a negative integer, zero, or a positive integer as this Patient is
+     * less than, equal to, or greater than the other
+     */
     @Override
     public int compareTo(Patient other) {
         // A < B < C … so 'A' is highest priority
@@ -46,6 +70,11 @@ public class Patient implements Comparable<Patient> {
         return Long.compare(this.arrivalSeq, other.arrivalSeq);
     }
 
+    /**
+     * Converts this Patient to a string of the form
+     * <i>name</i>, <i>symptom</i>, <i>code</i>
+     * @return a string representation of this Patient
+     */
     @Override
     public String toString() {
         return String.format("%s, %s, %c", name, symptom, code);
