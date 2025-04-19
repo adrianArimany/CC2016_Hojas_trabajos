@@ -46,4 +46,12 @@ def simulation(env, nombre,Enfermeras, RayosX, Laboratorio, Doctores, Operacione
 
     print(f"El paciente {nombre} (prioridad {prioridad}) ha salido en el tiempo {env.now}, tuvo que esperar {wating_time} para ser atendido")
 
+def generate_simulation(env, Enfermeras, RayosX, Laboratorio, Doctores, Operaciones, num_pacientes, interval):
+    for i in range(num_pacientes):
+        env.process(simulation(env, str(i), Enfermeras, RayosX, Laboratorio, Doctores, Operaciones))
+        yield env.timeout(random.expovariate(1/interval))
+
+
+
+
 
