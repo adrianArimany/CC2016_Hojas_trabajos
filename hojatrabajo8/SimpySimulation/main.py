@@ -2,7 +2,7 @@ import random
 
 import simpy
 
-random.seed(12)
+random.seed(121)
 
 def simulation(env, nombre,Enfermeras, RayosX, Laboratorio, Doctores, Operaciones):
     print(f"El paciente {nombre} ha ingresado a la sala de espera en el tiempo {env.now}")
@@ -10,7 +10,7 @@ def simulation(env, nombre,Enfermeras, RayosX, Laboratorio, Doctores, Operacione
     prioridad = random.randint(1,5) #Prioridad del paciente
     with Enfermeras.request() as req:
         yield req
-        print(f"El paciente {nombre} estpa siendo atendido por una enfermera")
+        print(f"El paciente {nombre} está siendo registrado por una enfermera")
         yield env.timeout(10)
         print(f"El paciente {nombre}, prioridad: {prioridad}, ha sido registrado en el tiempo {env.now}")
         proceso = random.randint(1,4)
@@ -52,8 +52,11 @@ def generate_simulation(env, Enfermeras, RayosX, Laboratorio, Doctores, Operacio
         yield env.timeout(random.expovariate(1/interval))
 
 env = simpy.Environment()
-Enfermeras = simpy.Resource(env, capacity=1)
-RayosX = simpy.PriorityResource(env, capacity=1)
-Laboratorio = simpy.PriorityResource(env, capacity=1)
-Doctores = simpy.PriorityResource(env, capacity=5)
-Operaciones = simpy.PriorityResource(env, capacity=1)
+Enfermeras = simpy.Resource(env, capacity=2)
+RayosX = simpy.PriorityResource(env, capacity=4)
+Laboratorio = simpy.PriorityResource(env, capacity=10)
+Doctores = simpy.PriorityResource(env, capacity=10)
+Operaciones = simpy.PriorityResource(env, capacity=3)
+
+env.process(generate_simulation(env, Enfermeras, RayosX, Laboratorio, Doctores, Operaciones, 100, 10))
+env.run()
