@@ -51,7 +51,9 @@ def generate_simulation(env, Enfermeras, RayosX, Laboratorio, Doctores, Operacio
         env.process(simulation(env, str(i), Enfermeras, RayosX, Laboratorio, Doctores, Operaciones))
         yield env.timeout(random.expovariate(1/interval))
 
-
-
-
-
+env = simpy.Environment()
+Enfermeras = simpy.Resource(env, capacity=1)
+RayosX = simpy.PriorityResource(env, capacity=1)
+Laboratorio = simpy.PriorityResource(env, capacity=1)
+Doctores = simpy.PriorityResource(env, capacity=5)
+Operaciones = simpy.PriorityResource(env, capacity=1)
