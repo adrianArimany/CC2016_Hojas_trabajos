@@ -3,7 +3,7 @@
 Universidad de valle de Guatemala
 
 Authors: Adrian Arimany - 211063 (Part 1- java code)
-Authors: Rodrigo 
+Authors: Rodrigo Ajmac - 22279 (Part 2 - Python code)
 
 # Note:
 
