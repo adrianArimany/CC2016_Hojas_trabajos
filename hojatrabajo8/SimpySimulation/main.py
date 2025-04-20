@@ -15,6 +15,11 @@ def simulation(env, nombre,Enfermeras, RayosX, Laboratorio, Doctores, Operacione
         reg_time = env.now - arrival_time
         print(f"El paciente {nombre}, prioridad: {prioridad}, ha sido registrado en el tiempo {env.now}")
         proceso = random.randint(1,4)
+        resultados.append({
+            "prioridad": prioridad,
+            "waiting_time": reg_time,  # usamos el tiempo de registro
+            "recurso": "Enfermeras"
+        })
     if proceso == 1:
         with RayosX.request(priority = prioridad) as req:
             print(f"El paciente {nombre} espera los rayos X")
@@ -23,6 +28,12 @@ def simulation(env, nombre,Enfermeras, RayosX, Laboratorio, Doctores, Operacione
             print(f"El paciente {nombre} ha ingresado al tomógrafo en el tiempo {env.now}")
             yield env.timeout(10)
             proceso_nombre = "RayosX"
+            resultados.append({
+                "prioridad": prioridad,
+                "waiting_time": wating_time,
+                "recurso": proceso_nombre
+            })
+
     elif proceso == 2:
         with Laboratorio.request(priority = prioridad) as req:
             print(f"El paciente {nombre} espera el Laboratorio")
@@ -31,6 +42,12 @@ def simulation(env, nombre,Enfermeras, RayosX, Laboratorio, Doctores, Operacione
             print(f"El paciente {nombre} ha ingresado al laboratorio en el tiempo {env.now}")
             yield env.timeout(30)
             proceso_nombre = "Laboratorio"
+            resultados.append({
+                "prioridad": prioridad,
+                "waiting_time": wating_time,
+                "recurso": proceso_nombre
+            })
+
     elif proceso == 3:
         with Doctores.request(priority = prioridad) as req:
             print(f"El paciente {nombre} espera ser atendido por un doctor")
@@ -39,6 +56,12 @@ def simulation(env, nombre,Enfermeras, RayosX, Laboratorio, Doctores, Operacione
             print(f"El paciente {nombre} ha ingresado a consulta con un doctor en el tiempo {env.now}")
             yield env.timeout(30)
             proceso_nombre = "Doctores"
+            resultados.append({
+                "prioridad": prioridad,
+                "waiting_time": wating_time,
+                "recurso": proceso_nombre
+            })
+
     elif proceso == 4:
         with Operaciones.request(priority = prioridad) as req:
             print(f"El paciente {nombre} espera para ser operado")
@@ -48,12 +71,11 @@ def simulation(env, nombre,Enfermeras, RayosX, Laboratorio, Doctores, Operacione
             op_time = random.randint(120,240)
             yield env.timeout(op_time)
             proceso_nombre = "Operaciones"
-
-    resultados.append({
-        "prioridad": prioridad,
-        "waiting_time": wating_time,
-        "recurso": proceso_nombre
-    })
+            resultados.append({
+                "prioridad": prioridad,
+                "waiting_time": wating_time,
+                "recurso": proceso_nombre
+            })
 
     print(f"El paciente {nombre} (prioridad {prioridad}) ha salido en el tiempo {env.now}, tuvo que esperar {reg_time} para ser registrado y {wating_time} para ser atendido según su condición")
 

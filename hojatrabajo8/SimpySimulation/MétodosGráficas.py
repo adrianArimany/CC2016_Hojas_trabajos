@@ -1,11 +1,11 @@
-##Para facilitar la elaboración de gráficas se supone que en un día en común llegan aproximadamente 50 personas a la emergencia
+
 from main import *
 import simpy
 import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def run_experiments(recurso_objetivo, capacidades, num_pacientes=50, interval=10):
+def run_experiments(recurso_objetivo, capacidades, num_pacientes, interval):
     resultados_globales = []
     for cap in capacidades:
         env = simpy.Environment()
@@ -57,9 +57,7 @@ def graficar_resultados(resultados, recurso_objetivo):
     plt.tight_layout()
     plt.show()
 
-capacidades = range(1, 11)
 
-recurso1 = 'Doctores'
-datos1 = run_experiments(recurso1, capacidades)
-graficar_resultados(datos1, recurso1)
+
+
 
