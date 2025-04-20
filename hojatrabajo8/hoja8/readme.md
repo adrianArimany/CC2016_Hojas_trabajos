@@ -1,6 +1,6 @@
 # Program Info:
 
-Universidad de valle de Guatemala
+Universidad del Valle de Guatemala
 
 Authors: Adrian Arimany - 211063 (Part 1- java code)
 Authors: Rodrigo Ajmac - 22279 (Part 2 - Python code)
