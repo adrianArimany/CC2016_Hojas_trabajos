@@ -1,4 +1,3 @@
-package org.example;    
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -6,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.BitSet;
+
+import org.example.hdt9.HuffmanNode;
 
 public class HuffmanDecompressor {
     /**

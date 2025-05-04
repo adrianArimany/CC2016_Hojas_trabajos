@@ -1,15 +1,18 @@
-package org.example;
-
-import java.io.DataOutputStream;
-import java.io.File;
+import org.example.hdt9.HuffmanNode;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.Files;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
+
+
 
 public class HuffmanCompressor {
     /**
