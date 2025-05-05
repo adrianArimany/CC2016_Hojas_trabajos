@@ -1,0 +1,24 @@
+# Created at 2025-05-04T18:49:58.205
+java.io.FileNotFoundException: /home/adrianarimany/Documents/UVG/Year_2/Algs_Data-Structure/Assigments/Hoja_trabajo_1/hojatrabajo9/ht9/target/surefire/surefire_012128345428574018189tmp (No such file or directory)
+
+# Created at 2025-05-04T18:49:58.206
+	at java.base/java.io.FileInputStream.open0(Native Method)
+
+# Created at 2025-05-04T18:49:58.206
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+
+# Created at 2025-05-04T18:49:58.206
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+
+# Created at 2025-05-04T18:49:58.207
+	at org.apache.maven.surefire.booter.SystemPropertyManager.loadProperties(SystemPropertyManager.java:67)
+
+# Created at 2025-05-04T18:49:58.207
+	at org.apache.maven.surefire.booter.SystemPropertyManager.setSystemProperties(SystemPropertyManager.java:73)
+
+# Created at 2025-05-04T18:49:58.207
+	at org.apache.maven.surefire.booter.ForkedBooter.setupBooter(ForkedBooter.java:95)
+
+# Created at 2025-05-04T18:49:58.208
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:417)
+
