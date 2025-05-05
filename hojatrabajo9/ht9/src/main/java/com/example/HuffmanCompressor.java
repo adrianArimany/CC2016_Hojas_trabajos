@@ -11,7 +11,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-
+    /**
+    * The code was based on the support of GeeksforGeeks (2025). Huffman Coding in Java [Online]. 
+    * Available at: https://www.geeksforgeeks.org/huffman-coding-in-java/.
+    * 
+    * 
+    */
 
 
 public class HuffmanCompressor {

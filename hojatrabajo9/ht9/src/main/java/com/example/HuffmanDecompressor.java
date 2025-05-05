@@ -6,7 +6,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.BitSet;
+/**
+    * The code was based on the support of GeeksforGeeks (2025). Huffman Coding in Java [Online]. 
+    * Available at: https://www.geeksforgeeks.org/huffman-coding-in-java/.
+    * 
+    * 
+    */
 
+    
 public class HuffmanDecompressor {
 
     /**
