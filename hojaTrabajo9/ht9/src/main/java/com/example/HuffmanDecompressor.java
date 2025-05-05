@@ -1,3 +1,4 @@
+package com.example;    
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -6,9 +7,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.BitSet;
 
-import org.example.hdt9.HuffmanNode;
-
+import com.example.HuffmanCompressor.HuffmanNode;
 public class HuffmanDecompressor {
+
     /**
      * Método para decodificar un texto codificado a partir de su hufftree y código huff
      * @param treePath ruta del arbol
