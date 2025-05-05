@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.BitSet;
 
-import com.example.HuffmanCompressor.HuffmanNode;
 public class HuffmanDecompressor {
 
     /**

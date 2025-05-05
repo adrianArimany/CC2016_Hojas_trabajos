@@ -11,7 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-import com.example.HuffmanCompressor.HuffmanNode;
+
+
 
 public class HuffmanCompressor {
     /**
@@ -19,23 +20,7 @@ public class HuffmanCompressor {
      */
     private final Map<Character, String> huffmanCodes = new HashMap<>(); //Mapa que servirá para guardar la codificación de cada caracter
 
-    public class HuffmanNode {
-        public char character;
-        public int frequency;
-        public HuffmanNode left;
-        public HuffmanNode right;
     
-        public HuffmanNode(char character, int frequency) {
-            this.character = character;
-            this.frequency = frequency;
-            this.left = null;
-            this.right = null;
-        }
-    
-        public boolean isLeaf() {
-            return left == null && right == null;
-        }
-    }
     /**
      * Método para comprimir un archivo de texto
      * @param inputFilePath //Ruta del archivo de texto
