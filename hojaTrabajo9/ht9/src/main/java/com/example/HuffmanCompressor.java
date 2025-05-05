@@ -1,18 +1,17 @@
-import org.example.hdt9.HuffmanNode;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
+package com.example;
+
+import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.nio.file.Files;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-
+import com.example.HuffmanCompressor.HuffmanNode;
 
 public class HuffmanCompressor {
     /**
@@ -20,6 +19,23 @@ public class HuffmanCompressor {
      */
     private final Map<Character, String> huffmanCodes = new HashMap<>(); //Mapa que servirá para guardar la codificación de cada caracter
 
+    public class HuffmanNode {
+        public char character;
+        public int frequency;
+        public HuffmanNode left;
+        public HuffmanNode right;
+    
+        public HuffmanNode(char character, int frequency) {
+            this.character = character;
+            this.frequency = frequency;
+            this.left = null;
+            this.right = null;
+        }
+    
+        public boolean isLeaf() {
+            return left == null && right == null;
+        }
+    }
     /**
      * Método para comprimir un archivo de texto
      * @param inputFilePath //Ruta del archivo de texto
@@ -57,8 +73,8 @@ public class HuffmanCompressor {
      */
     private HuffmanNode buildHuffmanTree(Map<Character, Integer> freqMap) {
         PriorityQueue<HuffmanNode> queue = new PriorityQueue<>();
-        for (var entry : freqMap.entrySet()) {
-            queue.offer(new HuffmanNode(entry.getKey(), entry.getValue()));
+        for (Map.Entry<Character, Integer> var : freqMap.entrySet()) {
+            queue.offer(new HuffmanNode(var.getKey(), var.getValue()));
         }
 
         while (queue.size() > 1) {

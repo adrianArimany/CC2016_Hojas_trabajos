@@ -1,4 +1,4 @@
-package org.example.hdt9;
+package com.example;
 import java.io.Serializable;
 
 public class HuffmanNode implements Serializable, Comparable<HuffmanNode> {
