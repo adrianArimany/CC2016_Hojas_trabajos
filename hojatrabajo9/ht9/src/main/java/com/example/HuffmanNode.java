@@ -1,5 +1,11 @@
 package com.example;
 import java.io.Serializable;
+/**
+    * The code was based on the support of GeeksforGeeks (2025). Huffman Coding in Java [Online]. 
+    * Available at: https://www.geeksforgeeks.org/huffman-coding-in-java/.
+    * 
+    * 
+    */
 
 public class HuffmanNode implements Serializable, Comparable<HuffmanNode> {
     /**
