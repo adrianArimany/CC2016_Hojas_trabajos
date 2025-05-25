@@ -104,9 +104,28 @@ class Graph:
             print(row_fmt.format(*row))
 
     def remove_edge(self, u, v):
-        """Deletes any edge u -> v."""
+        """
+        Deletes the direct edge u to v and any direct edges u to w
+        where w is reachable from v (i.e. a 'descendant' of v).
+        This ensures that removing the A to B link also removes
+        A to C if B to C existed.
+        """
+        descendants = set()
+        stack = [v]
+        while stack:
+            x = stack.pop()
+            for (p, q) in list(self.times):
+                if p == x and q not in descendants:
+                    descendants.add(q)
+                    stack.append(q)
+
         if (u, v) in self.times:
             del self.times[(u, v)]
+
+        for w in descendants:
+            if (u, w) in self.times:
+                del self.times[(u, w)]
+
         self._initialize_matrices()
 
     def add_edge(self, u, v, t_normal, t_rain, t_snow, t_storm):
