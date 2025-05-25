@@ -1,0 +1,6 @@
+Antigua Quetzaltenango 5 6 7 12
+Antigua Coban        6 7 8 14
+Quetzaltenango Huehuetenango 2 3 4 7
+Coban   Chimaltenango       4 5 6 10
+Chimaltenango Escuintla    3 4 5 9
+Escuintla Antigua         2 3 4 8

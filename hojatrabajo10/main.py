@@ -2,7 +2,7 @@ from graph import Graph
 
 def main():
     g = Graph()
-    g.read_from_file("logistica.txt") #or whichever file name you are using.
+    g.read_from_file("guategrafo.txt") #or whichever file name you are using.
     g.floyd_warshall()
 
     print("\n--- Initial adjacency matrix (normal climate) ---")
