@@ -42,18 +42,19 @@ class Graph:
                 }
         self._initialize_matrices()
 
-    def _initialize_matrices(self):
+    
+    def get_center(self):
+        """
+        Graph center = vertex with minimal eccentricity.
+        Eccentricity of u = max distance from u to any v (infinity if unreachable).
+        """
+        ecc = {}
         n = len(self.vertices)
-        self.dist = [[INF]*n for _ in range(n)]
-        self.next = [[None]*n for _ in range(n)]
-
-        for i in range(n):
-            self.dist[i][i] = 0
-
-        for (u, v), times in self.times.items():
-            i, j = self.index[u], self.index[v]
-            self.dist[i][j] = times['normal']
-            self.next[i][j] = j
+        for i, u in enumerate(self.vertices):
+            maxd = max(self.dist[i][j] for j in range(n))
+            ecc[u] = maxd
+        center = min(ecc, key=lambda u: ecc[u])
+        return center, ecc[center]
 
     def floyd_warshall(self):
         """Runs Floyd Warshall, updating self.dist and self.next."""
@@ -77,20 +78,18 @@ class Graph:
             u = self.next[u][v]
             path.append(self.vertices[u])
         return path
-
-    def get_center(self):
+    def change_edge_climate(self, u, v, climate):
         """
-        Graph center = vertex with minimal eccentricity.
-        Eccentricity of u = max distance from u to any v (infinity if unreachable).
+        Updates the active weight of edge u -> v to the specified climate.
+        climate ∈ {'normal','rain','snow','storm'}.
         """
-        ecc = {}
-        n = len(self.vertices)
-        for i, u in enumerate(self.vertices):
-            maxd = max(self.dist[i][j] for j in range(n))
-            ecc[u] = maxd
-        center = min(ecc, key=lambda u: ecc[u])
-        return center, ecc[center]
-
+        if (u, v) not in self.times:
+            raise KeyError(f"No edge {u}→{v}")
+        self.times[(u, v)]['_active'] = self.times[(u, v)][climate]
+        orig = self.times[(u, v)]['normal']
+        self.times[(u, v)]['normal'] = self.times[(u, v)][climate]
+        self._initialize_matrices()
+    
     def display_adjacency_matrix(self):
         """Prints distance matrix with vertex labels."""
         hdr = [""] + self.vertices
@@ -102,7 +101,20 @@ class Graph:
                 for j in range(len(self.vertices))
             ]
             print(row_fmt.format(*row))
+            
+    def _initialize_matrices(self):
+        n = len(self.vertices)
+        self.dist = [[INF]*n for _ in range(n)]
+        self.next = [[None]*n for _ in range(n)]
 
+        for i in range(n):
+            self.dist[i][i] = 0
+
+        for (u, v), times in self.times.items():
+            i, j = self.index[u], self.index[v]
+            self.dist[i][j] = times['normal']
+            self.next[i][j] = j
+            
     def remove_edge(self, u, v):
         """
         Deletes the direct edge u to v and any direct edges u to w
@@ -128,6 +140,11 @@ class Graph:
 
         self._initialize_matrices()
 
+    def rebuild_and_solve(self):
+        """Reinitialize matrices and rerun Floyd Warshall."""
+        self._initialize_matrices()
+        self.floyd_warshall()
+        
     def add_edge(self, u, v, t_normal, t_rain, t_snow, t_storm):
         """Adds a directed edge u -> v with all four climate times."""
         self.add_vertex(u)
@@ -137,20 +154,3 @@ class Graph:
             'snow':   t_snow,  'storm': t_storm
         }
         self._initialize_matrices()
-
-    def change_edge_climate(self, u, v, climate):
-        """
-        Updates the active weight of edge u -> v to the specified climate.
-        climate ∈ {'normal','rain','snow','storm'}.
-        """
-        if (u, v) not in self.times:
-            raise KeyError(f"No edge {u}→{v}")
-        self.times[(u, v)]['_active'] = self.times[(u, v)][climate]
-        orig = self.times[(u, v)]['normal']
-        self.times[(u, v)]['normal'] = self.times[(u, v)][climate]
-        self._initialize_matrices()
-
-    def rebuild_and_solve(self):
-        """Reinitialize matrices and rerun Floyd Warshall."""
-        self._initialize_matrices()
-        self.floyd_warshall()
