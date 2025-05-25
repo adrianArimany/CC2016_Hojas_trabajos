@@ -1,6 +1,12 @@
 import math
 INF = math.inf
 
+"""
+Part of the algorithm was adapted from: 
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). 
+Introduction to Algorithms (3rd ed.). MIT Press.
+"""
+
 class Graph:
     def __init__(self):
         self.vertices = []
@@ -92,19 +98,19 @@ class Graph:
         print(row_fmt.format(*hdr))
         for i, u in enumerate(self.vertices):
             row = [u] + [
-                f"{self.dist[i][j]:.0f}" if self.dist[i][j] < INF else "∞"
+                f"{self.dist[i][j]:.0f}" if self.dist[i][j] < INF else "infity"
                 for j in range(len(self.vertices))
             ]
             print(row_fmt.format(*row))
 
     def remove_edge(self, u, v):
-        """Deletes any edge u→v."""
+        """Deletes any edge u -> v."""
         if (u, v) in self.times:
             del self.times[(u, v)]
         self._initialize_matrices()
 
     def add_edge(self, u, v, t_normal, t_rain, t_snow, t_storm):
-        """Adds a directed edge u→v with all four climate times."""
+        """Adds a directed edge u -> v with all four climate times."""
         self.add_vertex(u)
         self.add_vertex(v)
         self.times[(u, v)] = {
@@ -115,7 +121,7 @@ class Graph:
 
     def change_edge_climate(self, u, v, climate):
         """
-        Updates the active weight of edge u→v to the specified climate.
+        Updates the active weight of edge u -> v to the specified climate.
         climate ∈ {'normal','rain','snow','storm'}.
         """
         if (u, v) not in self.times:
@@ -126,6 +132,6 @@ class Graph:
         self._initialize_matrices()
 
     def rebuild_and_solve(self):
-        """Reinitialize matrices and rerun Floyd–Warshall."""
+        """Reinitialize matrices and rerun Floyd Warshall."""
         self._initialize_matrices()
         self.floyd_warshall()

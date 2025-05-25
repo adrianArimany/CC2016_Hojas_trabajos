@@ -26,7 +26,7 @@ Options:
             else:
                 dist = g.dist[g.index[src]][g.index[dst]]
                 print(f"Shortest time: {dist:.0f}")
-                print("Route:", " → ".join(path))
+                print("Route:", " to ".join(path))
 
         elif choice == "2":
             center, ecc = g.get_center()
@@ -63,7 +63,6 @@ Options:
                     print(e)
             else:
                 print("Invalid sub-option.")
-            # after any modification, recompute
             g.rebuild_and_solve()
             print("Recomputed adjacency matrix:")
             g.display_adjacency_matrix()
@@ -72,7 +71,7 @@ Options:
             print("Goodbye!")
             break
         else:
-            print("Invalid option. Please choose 1–4.")
+            print("Invalid option. Please choose 1 to 4.")
 
 if __name__ == "__main__":
     main()
