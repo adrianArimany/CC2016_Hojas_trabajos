@@ -1,0 +1,6 @@
+London Manchester 4 5 6 10
+London Birmingham 2 3 4 8
+Manchester Leeds 1 2 3 6
+Birmingham Leicester 2 3 4 9
+Leicester Nottingham 1 2 3 5
+Nottingham London 3 4 5 7
