@@ -1,6 +1,7 @@
 # Logistics Graph with Floyd–Warshall Hoja trabajo 10
 
 ## Adrian Arimany - 211063
+## Rodrigo Sebastián Ajmac Aroche - 22279
 
 ## Requirements
 
