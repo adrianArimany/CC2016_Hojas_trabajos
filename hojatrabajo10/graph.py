@@ -81,12 +81,12 @@ class Graph:
     def get_center(self):
         """
         Graph center = vertex with minimal eccentricity.
-        Eccentricity of u = max distance from u to any v.
+        Eccentricity of u = max distance from u to any v (infinity if unreachable).
         """
         ecc = {}
         n = len(self.vertices)
         for i, u in enumerate(self.vertices):
-            maxd = max(self.dist[i][j] for j in range(n) if self.dist[i][j] < INF)
+            maxd = max(self.dist[i][j] for j in range(n))
             ecc[u] = maxd
         center = min(ecc, key=lambda u: ecc[u])
         return center, ecc[center]

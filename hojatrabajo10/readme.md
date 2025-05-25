@@ -17,3 +17,9 @@
 - test (To test the algoritm)
     - test_graph.py (The units tests for the algorithm)
 
+
+## TO run the unit tests please use the following command:
+
+```
+python3 -m unittest discover -s test -p 'test_*.py'
+```

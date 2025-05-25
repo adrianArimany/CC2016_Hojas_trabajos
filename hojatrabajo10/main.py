@@ -68,7 +68,7 @@ Options:
             g.display_adjacency_matrix()
 
         elif choice == "4":
-            print("Goodbye!")
+            print("Bye bye sir.")
             break
         else:
             print("Invalid option. Please choose 1 to 4.")
